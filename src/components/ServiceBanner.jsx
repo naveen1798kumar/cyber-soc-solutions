@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { servicesData } from "../data/servicesData";
+import webdevelopment from "../assets/4201.jpg"
 
 import backgroundImage from "../assets/our-sevices-banner.jpg"
 
@@ -12,7 +13,7 @@ const ServiceBanner = ({ title, description }) => {
   return (
     <div
       className="relative h-[300px] md:h-[400px] w-full bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: backgroundImage }}
+      style={{ backgroundImage: `url(${webdevelopment})` }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50"></div>

@@ -3,8 +3,12 @@ import { useParams } from "react-router-dom";
 import { servicesData } from "../../data/servicesData";
 import ServiceBanner from "../../components/ServiceBanner";
 import FAQSection from "../../components/FAQSection";
+
+import aboutBanner from "../../assets/42.jpg"
+
 import AOS from "aos";
 import "aos/dist/aos.css";
+
 
 const ServiceDetails = () => {
   const { category, serviceId } = useParams();
@@ -42,7 +46,7 @@ const ServiceDetails = () => {
       <section className="flex flex-col md:flex-row items-center gap-12 px-6 md:px-20 py-12">
 
         <div className="w-full md:w-1/2" data-aos="fade-right">
-          <img src="" alt="Gate Automation" className="w-full rounded-lg shadow-lg" />
+          <img src={aboutBanner} alt="Gate Automation" className="w-full rounded-lg shadow-lg" />
         </div>
 
         <div className="w-full md:w-1/2" data-aos="fade-left">
@@ -59,7 +63,7 @@ const ServiceDetails = () => {
         </div>
       </section>
 
-      <FAQSection image="" />
+      <FAQSection image={aboutBanner} />
     </div>
   );
 };

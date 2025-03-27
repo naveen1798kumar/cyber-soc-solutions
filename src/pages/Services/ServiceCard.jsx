@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import webdevelopment from "../../assets/webdevelopment.jpg"
 
 const ServiceCard = ({ service, category }) => {
   return (
@@ -13,7 +14,7 @@ data-aos="fade-up"
 
 <div className="relative w-full h-52 overflow-hidden">
 <img
-src={service.image}
+src={webdevelopment}
 alt={service.title}
 className="w-full h-full object-cover rounded-t-2xl transition-transform duration-500 group-hover:scale-110"
 />
