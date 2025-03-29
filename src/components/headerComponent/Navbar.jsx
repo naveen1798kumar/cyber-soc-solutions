@@ -93,8 +93,8 @@ const Navbar = () => {
         )}
       </div>
 
-      <NavLink to="/partners" className={({ isActive }) => (isActive ? `${linkClass} ${activeClass}` : linkClass)}>
-        Partners
+      <NavLink to="/blogs" className={({ isActive }) => (isActive ? `${linkClass} ${activeClass}` : linkClass)}>
+        Blogs
       </NavLink>
       <NavLink to="/contact" className={({ isActive }) => (isActive ? `${linkClass} ${activeClass}` : linkClass)}>
         Contact

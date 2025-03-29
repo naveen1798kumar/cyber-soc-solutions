@@ -11,12 +11,13 @@ const Services = () => {
   return (
     <>
     <div className="">
+      {/* import aboutBanner from "../../assets/Hero-Slider/Slider-3.jpg"; */}
     <Banner
         backgroundImage={aboutBanner}
         title="Services We Offer"
         description="We provide cutting-edge cybersecurity and automation solutions to protect businesses from modern threats and enhance operational efficiency."
       />
-
+      
       <div className="p-6 md:p-12 overflow-x-hidden">
         {!openCategory ? (
           <ServiceList onCategorySelect={setOpenCategory} />

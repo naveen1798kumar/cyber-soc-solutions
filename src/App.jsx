@@ -4,6 +4,7 @@ import Layout from './Layout/Layout';
 import Loading from './components/Loading'
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
+import Blog from './pages/Blog/Blog';
 import Services from './pages/Services/Services';
 import CategoryServices from './pages/Services/CategoryServices';
 import ServiceDetails from './pages/Services/ServiceDetails';
@@ -44,7 +45,7 @@ function App() {
         {/* <Route path="services/:category" element={<CategoryServices />} /> */}
         <Route path="services/:category/:serviceId" element={<ServiceDetails />} />
           {/* <Route path="products" element={<Products />} /> */}
-          <Route path="partners" element={<Partners />} />
+          <Route path="blogs" element={<Blog />} />
           <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>
