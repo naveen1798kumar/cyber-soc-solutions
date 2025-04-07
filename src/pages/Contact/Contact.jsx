@@ -1,43 +1,124 @@
 import React, { useState } from "react";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import Banner from "../../components/Banner";
-import aboutBanner from "../../assets/Hero-Slider/Slider-2.jpg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Banners from "../../assets/banners/contact-banner.jpg";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+
+    if (formData.name && formData.email && formData.message) {
+      try {
+        // Send form data to Toastify API
+        const response = await fetch("https://api.toastify.io/v1/send", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer YOUR_API_KEY", // Replace with your Toastify API Key
+          },
+          body: JSON.stringify({
+            to: "info@cybersocsolutions.com", // Replace with your email
+            subject: `New Contact Form Submission from ${formData.name}`,
+            message: `
+              <p><strong>Name:</strong> ${formData.name}</p>
+              <p><strong>Email:</strong> ${formData.email}</p>
+              <p><strong>Message:</strong> ${formData.message}</p>
+            `,
+          }),
+        });
+
+        if (response.ok) {
+          // Show success toast
+          toast.success("Your message has been sent successfully!", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+
+          // Reset form fields
+          setFormData({ name: "", email: "", message: "" });
+        } else {
+          throw new Error("Failed to send message");
+        }
+      } catch (error) {
+        // Show error toast
+        toast.error("Failed to send your message. Please try again.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    } else {
+      // Show error toast for empty fields
+      toast.error("Please fill out all fields before submitting.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
+      {/* Toast Container */}
+      <ToastContainer />
+
       {/* Hero Section */}
       <Banner
-        backgroundImage={aboutBanner}
+        backgroundImage={Banners}
         title="Get in Touch with CyberSoc"
         description="We provide cutting-edge cybersecurity and automation solutions to protect businesses from modern threats and enhance operational efficiency."
       />
 
       {/* Contact Section */}
-      <section className="py-20 relative bg-gray-100">
+      <section className="py-20 relative bg-white ">
         <div className="container mx-auto px-6 lg:px-20">
-          <h2 className="text-4xl font-extrabold text-center text-gray-900">
+          <h2
+            className="relative text-5xl font-extrabold text-gray-900 text-center leading-tight tracking-wide before:absolute before:content-[''] before:w-20 before:h-1 before:bg-blue-500 before:bottom-0 before:left-1/2 before:-translate-x-1/2 after:absolute after:content-[''] after:w-10 after:h-1 after:bg-blue-300 after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2"
+            data-aos="fade-up"
+            data-aos-duration="300"
+          >
             Contact <span className="text-indigo-600">CyberSoc</span>
           </h2>
-          <p className="text-center text-lg text-gray-700 max-w-2xl mx-auto mt-4">
+          <p
+            className="mt-4 text-lg text-gray-700 text-center max-w-3xl mx-auto leading-relaxed"
+            data-aos="fade-up"
+          >
             Have questions? Our team is here to help. Fill out the form below or
             reach out to us directly.
           </p>
 
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className="p-8 bg-white/20 backdrop-blur-xl shadow-xl rounded-xl border border-white/30">
+            <div
+              className="p-8 bg-gray-100 backdrop-blur-sm shadow-lg hover:shadow-black/50 rounded-xl border border-white/30 transition-hover duration-300 ease-in-out"
+              data-aos="fade-right"
+              data-aos-duration="300"
+              data-aos-delay="100"
+            >
               <h3 className="text-2xl font-semibold text-gray-900">
                 Send Us a Message
               </h3>
@@ -45,7 +126,13 @@ const Contact = () => {
                 Our team will respond within 24 hours.
               </p>
 
-              <form onSubmit={handleSubmit} className="mt-6 space-y-6">
+              <form
+                onSubmit={(e) => {
+                  handleSubmit(e);
+                  setFormData({ name: "", email: "", message: "" });
+                }}
+                className="mt-6 space-y-6"
+              >
                 <div>
                   <label className="block text-gray-800 font-medium mb-2">
                     Name
@@ -55,7 +142,7 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                    className="w-full p-3 border border-gray-300 bg-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                     placeholder="Your Name"
                   />
                 </div>
@@ -68,7 +155,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                    className="w-full p-3 border border-gray-300 bg-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                     placeholder="Your Email"
                   />
                 </div>
@@ -80,7 +167,7 @@ const Contact = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                    className="w-full p-3 border border-gray-300 bg-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                     rows="5"
                     placeholder="Your Message"
                   ></textarea>
@@ -96,7 +183,11 @@ const Contact = () => {
 
             {/* Contact Information */}
             <div className="space-y-8">
-              <div className="p-8 bg-white/20 backdrop-blur-xl shadow-xl rounded-xl border border-white/30">
+              <div
+                className="p-8 bg-gray-100 backdrop-blur-sm shadow-lg hover:shadow-black/50 rounded-xl border border-white/30 transition-hover duration-300 ease-in-out"
+                data-aos="fade-left"
+                data-aos-duration="300"
+              >
                 <h3 className="text-2xl font-semibold text-gray-900">
                   Contact Details
                 </h3>
@@ -106,21 +197,34 @@ const Contact = () => {
                 <div className="mt-6 space-y-4">
                   <div className="flex items-center text-gray-800">
                     <FaMapMarkerAlt className="mr-3 text-indigo-600 text-xl" />
-                    <span>CyberSoc Solutions, Coimbatore, Tamil Nadu, India</span>
+                    <span>
+                      CyberSoc Solutions, Coimbatore, Tamil Nadu, India
+                    </span>
                   </div>
                   <div className="flex items-center text-gray-800">
                     <FaPhoneAlt className="mr-3 text-indigo-600 text-xl" />
-                    <span>+91 93848 12940</span>
+                    <a href="tel:+919384812940" className="hover:text-bold">
+                      +91 93848 12940
+                    </a>
                   </div>
                   <div className="flex items-center text-gray-800">
                     <FaEnvelope className="mr-3 text-indigo-600 text-xl" />
-                    <span>info@cybersocsolutions.com</span>
+                    <a
+                      href="mailto:info@cybersocsolutions.com"
+                      className="hover:underline"
+                    >
+                      info@cybersocsolutions.com
+                    </a>
                   </div>
                 </div>
               </div>
 
               {/* Map Section */}
-              <div className="p-8 bg-white/20 backdrop-blur-xl shadow-xl rounded-xl border border-white/30">
+              <div
+                className="p-8 bg-gray-100 backdrop-blur-sm shadow-lg hover:shadow-black/50 rounded-xl border border-white/30 transition-hover duration-300 ease-in-out"
+                data-aos="fade-left"
+                data-aos-duration="500"
+              >
                 <h3 className="text-2xl font-semibold text-gray-900">
                   Our Location
                 </h3>

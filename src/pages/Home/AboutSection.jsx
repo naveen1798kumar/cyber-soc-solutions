@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import bgImage from "../../assets/Hero-Slider/Slider-1.jpg"
+import bgImage from "../../assets/Hero-Slider/Home-Automation.jpg"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 

@@ -11,7 +11,7 @@ const VisionMission = () => {
 
   return (
     <section className="py-12 bg-gray-100">
-      <div className="container flex justify-between gap-8 mx-auto px-6 md:px-12 lg:px-20">
+      <div className="container flex flex-col-reverse md:flex-row justify-between gap-8 mx-auto px-6 md:px-12 lg:px-20">
         {/* Image Section */}
         <div className="w-full flex justify-center h-[500px] mb-10" data-aos="fade-down">
           <img 
@@ -24,8 +24,8 @@ const VisionMission = () => {
         {/* Vision & Mission Section */}
         <div className="grid grid-cols-1  gap-12">
           {/* Vision */}
-          <div className="text-center md:text-left" data-aos="fade-right">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Vision</h2>
+          <div className=" md:text-left" data-aos="fade-right">
+            <h2 className=" text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Vision</h2>
             <p className="text-gray-700 text-lg leading-relaxed">
               With over a decade of expertise, we aim to revolutionize Networking Solutions, Web Development, and Automation.
               Our vision is to integrate cutting-edge technology that enhances security, optimizes efficiency, and fosters 
@@ -38,7 +38,7 @@ const VisionMission = () => {
           </div>
           
           {/* Mission */}
-          <div className="text-center md:text-left" data-aos="fade-left">
+          <div className=" md:text-left" data-aos="fade-left">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Mission</h2>
             <p className="text-gray-700 text-lg leading-relaxed">
               Our mission is to provide smart, scalable, and future-proof solutions that drive digital transformation.

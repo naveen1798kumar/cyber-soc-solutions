@@ -42,7 +42,12 @@ const ServicesSection = () => {
   return (
     <section className="py-12 bg-gray-100">
       <div className="container mx-auto px-6 md:px-12 lg:px-20">
-        <h2 className="text-4xl font-bold text-center mb-10 text-gray-900">
+        <h2 className="relative text-4xl md:text-5xl text-center font-extrabold text-gray-900 tracking-wide leading-tight 
+               before:absolute before:content-[''] before:w-20 before:h-1 before:bg-blue-500 
+               before:bottom-0 before:left-1/2 before:-translate-x-1/2 
+               after:absolute after:content-[''] after:w-10 after:h-1 after:bg-blue-300 
+               after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 mb-6 md:mb-2"
+    data-aos="fade-up">
           Our Core Services
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

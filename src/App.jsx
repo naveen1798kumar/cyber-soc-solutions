@@ -5,11 +5,14 @@ import Loading from './components/Loading'
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Blog from './pages/Blog/Blog';
+import BlogDetail from './pages/Blog/BlogDetail';
+
 import Services from './pages/Services/Services';
 import CategoryServices from './pages/Services/CategoryServices';
 import ServiceDetails from './pages/Services/ServiceDetails';
 // import Products from './pages/Products';
 import Partners from './pages/Partners/Partners';
+import Products from './pages/Products/Products';
 import Contact from './pages/Contact/Contact';
 
 import "slick-carousel/slick/slick.css";
@@ -42,11 +45,14 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="services" element={<Services />} />
-        {/* <Route path="services/:category" element={<CategoryServices />} /> */}
         <Route path="services/:category/:serviceId" element={<ServiceDetails />} />
-          {/* <Route path="products" element={<Products />} /> */}
           <Route path="blogs" element={<Blog />} />
+          <Route path="/blogs/:slug" element={<BlogDetail />} />
+
+          <Route path="products" element={<Products />} />
           <Route path="contact" element={<Contact />} />
+          
+          <Route path="*" element={<h2>404 Error</h2>} />
         </Route>
       </Routes>
     </Router>

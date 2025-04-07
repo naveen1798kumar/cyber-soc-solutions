@@ -7,3 +7,9 @@ import "slick-carousel/slick/slick-theme.css"; */
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 
 }
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

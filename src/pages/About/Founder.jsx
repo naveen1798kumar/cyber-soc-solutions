@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import bgImage from "../../assets/Hero-Slider/Slider-1.jpg"
+import bgImage from "../../assets/Hero-Slider/Home-Automation.jpg"
 
 function Founder() {
   return (
@@ -8,15 +8,15 @@ function Founder() {
     <section className="container mx-auto flex flex-col-reverse lg:grid lg:grid-cols-2 items-center gap-12 px-6 md:px-12 lg:px-20">
       
       {/* Text Content */}
-      <div className="text-center lg:text-left" data-aos="fade-up">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+      <div className="lg:text-left" data-aos="fade-up">
+        <h2 className="text-center text-4xl md:text-5xl font-bold text-gray-900 mb-6">
           About Us
         </h2>
-        <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
+        <p className="text-gray-700 text-lg md:text-xl leading-relaxed indent-10 md:indent-0">
           With over a decade of expertise, we specialize in Networking Solutions, Web Development, and Automation  
           to enhance security, efficiency, and connectivity in homes, offices, and industries.
         </p>
-        <p className="mt-6 text-gray-700 text-lg">
+        <p className="mt-6 text-gray-700 text-lg indent-10 md:indent-0">
           We are committed to delivering smart, scalable, and future-proof solutions  
           that enhance security, optimize workflows, and drive digital transformation.
         </p>
