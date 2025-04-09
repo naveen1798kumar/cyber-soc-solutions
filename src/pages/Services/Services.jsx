@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import Banner from "../../components/Banner";
 import PartnersCarousel from "../../components/PartnersCarousel";
 import ServiceList from "../../pages/Services/ServiceList";
@@ -47,6 +48,22 @@ const Services = () => {
 
   return (
     <div className=" bg-gradient-to-r from-[#d9e5fe] via-[#f5f6f8] to-[#d9e5fe] ">
+      {/*  */}
+      <Helmet>
+        <title>Our Services | Cyber Security, Automation & Web Development</title>
+        <meta
+          name="description"
+          content="Explore CyberSoc's wide range of services, including Networking, LAN, CCTV, Automation, Cyber Security, Web and Software Development, and Digital Marketing."
+        />
+        <meta
+          name="keywords"
+          content="Cyber Security, Automation, Networking, LAN, CCTV, Web Development, Software Development, Digital Marketing, Coimbatore"
+        />
+        <meta name="author" content="CyberSoc" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.cybersoc.com/services" />
+      </Helmet>
+
       <Banner
         backgroundImage={servicesBanner}
         title="Services We Offer"

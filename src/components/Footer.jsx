@@ -4,6 +4,10 @@ import { NavLink } from "react-router-dom";
 import logo from "../assets/cybersoc-logo.png"; // Replace with the actual path to your logo
 
 function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="bg-gray-900 text-gray-300 py-12">
       <div className="container mx-auto px-6 md:px-12">
@@ -23,7 +27,8 @@ function Footer() {
               <li>
                 <NavLink
                   to="/"
-                  className="text-sm hover:text-blue-400 transition duration-300"
+                  onClick={scrollToTop}
+                  className="text-sm hover:text-blue-400 transition-all duration-300 ease-in-out  hover:pl-2"
                 >
                   Home
                 </NavLink>
@@ -31,7 +36,8 @@ function Footer() {
               <li>
                 <NavLink
                   to="/about"
-                  className="text-sm hover:text-blue-400 transition duration-300"
+                  onClick={scrollToTop}
+                  className="text-sm hover:text-blue-400 transition-all duration-300 ease-in-out  hover:pl-2"
                 >
                   About
                 </NavLink>
@@ -39,7 +45,8 @@ function Footer() {
               <li>
                 <NavLink
                   to="/services"
-                  className="text-sm hover:text-blue-400 transition duration-300"
+                  onClick={scrollToTop}
+                  className="text-sm hover:text-blue-400 transition-all duration-300 ease-in-out  hover:pl-2"
                 >
                   Services
                 </NavLink>
@@ -47,7 +54,8 @@ function Footer() {
               <li>
                 <NavLink
                   to="/blogs"
-                  className="text-sm hover:text-blue-400 transition duration-300"
+                  onClick={scrollToTop}
+                  className="text-sm hover:text-blue-400 transition-all duration-300 ease-in-out  hover:pl-2"
                 >
                   Blogs
                 </NavLink>
@@ -55,7 +63,8 @@ function Footer() {
               <li>
                 <NavLink
                   to="/contact"
-                  className="text-sm hover:text-blue-400 transition duration-300"
+                  onClick={scrollToTop}
+                  className="text-sm hover:text-blue-400 transition-all duration-300 ease-in-out  hover:pl-2"
                 >
                   Contact
                 </NavLink>
@@ -70,7 +79,8 @@ function Footer() {
               <li>
                 <NavLink
                   to="/services/websites-and-softwares"
-                  className="text-sm hover:text-blue-400 transition duration-300"
+                  onClick={scrollToTop}
+                  className="text-sm hover:text-blue-400 transition-all duration-300 ease-in-out  hover:pl-2"
                 >
                   Website & Software Development
                 </NavLink>
@@ -78,7 +88,8 @@ function Footer() {
               <li>
                 <NavLink
                   to="/services/digital-marketing"
-                  className="text-sm hover:text-blue-400 transition duration-300"
+                  onClick={scrollToTop}
+                  className="text-sm hover:text-blue-400 transition-all duration-300 ease-in-out  hover:pl-2"
                 >
                   Digital Marketing & SEO
                 </NavLink>
@@ -86,7 +97,8 @@ function Footer() {
               <li>
                 <NavLink
                   to="/services/networking"
-                  className="text-sm hover:text-blue-400 transition duration-300"
+                  onClick={scrollToTop}
+                  className="text-sm hover:text-blue-400 transition-all duration-300 ease-in-out  hover:pl-2"
                 >
                   Networking & Security Solutions
                 </NavLink>
@@ -94,9 +106,19 @@ function Footer() {
               <li>
                 <NavLink
                   to="/services/automation"
-                  className="text-sm hover:text-blue-400 transition duration-300"
+                  onClick={scrollToTop}
+                  className="text-sm hover:text-blue-400 transition-all duration-300 ease-in-out  hover:pl-2"
                 >
                   Automation & Business Solutions
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/services/cyber-security"
+                  onClick={scrollToTop}
+                  className="text-sm hover:text-blue-400 transition-all duration-300 ease-in-out  hover:pl-2"
+                >
+                  Cyber Security Solutions
                 </NavLink>
               </li>
             </ul>
@@ -107,12 +129,20 @@ function Footer() {
             <h3 className="text-lg font-semibold text-white mb-4">Follow Us</h3>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=61560890600177"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-blue-500 transition duration-300"
               >
                 <FaFacebookF size={20} />
+              </a>
+              <a
+                href="https://www.instagram.com/cybersocsolutions/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-pink-500 transition duration-300"
+              >
+                <FaInstagram size={20} />
               </a>
               <a
                 href="https://twitter.com"
@@ -121,14 +151,6 @@ function Footer() {
                 className="text-gray-300 hover:text-blue-400 transition duration-300"
               >
                 <FaTwitter size={20} />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-pink-500 transition duration-300"
-              >
-                <FaInstagram size={20} />
               </a>
               <a
                 href="https://linkedin.com"

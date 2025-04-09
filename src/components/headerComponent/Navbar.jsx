@@ -78,7 +78,7 @@ useEffect(() => {
           </Link>
           {isServicesOpen && (
             <div
-          className="absolute top-full left-1/2 mt-2 min-w-[90vw] bg-white shadow-lg rounded-md overflow-hidden border border-gray-200 transform -translate-x-1/2 z-50 overflow-y-auto max-h-[70vh]"
+          className="absolute top-full left-1/2 mt-2 min-w-[90vw] bg-white shadow-lg hover:shadow-2xl rounded-md overflow-hidden border border-gray-200 transform -translate-x-1/2 z-50 overflow-y-auto max-h-[70vh] scrollbar-hide"
             >
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2 ">
             {Object.keys(servicesData).map((categoryKey) => (

@@ -1,69 +1,65 @@
-import React from 'react'
-import Banner from '../../components/Banner'
-import Founder from './Founder'
-import { FaLaptopCode } from "react-icons/fa";
+import React from "react";
+import { Helmet } from "react-helmet";
+import Banner from "../../components/Banner";
+import Founder from "./Founder";
+import ServicesSection from "./ServicesSection";
+import VisionMission from "./VisionMission";
+import CountdownCards from "./CountdownCards";
 
-import aboutBanner from "../../assets/banners/about-banner.jpg"
-// import ProfessionalCard from './ProfessionalCard'
-import ServicesSection from './ServicesSection';
-import VisionMission from './VisionMission';
-import CountdownCards from './CountdownCards';
-
+import aboutBanner from "../../assets/banners/about-banner.jpg";
 
 function About() {
   return (
-  <div>
-  <Banner 
-  backgroundImage={aboutBanner}
-  title="About Our CyberSoc"
-  description="We provide cutting-edge cybersecurity and automation solutions to protect businesses from modern threats and enhance operational efficiency."
-  />
+    <div>
+      {/* Helmet for SEO */}
+      <Helmet>
+        <title>About CyberSoc | Cyber Security & Automation Experts in Coimbatore</title>
+        <meta
+          name="description"
+          content="CyberSoc is a leading company based in Coimbatore, specializing in Networking, LAN, CCTV, Automation, Cyber Security, Web and Software Development, and Digital Marketing."
+        />
+        <meta
+          name="keywords"
+          content="Cyber Security, Automation, Networking, LAN, CCTV, Web Development, Software Development, Digital Marketing, Coimbatore"
+        />
+        <meta name="author" content="CyberSoc" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.cybersoc.com/about" />
+      </Helmet>
 
-  <main className=' py-6 md:py-10 overflow-x-hidden'>
-  <div className="flex flex-col items-center px-6 py-4 md:py-6">
-  {/* Title */}
-  <h2
-    className="relative text-4xl md:text-5xl font-extrabold text-gray-900 tracking-wide leading-tight 
-               before:absolute before:content-[''] before:w-20 before:h-1 before:bg-blue-500 
-               before:bottom-0 before:left-1/2 before:-translate-x-1/2 
-               after:absolute after:content-[''] after:w-10 after:h-1 after:bg-blue-300 
-               after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 mb-6 md:mb-2"
-    data-aos="fade-up"
-  >
-    Welcome to <span className="text-blue-600">CyberSoc</span>.
-  </h2>
+      {/* Banner Section */}
+      <Banner
+        backgroundImage={aboutBanner}
+        title="About Our CyberSoc"
+        description="We provide cutting-edge cybersecurity and automation solutions to protect businesses from modern threats and enhance operational efficiency."
+      />
 
-  {/* Subtitle */}
-  <p className="mt-2 text-lg text-gray-800 font-medium">
-    For your <span className="text-blue-500">Innovative</span> and <span className="text-blue-500">Modern</span> digital solutions.
-  </p>
+      {/* Main Content */}
+      <main className="py-6 md:py-10 overflow-x-hidden">
+        {/* Founder Section */}
+        <Founder />
 
-  {/* Description */}
-  <p className="mt-6 text-lg md:text-xl text-gray-700 max-w-3xl leading-relaxed indent-10 md:indent-0">
-    With over a decade of experience, we specialize in <span className="font-semibold text-gray-900">cutting-edge networking solutions</span> 
-    and <span className="font-semibold text-gray-900">innovative web development</span>.  
-    Our expertise ensures <span className="text-blue-500 font-semibold">secure</span>, 
-    <span className="text-blue-500 font-semibold">scalable</span>, and 
-    <span className="text-blue-500 font-semibold">high-performance</span> digital solutions tailored to your business needs.
-  </p>
+        {/* Services Section */}
+        <ServicesSection />
 
-  {/* Divider */}
-  <div className="mt-8 w-24 h-1 bg-gray-300 rounded-full"></div>
-</div>
+        {/* Vision and Mission Section */}
+        <VisionMission />
 
-  <Founder/>
+        {/* Countdown Cards Section */}
+        <CountdownCards />
 
-  <ServicesSection/>
-  <VisionMission/>
-  <CountdownCards/>
-  
-  <div className='container mx-auto bg-teal-50 py-12 mt-4'>
-  <h2 className="text-4xl font-bold text-center mb-10 text-gray-900">How we Work ...</h2>
-  </div>
-  </main>
-
-  </div>
-  )
+        {/* How We Work Section */}
+        <div className="container mx-auto bg-teal-50 py-12 mt-4">
+          <h2 className="text-4xl font-bold text-center mb-10 text-gray-900">
+            How We Work
+          </h2>
+          {/* <p className="text-lg text-gray-700 text-center max-w-4xl mx-auto">
+            At CyberSoc, we follow a structured and client-centric approach to deliver innovative solutions. From understanding your requirements to implementing cutting-edge technologies, we ensure excellence at every step.
+          </p> */}
+        </div>
+      </main>
+    </div>
+  );
 }
 
-export default About
+export default About;

@@ -23,7 +23,7 @@ const Layout = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-white ">
       <Header />
       <main className="flex-1 pt-20">
         <Outlet />
@@ -31,38 +31,46 @@ const Layout = () => {
       <Footer />
 
       {/* Scroll to Top Button */}
-      {showScrollToTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-16 right-4 bg-blue-600 text-white p-3 rounded-xl rotate-[45deg] hover:scale-110 shadow-lg hover:bg-blue-700 transition cursor-pointer"
-          aria-label="Scroll to top"
-        >
-          <FaArrowUp className='-rotate-45'/>
-        </button>
-      )}
+{/* Scroll to Top Button */}
+{showScrollToTop && (
+  <button
+    onClick={scrollToTop}
+    className="fixed bottom-16 right-4 bg-blue-600 text-white p-3 rounded-xl rotate-[45deg] hover:scale-110 shadow-lg hover:bg-blue-700 transition cursor-pointer"
+    aria-label="Scroll to top"
+  >
+    <FaArrowUp className='-rotate-45'/>
+  </button>
+)}
 
-      {/* WhatsApp and Call Inquiry Buttons */}
-      <div className="hidden fixed bottom-16 left-4 flex flex-col space-y-4">
-        {/* WhatsApp Button */}
-        <a
-          href="https://wa.me/1234567890" // Replace with your WhatsApp number
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition"
-          aria-label="WhatsApp Inquiry"
-        >
-          <FaWhatsapp />
-        </a>
+{/* WhatsApp and Call Inquiry Buttons */}
+<div className="fixed bottom-20 left-5 z-50 flex flex-col items-center space-y-4">
+  {/* WhatsApp */}
+  <a
+    href="https://wa.me/9384812940"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group relative bg-green-700 hover:bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30 shadow-xl transition-all hover:scale-110"
+    aria-label="WhatsApp Inquiry"
+  >
+    <FaWhatsapp className="text-white hover:text-green-500 text-xl" />
+    <span className="absolute left-14 top-1/2 -translate-y-1/2 text-xs font-medium bg-green-500 text-white px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-md">
+      Chat on WhatsApp
+    </span>
+  </a>
 
-        {/* Call Inquiry Button */}
-        <a
-          href="tel:+1234567890" // Replace with your phone number
-          className="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition"
-          aria-label="Call Inquiry"
-        >
-          <FaPhoneAlt />
-        </a>
-      </div>
+  {/* Call */}
+  <a
+    href="tel:+919384812940"
+    className="group relative bg-blue-300 hover:bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30 shadow-xl transition-all hover:scale-110"
+    aria-label="Call Inquiry"
+  >
+    <FaPhoneAlt className="text-blue-500 text-base" />
+    <span className="absolute left-14 top-1/2 -translate-y-1/2 text-xs font-medium bg-blue-600 text-white px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-md">
+      Call Now
+    </span>
+  </a>
+</div>
+
     </div>
   );
 };

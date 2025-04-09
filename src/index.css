@@ -13,3 +13,26 @@ import "slick-carousel/slick/slick-theme.css"; */
     justify-content: center;
     align-items: center;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/*  */
+@layer utilities {
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  
+    .animate-scroll {
+      animation: scroll 20s linear infinite;
+    }
+  }

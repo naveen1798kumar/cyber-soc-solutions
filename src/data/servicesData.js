@@ -342,144 +342,7 @@ export const servicesData = {
     ],
   },
 
-  "networking": {
-    title: "Networking & Security Solutions",
-    description:
-      "Secure, fast, and reliable networking solutions for businesses of all sizes. We design and implement high-performance IT infrastructure, cloud integration, and cybersecurity measures to protect your data and operations.",
-    image: Networking,
-    id: "networking",
-    services: [
-      {
-        id: "firewall-security",
-        title: "Firewall & Network Security",
-        description: "Protect your data with enterprise-grade security.",
-        image: serviceImages.networking.firewall,
-        sections: [
-          {
-            title: "What is Firewall Security?",
-            content:
-              "Firewall security protects your network by monitoring and controlling incoming and outgoing traffic based on security rules.",
-          },
-          {
-            title: "Why Choose Firewall Security?",
-            content:
-              "It ensures your business data is protected from unauthorized access and cyber threats.",
-          },
-        ],
-        benefits: [
-          "Enhanced network security.",
-          "Protection against cyber threats.",
-          "Improved data privacy.",
-          "Compliance with industry standards.",
-        ],
-        features: [
-          {
-            title: "Intrusion Detection",
-            description: "Identify and block potential threats in real-time.",
-          },
-          {
-            title: "Advanced Encryption",
-            description: "Secure sensitive data with robust encryption protocols.",
-          },
-          {
-            title: "Custom Security Policies",
-            description: "Tailored security rules for your business needs.",
-          },
-        ],
-        faqs: [
-          {
-            question: "What types of firewalls do you offer?",
-            answer: "We offer hardware, software, and cloud-based firewalls.",
-          },
-          {
-            question: "Can firewalls prevent all cyberattacks?",
-            answer: "While firewalls provide strong protection, additional measures like antivirus and monitoring are recommended.",
-          },
-        ],
-      },
-      {
-        id: "cloud-networking",
-        title: "Cloud Networking",
-        description: "Integrate scalable cloud solutions with your network.",
-      },
-      {
-        id: "server-management",
-        title: "Server Management",
-        description: "Optimize and manage your business servers efficiently.",
-      },
-    ],
-  },
-
-  "automation": {
-    title: "Automation & Business Solutions",
-    description:
-      "Increase efficiency with our intelligent automation solutions. From CRM and ERP to AI-driven tools, we develop innovative solutions that streamline workflows, reduce operational costs, and enhance productivity.",
-    image: Automation,
-    id: "automation",
-    services: [
-      {
-        id: "crm-erp",
-        title: "CRM & ERP Systems",
-        description:
-          "Automate and optimize your business processes with advanced tools.",
-        image: serviceImages.automation.crmErp,
-        sections: [
-          {
-            title: "What are CRM & ERP Systems?",
-            content:
-              "CRM (Customer Relationship Management) and ERP (Enterprise Resource Planning) systems help businesses manage customer interactions and streamline operations.",
-          },
-          {
-            title: "Why Choose CRM & ERP?",
-            content:
-              "These systems improve efficiency, enhance customer satisfaction, and provide valuable insights.",
-          },
-        ],
-        benefits: [
-          "Centralized data management.",
-          "Improved customer relationships.",
-          "Streamlined business processes.",
-          "Enhanced decision-making with analytics.",
-        ],
-        features: [
-          {
-            title: "Customizable Dashboards",
-            description: "Get insights at a glance with tailored dashboards.",
-          },
-          {
-            title: "Integration with Existing Tools",
-            description: "Seamlessly integrate with your current software.",
-          },
-          {
-            title: "Scalable Solutions",
-            description: "Grow your system as your business expands.",
-          },
-        ],
-        faqs: [
-          {
-            question: "Can CRM and ERP systems be integrated?",
-            answer: "Yes, we provide solutions that integrate both systems for seamless operations.",
-          },
-          {
-            question: "Do you offer training for these systems?",
-            answer: "Yes, we provide training to ensure your team can use the systems effectively.",
-          },
-        ],
-      },
-      {
-        id: "ai-automation",
-        title: "AI-Powered Automation",
-        description: "Utilize AI and machine learning for business growth.",
-      },
-      {
-        id: "workflow-integration",
-        title: "Workflow Integration",
-        description:
-          "Seamlessly integrate your business applications.",
-      },
-    ],
-  },
-
+  
   "cyber-security": {
     title: "Cyber Security Services",
     description:
@@ -736,4 +599,277 @@ export const servicesData = {
       },
     ],
   },
+  
+  "networking": {
+    title: "Networking",
+    description:
+      "Secure, fast, and reliable networking solutions for businesses of all sizes. We design and implement high-performance IT infrastructure, cloud integration, and cybersecurity measures to protect your data and operations.",
+    image: Networking,
+    id: "networking",
+    services: [
+      {
+        id: "firewall-security",
+        title: "Firewall & Network Security",
+        description: "Protect your data with enterprise-grade security.",
+        image: serviceImages.networking.firewall,
+        sections: [
+          {
+            title: "What is Firewall Security?",
+            content:
+              "Firewall security protects your network by monitoring and controlling incoming and outgoing traffic based on security rules.",
+          },
+          {
+            title: "Why Choose Firewall Security?",
+            content:
+              "It ensures your business data is protected from unauthorized access and cyber threats.",
+          },
+        ],
+        benefits: [
+          "Enhanced network security.",
+          "Protection against cyber threats.",
+          "Improved data privacy.",
+          "Compliance with industry standards.",
+        ],
+        features: [
+          {
+            title: "Intrusion Detection",
+            description: "Identify and block potential threats in real-time.",
+          },
+          {
+            title: "Advanced Encryption",
+            description: "Secure sensitive data with robust encryption protocols.",
+          },
+          {
+            title: "Custom Security Policies",
+            description: "Tailored security rules for your business needs.",
+          },
+        ],
+        faqs: [
+          {
+            question: "What types of firewalls do you offer?",
+            answer: "We offer hardware, software, and cloud-based firewalls.",
+          },
+          {
+            question: "Can firewalls prevent all cyberattacks?",
+            answer: "While firewalls provide strong protection, additional measures like antivirus and monitoring are recommended.",
+          },
+        ],
+      },
+      {
+        id: "cloud-networking",
+        title: "Cloud Networking",
+        description: "Integrate scalable cloud solutions with your network.",
+      },
+      {
+        id: "server-management",
+        title: "Server Management",
+        description: "Optimize and manage your business servers efficiently.",
+      },
+    ],
+  },
+
+"automation": {
+  title: "Automation & Business Solutions",
+  description:
+    "At CyberSoc Solutions, we revolutionize businesses and lifestyles through intelligent automation. In a digitally evolving world, staying ahead means optimizing workflows, enhancing security, and reducing human dependency. Our tailored automation services integrate seamlessly with your systems, enabling you to scale smarter, operate faster, and focus on innovation. From homes to industries, we empower you to unlock true efficiency through smart tech.",
+  image: Automation,
+  id: "automation",
+  services: [
+    {
+      id: "home-automation",
+      title: "Home Automation",
+      description:
+        "Transform your living space into a connected, intelligent environment. Our advanced home automation systems at CyberSoc Solutions bring comfort, control, and peace of mind—right at your fingertips.",
+      image: serviceImages.automation.homeAutomation,
+      serviceImage: serviceImages.automation.HomeAutomationSection,
+      serviceImageFAQ: serviceImages.automation.HomeAutomationFAQ,
+      sections: [
+        {
+          title: "What is Home Automation?",
+          content:
+            "Home automation utilizes interconnected smart devices to automate lighting, climate, security, and entertainment systems, all accessible through a unified app or voice assistant.",
+        },
+        {
+          title: "Why Choose Home Automation?",
+          content:
+            "Enjoy lifestyle personalization, enhanced energy efficiency, and improved safety with CyberSoc’s smart home solutions. Automate tasks, reduce energy waste, and control your space from anywhere.",
+        },
+      ],
+      benefits: [
+        "Remote access and control from smartphones or voice assistants.",
+        "Smart scheduling and automation of lights, climate, and devices.",
+        "Real-time home monitoring with instant alerts.",
+        "Customized settings for lifestyle scenarios (e.g., sleep, movie, vacation modes).",
+      ],
+      features: [
+        {
+          title: "Smart Lighting",
+          description: "Automated, dimmable lights that adapt to routines and moods.",
+        },
+        {
+          title: "Climate Control",
+          description: "AI-powered temperature regulation for consistent indoor comfort.",
+        },
+        {
+          title: "Security & Surveillance",
+          description: "Live camera feeds, motion sensors, and remote locking for total security.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Can I upgrade my existing home to be automated?",
+          answer: "Yes. Our retrofit-compatible solutions can be integrated into any existing structure without major renovations.",
+        },
+        {
+          question: "Will home automation increase my electricity bill?",
+          answer: "No. In fact, it often reduces it by optimizing energy consumption intelligently.",
+        },
+      ],
+    },
+    {
+      id: "gate-automation",
+      title: "Gate Automation",
+      description:
+        "Secure your premises with our smart gate automation solutions—ideal for homes, offices, and industrial sites. CyberSoc’s systems ensure seamless entry, real-time monitoring, and modern access control with minimal manual intervention.",
+      image: serviceImages.automation.gateAutomation,
+      serviceImage: serviceImages.automation.GateAutomationSection,
+      serviceImageFAQ: serviceImages.automation.GateAutomationFAQ,
+      sections: [
+        {
+          title: "What is Gate Automation?",
+          content:
+            "Gate automation allows gates to operate automatically via remote, mobile apps, or motion sensors—offering enhanced security and convenience without manual effort.",
+        },
+        {
+          title: "Why Choose Gate Automation?",
+          content:
+            "From increased safety to modern accessibility, automated gates provide a touch-free, secure entry experience and are compatible with smart ecosystems.",
+        },
+      ],
+      benefits: [
+        "Touchless and secure access with encrypted tech.",
+        "Durable materials and weather-resistant systems.",
+        "Customizable gate design and automation preferences.",
+        "Easy integration with video intercoms and smart home systems.",
+      ],
+      features: [
+        {
+          title: "App & Remote Control",
+          description: "Manage gates anytime from anywhere using mobile or IoT devices.",
+        },
+        {
+          title: "Sensor-Based Safety",
+          description: "Advanced safety sensors detect obstructions and auto-reverse operation.",
+        },
+        {
+          title: "Custom Aesthetics",
+          description: "Choose from a variety of finishes and mechanisms to match your property's architecture.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Can I integrate gate automation with my smart home system?",
+          answer: "Yes, all our systems are IoT-enabled and compatible with popular smart platforms.",
+        },
+        {
+          question: "How secure are automated gates?",
+          answer: "They use encrypted communication, biometric or password access, and tamper alerts for optimal protection.",
+        },
+      ],
+    },
+    {
+      id: "industrial-automation",
+      title: "Industrial Automation",
+      description:
+        "CyberSoc Solutions brings Industry 4.0 to life. Our industrial automation solutions enhance operational excellence through AI-driven systems, smart sensors, and real-time data processing—delivering the competitive edge you need.",
+      image: serviceImages.automation.IndustrialAutomation,
+      serviceImage: serviceImages.automation.IndustrialAutomationSection,
+      sections: [
+        {
+          title: "What is Industrial Automation?",
+          content:
+            "Industrial automation uses technologies such as robotics, AI, PLCs, and SCADA systems to streamline factory operations, improve accuracy, and eliminate downtime.",
+        },
+        {
+          title: "Why Choose Industrial Automation?",
+          content:
+            "Our solutions boost productivity, reduce costs, and ensure 24/7 system reliability—designed to scale with your growth and adapt to ever-evolving industrial challenges.",
+        },
+      ],
+      benefits: [
+        "Higher throughput with precision-based robotics.",
+        "Predictive maintenance using AI and analytics.",
+        "Improved worker safety and fewer manual errors.",
+        "Scalable solutions that adapt with growing demands.",
+      ],
+      features: [
+        {
+          title: "AI & Robotics Integration",
+          description: "Deploy intelligent robotic systems for task automation and predictive workflows.",
+        },
+        {
+          title: "SCADA & PLC Systems",
+          description: "Monitor operations in real time and make data-driven decisions effortlessly.",
+        },
+        {
+          title: "IoT-Enabled Monitoring",
+          description: "Track, manage, and diagnose systems remotely using IoT-powered dashboards.",
+        },
+      ],
+    },
+    {
+      id: "security-automation",
+      title: "Security Automation",
+      description:
+        "Fortify your spaces with CyberSoc’s Security Automation solutions. From smart surveillance to real-time threat alerts, our intelligent systems offer complete control, monitoring, and rapid response for any environment—commercial or residential.",
+      image: serviceImages.automation.SecurityAutomation,
+      serviceImage: serviceImages.automation.SecurityAutomationSection,
+      serviceImageFAQ: serviceImages.automation.SecurityAutomationFAQ,
+      sections: [
+        {
+          title: "What is Security Automation?",
+          content:
+            "Security automation involves using smart technology to detect, alert, and respond to threats or anomalies—automatically and instantly. It includes surveillance systems, AI-powered analytics, smart locks, and integrated emergency protocols.",
+        },
+        {
+          title: "Why Choose Security Automation?",
+          content:
+            "Manual security can miss critical moments. Automated systems act in real-time, minimizing human error and maximizing protection without needing constant oversight.",
+        },
+      ],
+      benefits: [
+        "Real-time alerts via SMS, app, or email.",
+        "Remote surveillance and access control.",
+        "AI-based threat detection and behavior analysis.",
+        "Integration with emergency services and smart alarms.",
+      ],
+      features: [
+        {
+          title: "24/7 Smart Surveillance",
+          description: "CCTV with motion detection, night vision, and AI recognition.",
+        },
+        {
+          title: "Access Control Systems",
+          description: "Secure buildings with biometric locks, RFID scanners, and one-tap access permissions.",
+        },
+        {
+          title: "Threat Detection & Response",
+          description: "Immediate alerts and system responses based on real-time risk assessment.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Can I monitor my premises when I'm away?",
+          answer: "Absolutely. Our mobile-enabled platforms allow full remote access and live streaming from anywhere.",
+        },
+        {
+          question: "Are your systems suitable for commercial environments?",
+          answer: "Yes, we provide enterprise-grade security automation tailored for office buildings, warehouses, and campuses.",
+        },
+      ],
+    },
+  ],
+}
+
+
 };

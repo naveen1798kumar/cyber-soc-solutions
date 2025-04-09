@@ -57,7 +57,7 @@ const Header = () => {
       {/* Social Icons */}
       <div className="hidden md:flex md:space-x-2 lg:space-x-6">
         <a
-          href="https://facebook.com"
+          href="https://www.facebook.com/profile.php?id=61560890600177"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-700 text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-blue-600"
@@ -65,7 +65,7 @@ const Header = () => {
           <FaFacebookF />
         </a>
         <a
-          href="https://instagram.com"
+          href="https://www.instagram.com/cybersocsolutions/?hl=en"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-700 text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-pink-500"

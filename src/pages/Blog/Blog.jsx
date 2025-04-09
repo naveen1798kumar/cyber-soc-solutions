@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from "react-helmet";
 import { useNavigate } from 'react-router-dom';
 import Banner from '../../components/Banner';
 // import SectionHeading from '../../components/SectionHeading';
@@ -28,6 +29,21 @@ function Blog() {
 
   return (
     <div>
+       <Helmet>
+        <title>CyberSoc Blogs | Latest Insights on Cyber Security & Automation</title>
+        <meta
+          name="description"
+          content="Explore the latest blogs from CyberSoc on Cyber Security, Automation, Networking, Web Development, and Digital Marketing. Stay updated with industry trends and insights."
+        />
+        <meta
+          name="keywords"
+          content="Cyber Security Blogs, Automation Blogs, Networking Blogs, Web Development Blogs, Digital Marketing Blogs, CyberSoc Blogs"
+        />
+        <meta name="author" content="CyberSoc" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.cybersoc.com/blogs" />
+      </Helmet>
+      
       <Banner
         backgroundImage={blogBanner}
         title="Our Latest Blogs"

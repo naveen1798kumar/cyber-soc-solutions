@@ -46,6 +46,9 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="services" element={<Services />} />
         <Route path="services/:category/:serviceId" element={<ServiceDetails />} />
+        <Route path="services/:category" element={<CategoryServices />} />
+
+
           <Route path="blogs" element={<Blog />} />
           <Route path="/blogs/:slug" element={<BlogDetail />} />
 

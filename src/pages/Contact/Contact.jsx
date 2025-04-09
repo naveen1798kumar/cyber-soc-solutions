@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import Banner from "../../components/Banner";
 import { ToastContainer, toast } from "react-toastify";
@@ -84,6 +85,21 @@ const Contact = () => {
 
   return (
     <div className="relative overflow-hidden">
+      <Helmet>
+        <title>Contact CyberSoc | Cyber Security & Automation Experts in Coimbatore</title>
+        <meta
+          name="description"
+          content="Get in touch with CyberSoc for Networking, LAN, CCTV, Automation, Cyber Security, Web and Software Development, and Digital Marketing services in Coimbatore."
+        />
+        <meta
+          name="keywords"
+          content="Contact CyberSoc, Cyber Security, Automation, Networking, LAN, CCTV, Web Development, Software Development, Digital Marketing, Coimbatore"
+        />
+        <meta name="author" content="CyberSoc" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.cybersoc.com/contact" />
+      </Helmet>
+      
       {/* Toast Container */}
       <ToastContainer />
 

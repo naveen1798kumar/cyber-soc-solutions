@@ -19,6 +19,14 @@ import FirewallSecurity from "../assets/our-services/services-list/networking/fi
 import HomeAutomation from "../assets/our-services/services-list/automation/home-automation.jpg";
 import GateAutomation from "../assets/our-services/services-list/automation/gate-automation.jpg";
 import CrmErp from "../assets/our-services/services-list/automation/crm-erp.jpg";
+import IndustrialAutomation from "../assets/our-services/services-list/automation/industrial-automation.jpg";
+
+// Importing all images for the services offered by the company
+import HomeAutomationSection from "../assets/services-images/home-automtion-1.jpg";
+import HomeAutomationFAQ from "../assets/services-images/home-automtion-2.jpg";
+import GateAutomationSection from "../assets/services-images/gate-automation-3.jpg";
+import GateAutomationFAQ from "../assets/services-images/gate-automation-2.jpg";
+
 
 // Export all images as an object
 const serviceImages = {
@@ -43,6 +51,13 @@ const serviceImages = {
     homeAutomation: HomeAutomation,
     gateAutomation: GateAutomation,
     crmErp: CrmErp,
+    IndustrialAutomation: IndustrialAutomation,
+
+    HomeAutomationSection: HomeAutomationSection,
+    HomeAutomationFAQ: HomeAutomationFAQ,
+    GateAutomationSection: GateAutomationSection,
+    GateAutomationFAQ: GateAutomationFAQ,
+    IndustrialAutomationSection: IndustrialAutomation,
   },
 };
 
