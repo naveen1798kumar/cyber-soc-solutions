@@ -60,7 +60,7 @@ function HeroSection() {
         {slides.map((slide) => (
           <div
             key={slide.id}
-            className="relative w-full min-h-[50vh] h-auto flex items-center justify-center overflow-hidden"
+            className="relative w-full min-h-[55vh] h-auto flex items-center justify-center overflow-hidden"
           >
             {/* Background Image */}
             <div
