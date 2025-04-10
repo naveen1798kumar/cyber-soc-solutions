@@ -20,7 +20,7 @@ const ServiceBanner = ({ title, description }) => {
 
   return (
     <div
-      className="relative h-[300px] md:h-[500px] w-full bg-cover bg-center flex items-center justify-center"
+      className="relative min-h-[40vh] h-auto w-full bg-cover bg-center flex items-center justify-center"
       style={{ backgroundImage: `url(${service?.image || backgroundImage})` }}
     >
       {/* Overlay */}

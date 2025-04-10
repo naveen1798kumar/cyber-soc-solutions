@@ -59,7 +59,7 @@ const Banner = ({ backgroundImage, title, description }) => {
 
   return (
     <div
-      className="relative min-h-[40vh] h-auto flex items-center justify-center overflow-hidden"
+      className="relative min-h-[30vh] h-auto flex items-center justify-center overflow-hidden"
       data-aos="fade-down"
     >
       {/* Parallax Background */}
