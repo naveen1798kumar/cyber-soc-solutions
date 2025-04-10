@@ -3,7 +3,7 @@ import { MdHome } from "react-icons/md";
 import { FaChevronRight } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Link } from "react-router-dom"; // Ensure React Router is being used
+import { Link } from "react-router-dom";
 
 const handleClick = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -15,7 +15,6 @@ const Breadcrumb = () => {
   return (
     <nav className="absolute bottom-5 right-8 text-white text-sm md:text-base font-semibold" data-aos="fade-right">
       <ul className="flex items-center justify-center space-x-2 bg-black/30 px-4 py-2 rounded-lg shadow-lg backdrop-blur-md">
-        {/* Home Link */}
         <li>
           <Link
             to="/"
@@ -24,8 +23,6 @@ const Breadcrumb = () => {
             <MdHome className="mr-1 text-lg" /> Home
           </Link>
         </li>
-
-        {/* Dynamic Breadcrumbs */}
         {pathnames.map((name, index) => {
           const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
@@ -54,12 +51,12 @@ const Breadcrumb = () => {
 const Banner = ({ backgroundImage, title, description }) => {
   useEffect(() => {
     AOS.init({ duration: 1200, once: true });
-    AOS.refresh(); // Ensures animations work on page transitions
+    AOS.refresh();
   }, []);
 
   return (
     <div
-      className="relative min-h-[90vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden"
+      className="relative h-[90vh] md:h-[70vh] lg:h-screen flex items-center justify-center overflow-hidden"
       data-aos="fade-down"
     >
       {/* Parallax Background */}
@@ -88,12 +85,11 @@ const Banner = ({ backgroundImage, title, description }) => {
 
       {/* Content */}
       <div
-        className="absolute inset-0 z-10 flex flex-col justify-center  text-white px-6 py-8 md:px-16 md:py-12 max-w-3xl lg:max-w-4xl"
+        className="absolute inset-0 z-10 flex flex-col justify-center text-white px-6 py-8 md:px-16 md:py-12 max-w-3xl lg:max-w-4xl"
         data-aos="fade-left"
       >
-        <h2 className="text-4xl text-gr md:text-6xl font-extrabold tracking-tight drop-shadow-2xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight">
+        <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight drop-shadow-2xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight">
           {title}
-          {/* linear-gradient(90deg,  0%, #c3cfe2 100%) */}
         </h2>
 
         {description && (
