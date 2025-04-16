@@ -62,7 +62,7 @@ function Founder() {
       Why Choose <span className="underline decoration-blue-500">CyberSoc</span>?
     </h2>
 
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-10 lg:gap-16">
       {[
         {
           title: "10+ Years of Experience",
@@ -91,7 +91,7 @@ function Founder() {
       ].map((card, i) => (
         <div
           key={i}
-          className="p-6 bg-white/60 backdrop-blur-md border border-white/30 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out"
+          className="p-4 md:p-6 bg-white/60 backdrop-blur-md border border-white/30 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out"
           data-aos="fade-up"
           data-aos-delay={i * 100}
         >

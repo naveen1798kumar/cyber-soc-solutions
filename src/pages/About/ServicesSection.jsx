@@ -67,14 +67,19 @@ const ServicesSection = () => {
   </div>
 
   {/* Back Side */}
-  <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-6 translate-x-full transition-all duration-500 group-hover:translate-x-0">
-    <h3 className="text-xl font-bold mb-3">Services Offered</h3>
-    <ul className=" text-sm space-y-2">
-      {service.details.map((item, i) => (
-        <li key={i} className="text-white">• {item}</li>
-      ))}
-    </ul>
-  </div>
+  <div className="absolute inset-0 flex flex-col items-start justify-center bg-gradient-to-r from-blue-500 to-indigo-600 backdrop-blur-lg text-white p-8 rounded-xl translate-x-full transition-all duration-500 ease-in-out group-hover:translate-x-0 group-hover:opacity-100 opacity-0 shadow-xl">
+  <h3 className="text-2xl font-semibold text-gray-800 drop-shadow mb-4 tracking-wide">
+    Services Offered
+  </h3>
+  <ul className="space-y-3 pl-2">
+    {service.details.map((item, i) => (
+      <li key={i} className="flex items-start text-sm md:text-base font-medium text-white/90">
+        <span className="mr-2 text-blue-300 text-lg">•</span>
+        {item}
+      </li>
+    ))}
+  </ul>
+</div>
 </div>
 
           ))}

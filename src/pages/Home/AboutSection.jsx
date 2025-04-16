@@ -17,8 +17,8 @@ function AboutUs() {
     <div className="w-full bg-gray-100 py-12 md:py-20">
       <section className="container mx-auto flex flex-col-reverse lg:grid lg:grid-cols-2 items-center gap-12 px-6 md:px-12 lg:px-20">
         {/* Text Content */}
-        <div className="text-center lg:text-left" data-aos="fade-up">
-          <h2 className="relative text-4xl md:text-5xl font-extrabold text-gray-900 tracking-wide leading-tight 
+        <div className=" lg:text-left" data-aos="fade-up">
+          <h2 className="relative text-center text-4xl md:text-5xl font-extrabold text-gray-900 tracking-wide leading-tight 
                before:absolute before:content-[''] before:w-20 before:h-1 before:bg-blue-500 
                before:bottom-0 before:left-1/2 before:-translate-x-1/2 
                after:absolute after:content-[''] after:w-10 after:h-1 after:bg-blue-300 
