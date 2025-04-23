@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { servicesData } from "../../data/servicesData";
+import { div } from "framer-motion/client";
 
 function ServicesSection() {
   const scrolltotop = () => {
@@ -8,13 +9,12 @@ function ServicesSection() {
   };
 
   return (
-    <div className="container mx-auto px-6 lg:px-20 py-12 bg-gray-100">
+    <div className="w-full bg-gray-200 py-12 md:py-20 lg:mt-20">
+          <div className="container mx-auto ">
       {/* Section Heading */}
       <h2
         className="relative text-4xl text-center md:text-5xl font-extrabold text-gray-900 tracking-wide leading-tight 
-               before:absolute before:content-[''] before:w-20 before:h-1 before:bg-blue-500 
-               before:bottom-0 before:left-1/2 before:-translate-x-1/2 
-               after:absolute after:content-[''] after:w-10 after:h-1 after:bg-blue-300 
+                after:absolute after:content-[''] after:w-30 after:h-1 after:bg-blue-600 
                after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 mb-6 md:mb-4"
         data-aos="fade-left"
       >
@@ -67,6 +67,7 @@ function ServicesSection() {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

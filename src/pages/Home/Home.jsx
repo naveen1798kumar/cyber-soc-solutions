@@ -46,6 +46,11 @@ function Home() {
         <ServicesSection />
       </div>
 
+      {/* Partners Carousel */}
+      <div className="bg-white">
+        <PartnersSlide />
+      </div>
+
       {/* Mission and Vision Section */}
       <div
         className="relative w-full py-16 md:py-24 bg-fixed bg-center bg-cover"
@@ -59,7 +64,7 @@ function Home() {
           {/* Mission */}
           <div data-aos="fade-right">
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-left leading-tight">
-              <span className="relative inline-block font-extrabold text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#3b82f6] to-[#9333ea] tracking-tight leading-tight after:content-[''] after:absolute after:top-1/2 after:right-[-60px] after:w-12 after:h-1 after:bg-gray-500 after:rounded-full">
+              <span className="relative inline-block font-extrabold text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#4ca1af] via-[#5ca1e6] to-[#4ca1af] tracking-tight leading-tight after:content-[''] after:absolute after:top-1/2 after:right-[-60px] after:w-12 after:h-1 after:bg-gray-500 after:rounded-full">
                 Our Mission
               </span>
             </h2>
@@ -71,7 +76,7 @@ function Home() {
           {/* Vision */}
           <div data-aos="fade-left" data-aos-delay="200">
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-left leading-tight">
-              <span className="relative inline-block font-extrabold text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#3b82f6] to-[#9333ea] tracking-tight leading-tight after:content-[''] after:absolute after:top-1/2 after:right-[-60px] after:w-12 after:h-1 after:bg-gray-500 after:rounded-full">
+              <span className="relative inline-block font-extrabold text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#4ca1af] via-[#5ca1e6] to-[#4ca1af] tracking-tight leading-tight after:content-[''] after:absolute after:top-1/2 after:right-[-60px] after:w-12 after:h-1 after:bg-gray-500 after:rounded-full">
                 Our Vision
               </span>
             </h2>
@@ -82,24 +87,17 @@ function Home() {
         </section>
       </div>
 
-      {/* Partners Carousel */}
-      <div className="bg-white py-4">
-        <PartnersSlide />
-      </div>
-
       {/* Blog Section */}
       <div className="bg-gray-50">
         <BlogSection />
       </div>
 
       {/* Contact Section */}
-      <div className="bg-gradient-to-r from-[#070000e5] via-[#514c4c] to-[#070000e5] py-16 border-b-2 border-gray-200">
+      <div className="bg-gradient-to-r from-[#3d3333e5] via-[#514c4c] to-[#3d3333e5] py-16 border-b-2 border-gray-200">
         <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center text-white">
-          <h2 className="relative text-4xl md:text-5xl font-extrabold text-gray-400 tracking-wide leading-tight 
-               before:absolute before:content-[''] before:w-20 before:h-1 before:bg-blue-500 
-               before:bottom-0 before:left-1/2 before:-translate-x-1/2 
-               after:absolute after:content-[''] after:w-10 after:h-1 after:bg-blue-300 
-               after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 mb-6 md:mb-4">
+          <h2 className="relative text-center text-4xl md:text-5xl font-extrabold text-gray-900 tracking-wide leading-tight 
+               after:absolute after:content-[''] after:w-30 after:h-1 after:bg-blue-600 
+               after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 mb-6 md:mb-8" data-aos="fade-left">
             Get in Touch with Us
           </h2>
           <p className="text-lg md:text-xl font-medium mb-8">

@@ -13,19 +13,19 @@ const Breadcrumb = () => {
   const pathnames = window.location.pathname.split("/").filter((x) => x);
 
   return (
-    <nav className="absolute bottom-5 right-8 text-white text-sm md:text-base font-semibold" data-aos="fade-right">
-      <ul className="flex items-center justify-center space-x-2 bg-black/30 px-4 py-2 rounded-lg shadow-lg backdrop-blur-md">
-        {/* Home Link */}
+    <nav
+      className="absolute bottom-5 right-8 text-white text-sm md:text-base font-semibold z-20"
+      data-aos="fade-right"
+    >
+      <ul className="flex items-center space-x-2 bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm shadow-md">
         <li>
           <Link
             to="/"
-            className="flex items-center text-gray-200 hover:text-blue-400 transition duration-200"
+            className="flex items-center text-gray-100 hover:text-blue-400 transition"
           >
             <MdHome className="mr-1 text-lg" /> Home
           </Link>
         </li>
-
-        {/* Dynamic Breadcrumbs */}
         {pathnames.map((name, index) => {
           const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
@@ -34,11 +34,11 @@ const Breadcrumb = () => {
             <li key={routeTo} className="flex items-center">
               <FaChevronRight className="text-gray-300 mx-2 text-xs" />
               {isLast ? (
-                <span className="text-blue-400">{name}</span>
+                <span className="text-blue-400 capitalize">{name}</span>
               ) : (
                 <Link
                   to={routeTo}
-                  className="text-gray-200 hover:text-blue-400 transition duration-200"
+                  className="capitalize text-gray-200 hover:text-blue-400 transition"
                 >
                   {name}
                 </Link>
@@ -73,8 +73,11 @@ const Banner = ({ backgroundImage, title, description }) => {
       ></div>
 
       {/* Multiple Layered Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-indigo-700/50 animate-pulse-fast"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/30 to-indigo-700/50 animate-pulse-fast"></div>
       <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-transparent"></div>
+
+      {/* <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20 z-10"></div> */}
+      {/* <div className="absolute inset-0 bg-black/20 backdrop-blur-sm z-10"></div> */}
 
       {/* Floating Animated Particles */}
       <div className="absolute inset-0 pointer-events-none">
@@ -91,7 +94,7 @@ const Banner = ({ backgroundImage, title, description }) => {
         className="absolute inset-0 z-10 flex flex-col justify-center  text-white px-6 py-8 md:px-16 md:py-12 max-w-3xl lg:max-w-4xl"
         data-aos="fade-left"
       >
-        <h2 className="text-4xl text-gr md:text-6xl font-extrabold tracking-tight drop-shadow-2xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight">
+        <h2 className="text-4xl text-gr md:text-6xl font-extrabold tracking-tight drop-shadow-2xl bg-[+] bg-clip-text text-transparent leading-tight">
           {title}
           {/* linear-gradient(90deg,  0%, #c3cfe2 100%) */}
         </h2>

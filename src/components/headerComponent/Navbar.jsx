@@ -106,7 +106,7 @@ useEffect(() => {
         {/* Products Dropdown */}
       <div className="relative" ref={productsRef}>
         <Link
-        to="/products"
+        // to="/products"
           onClick={() => setIsProductsOpen(!isProductsOpen)}
           className="px-4 py-2 text-md font-medium flex items-center gap-1 text-gray-800 hover:text-blue-400 cursor-pointer"
         >
@@ -160,6 +160,7 @@ useEffect(() => {
       >
         Contact
       </NavLink>
+
     </nav>
   );
 };

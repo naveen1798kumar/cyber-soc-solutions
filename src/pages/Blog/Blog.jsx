@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from "react-helmet";
 import { useNavigate } from 'react-router-dom';
 import Banner from '../../components/Banner';
+import { FaChevronDown, FaChevronRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import blogBanner from "../../assets/banners/blog-banner.jpg";
 import AOS from "aos";
@@ -49,49 +50,51 @@ function Blog() {
         description="Stay updated with the latest insights on cybersecurity and automation."
       />
       
-      <div className="container mx-auto p-6 my-6">
-        <h2 className="relative text-5xl font-extrabold text-gray-900 text-center leading-tight tracking-wide before:absolute before:content-[''] before:w-20 before:h-1 before:bg-blue-500 before:bottom-0 before:left-1/2 before:-translate-x-1/2 after:absolute after:content-[''] after:w-10 after:h-1 after:bg-blue-300 after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2" data-aos='fade-up'>
+      <div className="container mx-auto p-6 py-12 my-6">
+        <h2 className="relative text-4xl text-center md:text-5xl font-extrabold text-gray-900 tracking-wide leading-tight 
+          after:absolute after:content-[''] after:w-30 after:h-1 after:bg-blue-600 
+          after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 mb-6 md:mb-8"
+        data-aos="fade-left">
           Our Blogs
         </h2>
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3  gap-6 gap-y-16 py-2 my-8">
-          {filteredBlogs.map((post) => (
-            <div
-              key={post.id}
-              className="group relative overflow-hidden min-h-[24rem] mx-4 hover:-translate-y-1 shadow-lg hover:shadow-xl hover:drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)] transition-all duration-300"
-              data-aos="fade-up"
-            >
-              <img
-                src={post.image}
-                alt={post.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 py-6 my-12">
+  {filteredBlogs.map((post) => (
+    <div className="group max-w-3xl mx-auto bg-gray-100 shadow-md rounded-md overflow-hidden flex flex-col sm:flex-row min-h-[450px] sm:min-h-[450px] h-auto">
+      {/* Media (Background Image) */}
+      <div
+        className="sm:w-1/2 md:group-hover:w-[75%] min-h-[250px] w-full bg-cover bg-center group-hover:scale-105 transition-all duration-300"
+        style={{
+          backgroundImage: `url(${post.image})`,
+        }}
+      ></div>
 
-              {/* Overlay Content */}
-              <div className="hidden md:flex absolute inset-0 items-center justify-center flex-col backdrop-blur-lg transition-opacity duration-500 group-hover:opacity-100 md:opacity-0 p-4">
-                <h3 className="mb-2 text-xl font-bold text-black">{post.title}</h3>
-                <p className="mb-12 text-white hidden md:block">{post.summary}</p>
-                <Link
-                  to={`/blogs/${post.slug}`}
-                  className="py-2 px-6 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition"
-                >
-                  Read More →
-                </Link>
-              </div>
-
-              {/* Always Visible on Mobile */}
-              <div className="absolute bottom-4 left-4 right-4 flex flex-col items-center md:hidden">
-                <h3 className="text-lg font-medium text-white text-center">{post.title}</h3>
-                <Link
-                  to={`/blogs/${post.slug}`}
-                  className="mt-2 py-2 px-4 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition"
-                >
-                  Read More →
-                </Link>
-              </div>
-            </div>
-          ))}
+      {/* Content */}
+      <div className="sm:w-1/2 h-full w-full p-6 relative flex flex-col justify-between transition-all duration-300">
+        <div>
+          <p className="text-[10px] text-gray-800 font-bold bg-red-400 w-max p-2 rounded-full uppercase tracking-wide text-center mb-2">
+            {post.category || "Featured"}
+          </p>
+          <h3 className="text-2xl font-playfair text-center text-gray-800 leading-tight">
+            {post.title}
+          </h3>
+          <div className="h-[2px] w-10 bg-gray-400 mx-auto my-4" />
+          <p className="text-gray-600 text-sm text-justify font-light">
+            {post.summary}
+          </p>
         </div>
+
+        <Link
+          to={`/blogs/${post.slug}`}
+          className="absolute group-hover:bg-gray-300 p-[1px] py-2 rounded-full flex justify-center items-center  bottom-6 left-1/2 transform -translate-x-1/2 text-gray-500 hover:text-gray-800 transition-colors duration-300"
+          title="Read More"
+        > Read More
+          <FaChevronRight size={18} />
+        </Link>
+      </div>
+    </div>
+  ))}
+</div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { FaArrowUp, FaWhatsapp, FaPhoneAlt } from 'react-icons/fa';
+import { FaChevronUp } from "react-icons/fa";
 
 const Layout = () => {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
@@ -35,15 +36,15 @@ const Layout = () => {
 {showScrollToTop && (
   <button
     onClick={scrollToTop}
-    className="fixed bottom-16 right-4 bg-blue-600 text-white p-3 rounded-xl rotate-[45deg] hover:scale-110 shadow-lg hover:bg-blue-700 transition cursor-pointer"
+    className="group fixed bottom-20 right-5 md:right-10 lg:right-20 bg-indigo-600 text-white p-3 rounded-xl rotate-[45deg] hover:scale-110 shadow-lg hover:bg-blue-700/50 transition cursor-pointer"
     aria-label="Scroll to top"
   >
-    <FaArrowUp className='-rotate-45'/>
+    <FaChevronUp className='-rotate-45 group-hover:scale-130 group-hover:text-gray-200'/>
   </button>
 )}
 
 {/* WhatsApp and Call Inquiry Buttons */}
-<div className="fixed bottom-20 left-5 z-50 flex flex-col items-center space-y-4">
+<div className="fixed bottom-20 left-5 md:left-10 lg:left-20 z-50 flex flex-col items-center space-y-4">
   {/* WhatsApp */}
   <a
     href="https://wa.me/9384812940"
@@ -52,7 +53,7 @@ const Layout = () => {
     className="group relative bg-green-700 hover:bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30 shadow-xl transition-all hover:scale-110"
     aria-label="WhatsApp Inquiry"
   >
-    <FaWhatsapp className="text-white hover:text-green-500 text-xl" />
+    <FaWhatsapp className="text-white group-hover:text-green-500 text-xl" />
     <span className="absolute left-14 top-1/2 -translate-y-1/2 text-xs font-medium bg-green-500 text-white px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-md">
       Chat on WhatsApp
     </span>

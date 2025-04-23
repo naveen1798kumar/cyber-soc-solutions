@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Blog from './pages/Blog/Blog';
 import BlogDetail from './pages/Blog/BlogDetail';
+import NotFound from './pages/404/NotFound';
 
 import Services from './pages/Services/Services';
 import CategoryServices from './pages/Services/CategoryServices';
@@ -55,7 +56,7 @@ function App() {
           <Route path="products" element={<Products />} />
           <Route path="contact" element={<Contact />} />
           
-          <Route path="*" element={<h2>404 Error</h2>} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Router>

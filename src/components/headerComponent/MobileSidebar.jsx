@@ -59,7 +59,7 @@ const MobileSidebar = () => {
           {/* Social Links */}
           <div className="flex space-x-6 mt-6">
             <a
-              href="https://facebook.com"
+              to="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-blue-600"
@@ -67,7 +67,7 @@ const MobileSidebar = () => {
               <FaFacebookF />
             </a>
             <a
-              href="https://instagram.com"
+              to="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-pink-500"
@@ -75,7 +75,7 @@ const MobileSidebar = () => {
               <FaInstagram />
             </a>
             <a
-              href="https://twitter.com"
+              to="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-blue-400"

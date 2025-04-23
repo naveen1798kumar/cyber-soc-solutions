@@ -5,6 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import Navbar from "./headerComponent/Navbar";
 import MobileSidebar from "./headerComponent/MobileSidebar";
 import cybersoclogo from "../assets/cybersoc-logo.png";
+import justdialLogo from "../assets/icons/justdial.jpg";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,7 +28,6 @@ const Header = () => {
       className={`fixed top-0 left-0 w-full  flex items-center justify-between px-12 md:px-10 transition-all duration-300 z-[9999] 
       ${isScrolled ? "py-2 bg-white/80 shadow-md backdrop-blur-lg border-b border-gray-200" : "py-4 bg-gradient-to-r from-[#f5f7fa] to-[#c3cfe2] backdrop-blur-lg border border-white/20"}`}
     >
-      {/* linear-gradient(90deg, #f5f7fa 0%, #c3cfe2 100%) */}
       {/* Logo */}
       <Link
         to="/"
@@ -43,10 +43,10 @@ const Header = () => {
           />
         </span>
 
-        <span className="flex flex-col">
+        <span className="flex flex-col font-primary uppercase">
           CyberSoc
-          <span className="text-sm text-center text-gray-800/90 relative transition-all duration-300 ease-in-out group-hover:[text-shadow:1px_1px_10px_rgba(102,166,255,0.8),0px_0px_5px_rgba(137,247,254,0.8)]">
-            Solutions
+          <span className="text-sm text-center text-gray-800/90 ">
+            <span className="relative transition-all duration-300 ease-in-out group-hover:[text-shadow:1px_1px_10px_rgba(102,166,255,0.8),0px_0px_5px_rgba(137,247,254,0.8)]">Solutions</span> <span className="text-[10px] ">Pvt. Limited</span>
           </span>
         </span>
       </Link>
@@ -80,8 +80,16 @@ const Header = () => {
         >
           <FaLinkedinIn />
         </a>
+        <a
+          href="https://jsdl.in/DT-21RLGAJT5KH"
+          target="_blank"
+          rel="noopener noreferrer"
+          className=" text-gray-700 text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-blue-400 flex justify-center items-center"
+        >
+          <img src={justdialLogo} alt="" className="w-[25px] rounded-full"/>
+        </a>
       </div>
-
+      {/* <a href="http://jsdl.in/DT-21RLGAJT5KH" target="_blank" rel="noopener noreferrer">Click</a> */}
       {/* Mobile Sidebar */}
       <MobileSidebar />
     </header>

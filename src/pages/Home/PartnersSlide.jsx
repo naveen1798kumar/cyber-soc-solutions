@@ -12,10 +12,12 @@ const PartnersSlide = () => {
 
   return (
     <div className="relative overflow-hidden py-10 px-4 md:px-16 bg-gradient-to-r from-[#fdfbfb] to-[#ebedee] rounded-xl shadow-lg">
-      <h2 className="text-4xl font-extrabold text-gray-900 text-center mb-10 relative">
-        <span className="relative z-10">Our Successful Partners</span>
-        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-1 bg-blue-500"></span>
-        <span className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-10 h-1 bg-blue-300"></span>
+      <h2 className="relative text-4xl text-center md:text-5xl font-extrabold text-gray-900 tracking-wide leading-tight 
+                after:absolute after:content-[''] after:w-30 after:h-1 after:bg-blue-600 
+               after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 mb-6 md:mb-4"
+        data-aos="fade-left"
+      >
+        Our Successful Partners
       </h2>
 
       {/* Scrolling Container */}
@@ -26,7 +28,7 @@ const PartnersSlide = () => {
               key={index}
               src={logo}
               alt={`Partner ${index}`}
-              className="h-24 w-40 object-contain grayscale hover:grayscale-0 transition duration-300"
+              className="h-24 w-40 object-contain transition duration-300 hover:-translate-y-2"
             />
           ))}
         </div>

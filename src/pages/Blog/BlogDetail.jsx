@@ -20,11 +20,11 @@ const BlogDetail = () => {
 
   if (!blog) {
     return (
-      <div className="container mx-auto p-6 text-center">
-        <h2 className="text-3xl font-bold text-red-600">404 - Blog Not Found</h2>
+      <div className="container mx-auto px-4 py-20 text-center">
+        <h2 className="text-4xl font-bold text-red-600 mb-4">404 - Blog Not Found</h2>
         <button
           onClick={() => navigate("/blogs")}
-          className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all"
+          className="mt-2 px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
         >
           Back to Blogs
         </button>
@@ -40,131 +40,100 @@ const BlogDetail = () => {
       : blogPosts.filter((post) => post.slug !== blog.slug).slice(0, 3);
 
   return (
-    <div className="container mx-auto px-4 py-10 md:px-8">
-      {/* Hero Section */}
+    <div className="container mx-auto px-4 md:px-10 lg:px-16 py-10 md:py-20 text-gray-800">
+      {/* Banner */}
       <section
-  className="relative h-[400px] md:h-[500px] mb-16 rounded-xl overflow-hidden shadow-2xl"
-  data-aos="fade-up"
->
-  {/* Background Image */}
-  <img
-    src={blog.image}
-    alt={blog.title}
-    className="absolute inset-0 w-full h-full object-cover scale-105"
-  />
+        className="relative h-[400px] md:h-[500px] mb-20 rounded-2xl overflow-hidden shadow-xl"
+        data-aos="fade-up"
+      >
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className="absolute inset-0 w-full h-full object-cover scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+        <div className="relative z-10 h-full flex flex-col justify-end items-start px-6 md:px-16 text-white pb-12">
+          <span className="mb-3 px-4 py-1 rounded-full bg-blue-600 text-xs font-semibold tracking-wider uppercase shadow">
+            {blog.category}
+          </span>
+          <h1 className="text-3xl md:text-5xl font-extrabold max-w-3xl leading-tight drop-shadow-md">
+            {blog.title}
+          </h1>
+          <div className="mt-4 flex items-center gap-4 text-sm text-gray-200">
+            <img src={blog.authorImg} alt={blog.author} className="w-10 h-10 rounded-full object-cover border-2 border-white" />
+            <span>By <strong>{blog.author}</strong> &nbsp;|&nbsp; {blog.date}</span>
+          </div>
+        </div>
+      </section>
 
-  {/* Gradient Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-0" />
-
-  {/* Content */}
-  <div className="relative z-10 h-full flex flex-col justify-center items-start px-6 md:px-16 text-white">
-    {/* Optional: Blog Category Tag */}
-    <span className="mb-4 px-4 py-1 rounded-full bg-blue-600 text-xs uppercase tracking-widest font-medium shadow-lg">
-      {blog.category}
-    </span>
-
-    {/* Blog Title */}
-    <h1 className="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight drop-shadow-lg max-w-4xl">
-      {blog.title}
-    </h1>
-
-    {/* Author + Date */}
-    <p className="mt-4 text-sm text-gray-200">
-      By <span className="font-semibold">{blog.author}</span> &nbsp;|&nbsp; {blog.date}
-    </p>
-  </div>
-</section>
-
-
-      {/* Blog Main Layout */}
-      <section className="flex flex-col md:flex-row gap-10">
-        {/* Main Content */}
-        <article className="flex-1 bg-white p-6 rounded-xl shadow-md" data-aos="fade-right">
-          <div className="prose max-w-none lg:prose-lg prose-p:text-gray-800 prose-h2:text-blue-700 prose-h2:mt-6 prose-h2:mb-2 prose-img:rounded-md">
-            <p className="whitespace-pre-line text-lg leading-8">{blog.content}</p>
+      {/* Main Content */}
+      <section className="flex flex-col lg:flex-row gap-12">
+        <article className="flex-1 bg-white p-8 rounded-xl shadow-lg leading-relaxed" data-aos="fade-right">
+          <div className="prose prose-lg max-w-none prose-p:my-4 prose-h2:mt-8 prose-h2:mb-3 prose-img:rounded-md">
+            <p className="whitespace-pre-line">{blog.content}</p>
           </div>
 
-        
-                <blockquote className="my-8 border-l-4 border-blue-600 bg-blue-50 p-4 italic text-gray-700">
-                “A well-structured blog engages the reader and adds value to the industry.”
-                </blockquote>
-
-                <div className="prose max-w-none lg:prose-lg prose-p:text-gray-800 prose-h2:text-blue-700 prose-h2:mt-6 prose-h2:mb-2 prose-img:rounded-md">
-                {blog.lists && Object.entries(blog.lists).map(([key, value]) => (
-                  <div key={key} className="mb-4">
-                  <h3 className="text-lg font-semibold text-blue-700">{key}</h3>
-                  <ul className="list-disc list-inside text-gray-800">
+          {blog.lists && (
+            <div className="prose prose-lg max-w-none mt-10">
+              {Object.entries(blog.lists).map(([key, value]) => (
+                <div key={key} className="mb-6">
+                  <h3 className="text-xl text-blue-700 font-semibold mb-2">{key}</h3>
+                  <ul className="list-disc list-inside space-y-2">
                     {value.map((item, index) => (
-                    <li key={index}>{item}</li>
+                      <li key={index}>{item}</li>
                     ))}
                   </ul>
-                  </div>
-                ))}
                 </div>
-              </article>
+              ))}
+            </div>
+          )}
 
-              {/* Sidebar Section */}
-        <aside className="w-full md:w-1/3 space-y-8">
+          <blockquote className="my-10 border-l-4 border-blue-600 bg-blue-50 p-5 text-lg italic text-gray-700 rounded-r-md shadow-inner">
+            “A well-structured blog engages the reader and adds value to the industry.”
+          </blockquote>
+        </article>
+
+        {/* Sidebar */}
+        <aside className="w-full lg:w-[30%] space-y-8">
           {/* Recent Posts */}
-          <div className="bg-white p-5 rounded-lg shadow-md" data-aos="fade-left">
-            <h3 className="text-xl font-semibold mb-4 border-b pb-2">Recent Posts</h3>
-            <ul className="space-y-3">
+          <div className="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-left">
+            <h3 className="text-xl font-bold mb-4 pb-2 border-b">Recent Posts</h3>
+            <ul className="space-y-4 text-sm">
               {filteredBlogs.map((recent) => (
-                <li key={recent.id}>
-                  <Link
-                    to={`/blogs/${recent.slug}`}
-                    className="text-blue-600 hover:text-blue-800 transition-all"
-                  >
-                    {recent.title}
-                  </Link>
+                <li key={recent.slug} className="flex items-start gap-4">
+                  <img src={recent.image} alt={recent.title} className="w-16 h-16 object-cover rounded-md shadow-sm" />
+                  <div>
+                    <Link
+                      to={`/blogs/${recent.slug}`}
+                      className="text-blue-600 hover:text-blue-800 font-semibold"
+                    >
+                      {recent.title}
+                    </Link>
+                    <p className="text-gray-500 text-xs mt-1">{recent.date}</p>
+                  </div>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Category Filter */}
-          <div className="bg-white p-5 rounded-lg shadow-md" data-aos="fade-left">
-            <h3 className="text-xl font-semibold mb-4 border-b pb-2">Search by Category</h3>
+          <div className="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-left">
+            <h3 className="text-xl font-bold mb-4 pb-2 border-b">Categories</h3>
             <div className="flex flex-wrap gap-3">
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-3 py-1 text-sm rounded-full border transition-all ${
+                  className={`px-4 py-1.5 text-sm rounded-full border font-medium transition-all ${
                     selectedCategory === category
                       ? "bg-blue-600 text-white"
-                      : "bg-gray-200 text-gray-800 hover:bg-blue-100"
+                      : "bg-gray-100 text-gray-800 hover:bg-blue-100"
                   }`}
                 >
                   {category}
                 </button>
               ))}
             </div>
-
-            {/* Filtered Blogs */}
-            {selectedCategory && selectedCategory !== "All" && (
-              <div className="mt-6">
-                <h4 className="text-lg font-medium mb-2">
-                  Blogs in <span className="text-blue-600">{selectedCategory}</span>
-                </h4>
-                {filteredBlogs.length > 0 ? (
-                  <ul className="space-y-2">
-                    {filteredBlogs.map((post) => (
-                      <li key={post.id}>
-                        <Link
-                          to={`/blogs/${post.slug}`}
-                          className="text-blue-600 hover:text-blue-800 transition"
-                        >
-                          {post.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-sm text-gray-500">No blogs found in this category.</p>
-                )}
-              </div>
-            )}
           </div>
         </aside>
       </section>

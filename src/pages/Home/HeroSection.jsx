@@ -45,7 +45,7 @@ const slides = [
 function HeroSection() {
   const settings = {
     infinite: true,
-    speed: 1200,
+    speed: 2000,
     autoplay: true,
     autoplaySpeed: 5000,
     slidesToShow: 1,

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import bgImage from "../../assets/blogs/aboutus-cybersoc.jpg";
+import vectorBg from "../../assets/vector-bg.png"
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
@@ -14,16 +15,14 @@ function AboutUs() {
   }
 
   return (
-    <div className="w-full bg-gray-100 py-12 md:py-20">
+    <div className="w-full bg-gray-100 py-12 md:py-20 lg:my-20">
       <section className="container mx-auto flex flex-col-reverse lg:grid lg:grid-cols-2 items-center gap-12 px-6 md:px-12 lg:px-20">
         {/* Text Content */}
         <div className=" lg:text-left" data-aos="fade-up">
           <h2 className="relative text-center text-4xl md:text-5xl font-extrabold text-gray-900 tracking-wide leading-tight 
-               before:absolute before:content-[''] before:w-20 before:h-1 before:bg-blue-500 
-               before:bottom-0 before:left-1/2 before:-translate-x-1/2 
-               after:absolute after:content-[''] after:w-10 after:h-1 after:bg-blue-300 
-               after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 mb-6 md:mb-4">
-            About CyberSoc
+               after:absolute after:content-[''] after:w-30 after:h-1 after:bg-blue-600 
+               after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 mb-6 md:mb-8" data-aos="fade-left">
+            About <span className="uppercase text-blue-500">CyberSoc</span>
           </h2>
           <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
             Based in <strong>Coimbatore</strong>, <strong className="transition-all duration-500 bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-indigo-600">CyberSoc</strong> is a trusted leader in <strong className="transition-all duration-500 bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-indigo-600"> Cyber Security</strong>, <strong className="transition-all duration-500 bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-indigo-600">Automation</strong>, and 
@@ -59,8 +58,10 @@ function AboutUs() {
           <img
             src={bgImage}
             alt="About CyberSoc"
-            className="w-full h-full object-cover rounded-lg shadow-lg"
+            className="relative w-full h-full object-cover rounded-lg shadow-lg "
           />
+          <img src={vectorBg} alt="" className="absolute -top-20 -right-20 -z-10 " width="300px"/>
+          <img src={vectorBg} alt="" className="absolute -bottom-20 -left-20 -z-10 " width="400px"/>
         </div>
       </section>
     </div>
