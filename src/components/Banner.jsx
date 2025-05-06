@@ -76,8 +76,10 @@ const Banner = ({ backgroundImage, title, description }) => {
       <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/30 to-indigo-700/50 animate-pulse-fast"></div>
       <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-transparent"></div>
 
-      {/* <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20 z-10"></div> */}
-      {/* <div className="absolute inset-0 bg-black/20 backdrop-blur-sm z-10"></div> */}
+      {/* <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/40 to-whitw/20 z-10"></div>
+      <div className="absolute inset-0 bg-black/20 backdrop-blur-sm z-10"></div> */}
+<div className="absolute inset-0 grayscale hover:grayscale-0 z-10 transition-all duration-300"></div>
+
 
       {/* Floating Animated Particles */}
       <div className="absolute inset-0 pointer-events-none">
@@ -94,7 +96,7 @@ const Banner = ({ backgroundImage, title, description }) => {
         className="absolute inset-0 z-10 flex flex-col justify-center  text-white px-6 py-8 md:px-16 md:py-12 max-w-3xl lg:max-w-4xl"
         data-aos="fade-left"
       >
-        <h2 className="text-4xl text-gr md:text-6xl font-extrabold tracking-tight drop-shadow-2xl bg-[+] bg-clip-text text-transparent leading-tight">
+        <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight drop-shadow-2xl leading-tight">
           {title}
           {/* linear-gradient(90deg,  0%, #c3cfe2 100%) */}
         </h2>

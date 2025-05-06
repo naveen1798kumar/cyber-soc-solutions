@@ -21,19 +21,23 @@ function Founder() {
     Welcome to <span className="text-blue-600">CyberSoc</span>.
   </h2>
 
-  {/* Subtitle */}
   <p className="my-2 text-lg text-gray-800 font-medium">
-    For your <span className="text-blue-500">Innovative</span> and <span className="text-blue-500">Modern</span> digital solutions.
-  </p>
-            <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
-              Based in <strong>Coimbatore</strong>, CyberSoc is a leading company specializing in <strong>Cyber Security</strong>, <strong>Automation</strong>, and <strong>Web Application Development</strong>. With over <strong>10 years of experience</strong>, we have been empowering businesses and individuals with cutting-edge solutions to enhance security, efficiency, and connectivity.
-            </p>
-            <p className="mt-6 text-gray-700 text-lg leading-relaxed">
-              Our expertise spans across <strong>Networking Solutions</strong>, <strong>Software Development</strong>, and <strong>Automation Systems</strong>. We are committed to delivering smart, scalable, and future-proof solutions that drive digital transformation and optimize workflows for our clients.
-            </p>
-            <p className="mt-6 text-gray-700 text-lg leading-relaxed">
-              At CyberSoc, we believe in innovation, reliability, and excellence. Join us on our journey to create a secure and automated future.
-            </p>
+  For your <span className="text-blue-500">Innovative</span> and <span className="text-blue-500">Modern</span> digital solutions.
+</p>
+<p className="text-gray-700 text-lg md:text-xl leading-relaxed">
+  CyberSoc is a leading company specializing in <strong>Cyber Security</strong>, <strong>Automation</strong>, and <strong>Web Application Development</strong>. With over <strong>10 years of experience</strong>, we have been empowering businesses and individuals with cutting-edge solutions to enhance security, efficiency, and connectivity.
+</p>
+<p className="mt-6 text-gray-700 text-lg leading-relaxed">
+{/* Headquartered in <strong>Coimbatore</strong>, w */}
+  We also have strategic branches in <strong>Poland</strong>, <strong>Australia</strong>, and <strong>Hungary</strong>, allowing us to serve a global clientele with localized expertise and international reach.
+</p>
+<p className="mt-6 text-gray-700 text-lg leading-relaxed">
+  Our expertise spans across <strong>Networking Solutions</strong>, <strong>Software Development</strong>, and <strong>Automation Systems</strong>. We are committed to delivering smart, scalable, and future-proof solutions that drive digital transformation and optimize workflows for our clients.
+</p>
+<p className="mt-6 text-gray-700 text-lg leading-relaxed">
+  At CyberSoc, we believe in innovation, reliability, and excellence. Join us on our journey to create a secure and automated future.
+</p>
+{/* <p className="mt-6 text-gray-700 text-lg leading-relaxed"> </p> */}
           </div>
 
           {/* Image Section */}

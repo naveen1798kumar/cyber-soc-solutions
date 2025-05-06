@@ -5,7 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import Navbar from "./headerComponent/Navbar";
 import MobileSidebar from "./headerComponent/MobileSidebar";
 import cybersoclogo from "../assets/cybersoc-logo.png";
-import justdialLogo from "../assets/icons/justdial.jpg";
+import justdialLogo from "../assets/icons/justdial-vector.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,6 +32,7 @@ const Header = () => {
       <Link
         to="/"
         className="text-2xl flex items-center font-extrabold text-blue-500 tracking-wide group space-x-2"
+        omClick={()=> { window.scrollTo(0, 0);}}
       >
         <span className="relative">
           <img
@@ -44,7 +45,7 @@ const Header = () => {
         </span>
 
         <span className="flex flex-col font-primary uppercase">
-          CyberSoc
+          Cybersoc
           <span className="text-sm text-center text-gray-800/90 ">
             <span className="relative transition-all duration-300 ease-in-out group-hover:[text-shadow:1px_1px_10px_rgba(102,166,255,0.8),0px_0px_5px_rgba(137,247,254,0.8)]">Solutions</span> <span className="text-[10px] ">Pvt. Limited</span>
           </span>
@@ -86,7 +87,7 @@ const Header = () => {
           rel="noopener noreferrer"
           className=" text-gray-700 text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-blue-400 flex justify-center items-center"
         >
-          <img src={justdialLogo} alt="" className="w-[25px] rounded-full"/>
+          <img src={justdialLogo} alt="" className="w-[65px] "/>
         </a>
       </div>
       {/* <a href="http://jsdl.in/DT-21RLGAJT5KH" target="_blank" rel="noopener noreferrer">Click</a> */}
@@ -98,12 +99,3 @@ const Header = () => {
 
 export default Header;
 
-/*
-Get Quote Button      
-<Link
-  to="/contact"
-  className="hidden md:block bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-indigo-600 hover:to-purple-500 text-white px-6 py-2 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95"
->
-  Get Quote
-</Link> 
-*/

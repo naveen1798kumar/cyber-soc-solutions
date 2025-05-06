@@ -871,5 +871,4 @@ export const servicesData = {
   ],
 }
 
-
 };

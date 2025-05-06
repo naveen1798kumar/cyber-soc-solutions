@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link, NavLink } from "react-router-dom";
 import { servicesData } from "../../data/servicesData";
+import { FaChevronDown } from "react-icons/fa";
 
 const Navbar = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false); // State for "Services" dropdown
@@ -10,22 +12,22 @@ const Navbar = () => {
 
   // Close dropdowns when clicking outside
 useEffect(() => {
-  const handleClickOutside = (event) => {
-    if (
-      servicesRef.current &&
-      !servicesRef.current.contains(event.target) &&
-      productsRef.current && // This check fails when Products section is commented out
-      !productsRef.current.contains(event.target)
-    ) {
-      setIsServicesOpen(false);
-      setIsProductsOpen(false);
-    }
-  };
+  // const handleClickOutside = (event) => {
+  //   if (
+  //     servicesRef.current &&
+  //     !servicesRef.current.contains(event.target) &&
+  //     productsRef.current && // This check fails when Products section is commented out
+  //     !productsRef.current.contains(event.target)
+  //   ) {
+  //     setIsServicesOpen(false);
+  //     setIsProductsOpen(false);
+  //   }
+  // };
 
-  document.addEventListener("mousedown", handleClickOutside);
-  return () => {
-    document.removeEventListener("mousedown", handleClickOutside);
-  };
+  // document.addEventListener("mousedown", handleClickOutside);
+  // return () => {
+  //   document.removeEventListener("mousedown", handleClickOutside);
+  // };
 }, []);
 
   const handleClick = () => {
@@ -43,7 +45,7 @@ useEffect(() => {
   const activeClass = "text-blue-500 border-b-2 border-blue-500";
 
   return (
-    <nav className="hidden md:flex items-center lg:space-x-6">
+    <nav className="hidden md:flex items-center lg:space-x-6 relative">
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -64,7 +66,9 @@ useEffect(() => {
       </NavLink>
 
 
-        <div className="relative" ref={servicesRef}>
+        <div ref={servicesRef}
+        onMouseEnter={() => setIsServicesOpen(true)} 
+        onMouseLeave={() => setIsServicesOpen(false)}>
           <Link
             to="/services"
             onClick={() => {
@@ -72,15 +76,22 @@ useEffect(() => {
           window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top when clicking the Services link
             }}
             onMouseOver={() => setIsServicesOpen(true)}
-            className="px-4 py-2 text-md font-medium flex items-center gap-1 text-gray-800 hover:text-blue-400 cursor-pointer"
+            className="group px-4 py-2 text-md font-medium flex items-center justify-center gap-2 text-gray-800 hover:text-blue-400 cursor-pointer"
           >
-            Services
+            Services <FaChevronDown className={`text-gray-800 group-hover:text-blue-400 cursor-pointer ${isServicesOpen ? 'rotate-180' : ''}`} />
           </Link>
+
+          <AnimatePresence>
           {isServicesOpen && (
-            <div
-          className="absolute top-full left-1/2 mt-2 min-w-[90vw] bg-white shadow-lg hover:shadow-2xl rounded-md overflow-hidden border border-gray-200 transform -translate-x-1/2 z-50 overflow-y-auto max-h-[70vh] scrollbar-hide"
+            <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          className={`absolute left-1/2 top-full mt-0 transform -translate-x-1/2 min-w-[90vw]  overflow-hidden  z-50 overflow-y-auto max-h-[70vh] scrollbar-hide 
+          ${isServicesOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-5 invisible'}`}
             >
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2 ">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2 mt-4 bg-white shadow-lg hover:shadow-2xl rounded-md border border-gray-200">
             {Object.keys(servicesData).map((categoryKey) => (
               <div key={categoryKey} className="border border-white/30 bg-white/10 backdrop-blur-md hover:shadow-lg rounded-lg">
               <h3 className="px-4 py-3 mb-2 text-md font-bold text-indigo-800 bg-gradient-to-r from-gray-100 to-gray-200 shadow-sm tracking-wide uppercase">
@@ -99,48 +110,75 @@ useEffect(() => {
             </div>              
             ))}
           </div>
-            </div>
+            </motion.div>
           )}
+          </AnimatePresence>
+
         </div>
 
         {/* Products Dropdown */}
-      <div className="relative" ref={productsRef}>
-        <Link
-        // to="/products"
-          onClick={() => setIsProductsOpen(!isProductsOpen)}
-          className="px-4 py-2 text-md font-medium flex items-center gap-1 text-gray-800 hover:text-blue-400 cursor-pointer"
-        >
-          Products
-        </Link>
-        {/* {isProductsOpen && (
-          <div className="absolute top-full left-1/2 mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden border border-gray-200 transform -translate-x-1/2 z-50">
-            <NavLink
-              to="/products/hardware"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-            >
-              IT Hardware
-            </NavLink>
-            <NavLink
-              to="/products/security"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-            >
-              Security Devices
-            </NavLink>
-            <NavLink
-              to="/products/software"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-            >
-              Software Solutions
-            </NavLink>
-            <NavLink
-              to="/products/custom"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-            >
-              Custom Solutions
-            </NavLink>
-          </div>
-        )} */}
-      </div>
+        <div 
+  ref={productsRef}
+  onMouseEnter={() => setIsProductsOpen(true)}
+  onMouseLeave={() => setIsProductsOpen(false)}
+  // className="relative"
+>
+  <Link
+    to="/products"
+    onClick={() => {
+      setIsProductsOpen(!isProductsOpen);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }}
+    onMouseOver={() => setIsProductsOpen(true)}
+    className="px-4 py-2 text-md font-medium flex items-center gap-1 text-gray-800 hover:text-blue-400 cursor-pointer"
+  >
+    Products
+  </Link>
+
+  {/* <AnimatePresence>
+    {isProductsOpen && (
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="absolute left-1/2 top-full mt-0 transform -translate-x-1/2 min-w-[300px] overflow-hidden z-50 overflow-y-auto max-h-[70vh] scrollbar-hide opacity-100 translate-y-0 visible"
+      >
+        <div className="flex flex-col bg-white shadow-lg hover:shadow-2xl rounded-md border border-gray-200 mt-4">
+          <NavLink
+            to="/products/hardware"
+            className="block px-5 py-3 text-[15px] font-medium text-gray-700 transition-all duration-300 ease-in-out hover:text-black hover:pl-7 rounded-md"
+            onClick={() => setIsProductsOpen(false)}
+          >
+            IT Hardware
+          </NavLink>
+          <NavLink
+            to="/products/security"
+            className="block px-5 py-3 text-[15px] font-medium text-gray-700 transition-all duration-300 ease-in-out hover:text-black hover:pl-7 rounded-md"
+            onClick={() => setIsProductsOpen(false)}
+          >
+            Security Devices
+          </NavLink>
+          <NavLink
+            to="/products/software"
+            className="block px-5 py-3 text-[15px] font-medium text-gray-700 transition-all duration-300 ease-in-out hover:text-black hover:pl-7 rounded-md"
+            onClick={() => setIsProductsOpen(false)}
+          >
+            Software Solutions
+          </NavLink>
+          <NavLink
+            to="/products/custom"
+            className="block px-5 py-3 text-[15px] font-medium text-gray-700 transition-all duration-300 ease-in-out hover:text-black hover:pl-7 rounded-md"
+            onClick={() => setIsProductsOpen(false)}
+          >
+            Custom Solutions
+          </NavLink>
+        </div>
+      </motion.div>
+    )}
+  </AnimatePresence> */}
+</div>
+
 
       <NavLink
         to="/blogs"
@@ -151,6 +189,17 @@ useEffect(() => {
       >
         Blogs
       </NavLink>
+
+      <NavLink
+        to="/events"
+        className={({ isActive }) =>
+          isActive ? `${linkClass} ${activeClass}` : linkClass
+        }
+        onClick={handleClick}
+      >
+        Events
+      </NavLink>
+
       <NavLink
         to="/contact"
         className={({ isActive }) =>
@@ -166,3 +215,4 @@ useEffect(() => {
 };
 
 export default Navbar;
+
