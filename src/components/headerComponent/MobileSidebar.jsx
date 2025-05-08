@@ -4,7 +4,7 @@ import { FiMenu, FiX, FiAlignRight } from 'react-icons/fi';
 import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { IoIosArrowForward } from "react-icons/io";
 import { FaXTwitter } from 'react-icons/fa6';
-import {servicesData} from '../../data/servicesData'; // Import services data
+import servicesData from '../../data/servicesData'; // Import services data
 
 const MobileSidebar = () => {
   const [isOpen, setIsOpen] = useState(false); // Main sidebar toggle

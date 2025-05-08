@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { servicesData } from "../../data/servicesData";
+import  servicesData  from "../../data/servicesData";
 import { div } from "framer-motion/client";
 
 function ServicesSection() {

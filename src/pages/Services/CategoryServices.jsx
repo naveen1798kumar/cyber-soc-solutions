@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { servicesData } from "../../data/servicesData";
+import servicesData from "../../data/servicesData";
 
 const CategoryServices = () => {
   const { category } = useParams();

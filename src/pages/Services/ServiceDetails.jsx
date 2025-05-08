@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { servicesData } from "../../data/servicesData";
+import servicesData from "../../data/servicesData";
 import ServiceBanner from "../../components/ServiceBanner";
 import FAQSection from "../../components/FAQSection";
 import { FaCheckCircle, FaChevronDown, FaChevronUp } from "react-icons/fa";

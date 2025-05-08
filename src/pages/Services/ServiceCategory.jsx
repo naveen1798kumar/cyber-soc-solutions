@@ -1,6 +1,6 @@
 import React from "react";
 import ServiceCard from "./ServiceCard";
-import { servicesData } from "../../data/servicesData";
+import servicesData from "../../data/servicesData";
 
 const ServiceCategory = ({ category, onClose }) => {
   return (

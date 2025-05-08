@@ -6,7 +6,7 @@ import Networking from "../assets/our-services/networking.jpg"
 import Automation from "../assets/our-services/automation.jpg"
 import CyberSecurity from "../assets/our-services/cyber-security-services.jpg"
 
-export const servicesData = {
+const servicesData = {
   "websites-and-softwares": {
     title: "Website & Software Development",
     description:
@@ -872,3 +872,5 @@ export const servicesData = {
 }
 
 };
+
+export default servicesData;

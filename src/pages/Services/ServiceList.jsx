@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { servicesData } from "../../data/servicesData";
+import servicesData from "../../data/servicesData";
 import { IoIosArrowForward } from "react-icons/io";
 
 const ServiceList = ({ onCategorySelect }) => {

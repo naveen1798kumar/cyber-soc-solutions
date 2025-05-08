@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { servicesData } from "../data/servicesData";
+import servicesData from "../data/servicesData";
 import backgroundImage from "../assets/our-sevices-banner.jpg";
 import "aos/dist/aos.css"; // Import AOS styles
 import AOS from "aos"; // Import AOS library

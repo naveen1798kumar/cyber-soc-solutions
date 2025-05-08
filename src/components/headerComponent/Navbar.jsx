@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, NavLink } from "react-router-dom";
-import { servicesData } from "../../data/servicesData";
+import  servicesData  from "../../data/servicesData";
 import { FaChevronDown } from "react-icons/fa";
 
 const Navbar = () => {
