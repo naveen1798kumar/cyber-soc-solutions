@@ -99,6 +99,20 @@ const Contact = () => {
         <meta name="author" content="CyberSoc" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.cybersoc.com/contact" />
+
+         {/* Structured Data for Contact Page */}
+         <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Contact Us - CyberSoc Solutions",
+              "url": "https://www.cybersocsolutions.com/contact",
+              "description": "Get in touch with CyberSoc Solutions for cybersecurity, automation, and IT services.",
+              "mainEntityOfPage": "https://www.cybersocsolutions.com/contact"
+            }
+          `}
+        </script>
       </Helmet>
       
       {/* Toast Container */}

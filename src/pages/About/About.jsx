@@ -25,6 +25,20 @@ function About() {
         <meta name="author" content="CyberSoc" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.cybersoc.com/about" />
+
+        {/* Structured Data for About Page */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "About Us - CyberSoc Solutions",
+              "url": "https://www.cybersocsolutions.com/about",
+              "description": "Learn more about CyberSoc Solutions, our mission, values, and our team of experts.",
+              "mainEntityOfPage": "https://www.cybersocsolutions.com/about"
+            }
+          `}
+        </script>
       </Helmet>
 
       {/* Banner Section */}

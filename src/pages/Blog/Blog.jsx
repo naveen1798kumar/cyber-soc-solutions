@@ -42,6 +42,20 @@ function Blog() {
         <meta name="author" content="CyberSoc" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.cybersoc.com/blogs" />
+
+        {/* Structured Data for Blog Page */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Blog - CyberSoc Solutions",
+              "url": "https://www.cybersocsolutions.com/blog",
+              "description": "Stay updated with the latest news, tips, and trends in cybersecurity, automation, and IT.",
+              "mainEntityOfPage": "https://www.cybersocsolutions.com/blog"
+            }
+          `}
+        </script>
       </Helmet>
       
       <Banner

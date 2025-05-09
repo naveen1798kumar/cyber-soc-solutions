@@ -44,10 +44,10 @@ const Header = () => {
           />
         </span>
 
-        <span className="flex flex-col font-primary uppercase">
+        <span className="flex flex-col font-primary ">
           Cybersoc
           <span className="text-sm text-center text-gray-800/90 ">
-            <span className="relative transition-all duration-300 ease-in-out group-hover:[text-shadow:1px_1px_10px_rgba(102,166,255,0.8),0px_0px_5px_rgba(137,247,254,0.8)]">Solutions</span> <span className="text-[10px] ">Pvt. Limited</span>
+            <span className="relative transition-all duration-300 ease-in-out group-hover:[text-shadow:1px_1px_10px_rgba(102,166,255,0.8),0px_0px_5px_rgba(137,247,254,0.8)]">Solutions</span>
           </span>
         </span>
       </Link>
@@ -90,7 +90,6 @@ const Header = () => {
           <img src={justdialLogo} alt="" className="w-[65px] "/>
         </a>
       </div>
-      {/* <a href="http://jsdl.in/DT-21RLGAJT5KH" target="_blank" rel="noopener noreferrer">Click</a> */}
       {/* Mobile Sidebar */}
       <MobileSidebar />
     </header>

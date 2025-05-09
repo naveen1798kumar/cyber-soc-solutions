@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import blogPostsData from '../../../data/blogPosts';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaPlus  } from 'react-icons/fa';
 
 
 const AdminBlogs = () => {
@@ -38,8 +38,17 @@ const AdminBlogs = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-6">Manage Blogs</h1>
+<div>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">Manage Blogs</h1>
+        <button
+          onClick={() => navigate('/admin/dashboard/blogs/add')}
+          className="flex items-center px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+        >
+          <FaPlus className="mr-2" />
+          Add Blog
+        </button>
+      </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {blogs.map((blog) => (
           <div key={blog.id} className="bg-white p-4 rounded shadow">
@@ -48,11 +57,16 @@ const AdminBlogs = () => {
             <p className="text-sm text-gray-500">{blog.date} by {blog.author}</p>
             <p className="text-gray-600 mt-1">{blog.summary}</p>
             <div className="flex justify-end mt-4 space-x-2">
-            <button onClick={() => navigate(`/admin/dashboard/blogs/edit/${blog.id}`)}
-            className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-            <FaEdit size={16} />
-            </button>
-              <button onClick={() => handleDelete(blog.id)} className="p-2 bg-red-500 text-white rounded hover:bg-red-600">
+              <button
+                onClick={() => navigate(`/admin/dashboard/blogs/edit/${blog.id}`)}
+                className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              >
+                <FaEdit size={16} />
+              </button>
+              <button
+                onClick={() => handleDelete(blog.id)}
+                className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
+              >
                 <FaTrash size={16} />
               </button>
             </div>
@@ -97,10 +111,17 @@ const AdminBlogs = () => {
                 placeholder="Category"
               />
               <div className="flex justify-end gap-2">
-                <button type="button" onClick={() => setEditingBlog(null)} className="px-4 py-2 rounded border">
+                <button
+                  type="button"
+                  onClick={() => setEditingBlog(null)}
+                  className="px-4 py-2 rounded border"
+                >
                   Cancel
                 </button>
-                <button type="submit" className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                >
                   Save
                 </button>
               </div>

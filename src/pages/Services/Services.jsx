@@ -62,6 +62,20 @@ const Services = () => {
         <meta name="author" content="CyberSoc" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.cybersoc.com/services" />
+
+         {/* Structured Data for Services Page */}
+         <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Services - CyberSoc Solutions",
+              "url": "https://www.cybersocsolutions.com/services",
+              "description": "Explore the cybersecurity, automation, and IT services offered by CyberSoc Solutions to protect your business.",
+              "mainEntityOfPage": "https://www.cybersocsolutions.com/services"
+            }
+          `}
+        </script>
       </Helmet>
 
       <Banner

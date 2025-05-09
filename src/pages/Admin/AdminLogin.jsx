@@ -52,7 +52,7 @@ const AdminLogin = () => {
           </div>
           <button
             type="submit"
-            className="w-full py-2 text-white bg-blue-600 rounded hover:bg-blue-700 transition"
+            className="w-full py-2 text-white bg-blue-600 rounded hover:bg-blue-700 transition-all"
           >
             Login
           </button>

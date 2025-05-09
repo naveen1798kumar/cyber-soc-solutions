@@ -341,264 +341,6 @@ const servicesData = {
       },
     ],
   },
-
-  
-  "cyber-security": {
-    title: "Cyber Security Services",
-    description:
-      "Protect your business from cyber threats with our comprehensive cybersecurity solutions. We offer vulnerability assessments, penetration testing, and incident response services to ensure your data is secure.",
-    image: CyberSecurity,
-    id: "cyber-security",
-    services: [
-      {
-        id: "vapt",
-        title: "Vulnerability Assessment & Penetration Testing (VAPT)",
-        description:
-          "Identify vulnerabilities and secure your systems with our expert VAPT services.",
-        image: serviceImages.automation.crmErp,
-        sections: [
-          {
-            title: "What is VAPT?",
-            content:
-              "Vulnerability Assessment and Penetration Testing (VAPT) is a process to identify, analyze, and mitigate security vulnerabilities in your IT infrastructure.",
-          },
-          {
-            title: "Why Choose VAPT?",
-            content:
-              "VAPT helps protect your business from cyber threats by identifying weaknesses before attackers can exploit them.",
-          },
-        ],
-        benefits: [
-          "Comprehensive vulnerability identification.",
-          "Improved security posture.",
-          "Compliance with industry standards.",
-          "Reduced risk of cyberattacks.",
-        ],
-        features: [
-          {
-            title: "Detailed Reporting",
-            description: "Get actionable insights with in-depth vulnerability reports.",
-          },
-          {
-            title: "Manual & Automated Testing",
-            description: "Combine automated tools with expert manual testing for thorough analysis.",
-          },
-          {
-            title: "Remediation Support",
-            description: "Guidance on fixing identified vulnerabilities effectively.",
-          },
-        ],
-        faqs: [
-          {
-            question: "How often should VAPT be conducted?",
-            answer:
-              "It is recommended to perform VAPT at least once a year or after significant changes to your IT infrastructure.",
-          },
-          {
-            question: "What standards do you follow for VAPT?",
-            answer:
-              "We follow industry standards like OWASP, NIST, and ISO 27001 for our VAPT services.",
-          },
-        ],
-      },
-      {
-        id: "soc",
-        title: "Security Operation Center (SOC)",
-        description:
-          "Monitor, detect, and respond to security threats in real-time with our SOC services.",
-        image: serviceImages.automation.crmErp,
-        sections: [
-          {
-            title: "What is a Security Operation Center (SOC)?",
-            content:
-              "A SOC is a centralized unit that monitors and manages security incidents in real-time to protect your organization's IT infrastructure.",
-          },
-          {
-            title: "Why Choose SOC Services?",
-            content:
-              "SOC services provide 24/7 monitoring, threat detection, and incident response to ensure your business stays secure.",
-          },
-        ],
-        benefits: [
-          "24/7 threat monitoring and response.",
-          "Improved incident detection and resolution.",
-          "Reduced downtime and business impact.",
-          "Compliance with regulatory requirements.",
-        ],
-        features: [
-          {
-            title: "Real-Time Monitoring",
-            description: "Continuous monitoring of your IT environment for threats.",
-          },
-          {
-            title: "Threat Intelligence",
-            description: "Leverage global threat intelligence to stay ahead of attackers.",
-          },
-          {
-            title: "Incident Response",
-            description: "Quickly respond to and mitigate security incidents.",
-          },
-        ],
-        faqs: [
-          {
-            question: "Do you provide 24/7 SOC services?",
-            answer: "Yes, our SOC operates 24/7 to monitor and respond to threats in real-time.",
-          },
-          {
-            question: "Can SOC services be customized for my business?",
-            answer: "Yes, we tailor our SOC services to meet your specific security needs.",
-          },
-        ],
-      },
-      {
-        id: "cloud-security",
-        title: "Cloud Security Services",
-        description:
-          "Secure your cloud infrastructure with advanced security measures and compliance solutions.",
-        image: serviceImages.automation.crmErp,
-        sections: [
-          {
-            title: "What is Cloud Security?",
-            content:
-              "Cloud security involves protecting cloud-based systems, data, and applications from cyber threats.",
-          },
-          {
-            title: "Why Choose Cloud Security Services?",
-            content:
-              "Cloud security ensures the safety of your data and applications hosted in the cloud, providing peace of mind and compliance with regulations.",
-          },
-        ],
-        benefits: [
-          "Enhanced data protection in the cloud.",
-          "Compliance with cloud security standards.",
-          "Improved visibility and control over cloud resources.",
-          "Reduced risk of data breaches.",
-        ],
-        features: [
-          {
-            title: "Data Encryption",
-            description: "Secure your data with robust encryption techniques.",
-          },
-          {
-            title: "Access Control",
-            description: "Implement role-based access control for better security.",
-          },
-          {
-            title: "Cloud Monitoring",
-            description: "Monitor cloud activity to detect and respond to threats.",
-          },
-        ],
-        faqs: [
-          {
-            question: "Which cloud platforms do you support?",
-            answer: "We support AWS, Azure, Google Cloud, and other major cloud platforms.",
-          },
-          {
-            question: "Can you help with cloud compliance?",
-            answer: "Yes, we provide solutions to ensure compliance with cloud security standards.",
-          },
-        ],
-      },
-      {
-        id: "governance",
-        title: "Governance, Risk, and Compliance (GRC)",
-        description:
-          "Streamline your governance, risk, and compliance processes with our expert solutions.",
-        image: serviceImages.automation.crmErp,
-        sections: [
-          {
-            title: "What is GRC?",
-            content:
-              "Governance, Risk, and Compliance (GRC) is a framework for managing an organization's overall governance, risk management, and compliance with regulations.",
-          },
-          {
-            title: "Why Choose GRC Services?",
-            content:
-              "GRC services help organizations align their IT and business strategies while ensuring compliance with regulatory requirements.",
-          },
-        ],
-        benefits: [
-          "Improved risk management.",
-          "Streamlined compliance processes.",
-          "Enhanced decision-making with actionable insights.",
-          "Reduced operational risks.",
-        ],
-        features: [
-          {
-            title: "Policy Management",
-            description: "Create and manage policies to ensure compliance.",
-          },
-          {
-            title: "Risk Assessment",
-            description: "Identify and mitigate risks effectively.",
-          },
-          {
-            title: "Audit Support",
-            description: "Prepare for audits with comprehensive documentation.",
-          },
-        ],
-        faqs: [
-          {
-            question: "Can GRC services be customized for my industry?",
-            answer: "Yes, we tailor our GRC services to meet the specific needs of your industry.",
-          },
-          {
-            question: "Do you provide tools for risk management?",
-            answer: "Yes, we offer tools and frameworks for effective risk management.",
-          },
-        ],
-      },
-      {
-        id: "security-architecture",
-        title: "Security Architecture Design",
-        description:
-          "Design and implement robust security architectures to protect your IT infrastructure.",
-        image: serviceImages.automation.crmErp,
-        sections: [
-          {
-            title: "What is Security Architecture?",
-            content:
-              "Security architecture involves designing and implementing security controls to protect an organization's IT infrastructure.",
-          },
-          {
-            title: "Why Choose Security Architecture Services?",
-            content:
-              "Security architecture services ensure your IT systems are secure, scalable, and aligned with your business goals.",
-          },
-        ],
-        benefits: [
-          "Comprehensive security design.",
-          "Improved protection against cyber threats.",
-          "Scalable and flexible security solutions.",
-          "Alignment with business objectives.",
-        ],
-        features: [
-          {
-            title: "Network Security Design",
-            description: "Secure your network with advanced security controls.",
-          },
-          {
-            title: "Application Security",
-            description: "Protect your applications from vulnerabilities.",
-          },
-          {
-            title: "Compliance Alignment",
-            description: "Ensure your architecture meets regulatory requirements.",
-          },
-        ],
-        faqs: [
-          {
-            question: "Can you design security architectures for hybrid environments?",
-            answer: "Yes, we design architectures for on-premise, cloud, and hybrid environments.",
-          },
-          {
-            question: "Do you provide ongoing support for security architectures?",
-            answer: "Yes, we offer support and maintenance for implemented architectures.",
-          },
-        ],
-      },
-    ],
-  },
   
   "networking": {
     title: "Networking",
@@ -869,7 +611,264 @@ const servicesData = {
       ],
     },
   ],
-}
+},
+
+"cyber-security": {
+  title: "Cyber Security Services",
+  description:
+    "Protect your business from cyber threats with our comprehensive cybersecurity solutions. We offer vulnerability assessments, penetration testing, and incident response services to ensure your data is secure.",
+  image: CyberSecurity,
+  id: "cyber-security",
+  services: [
+    {
+      id: "vapt",
+      title: "Vulnerability Assessment & Penetration Testing (VAPT)",
+      description:
+        "Identify vulnerabilities and secure your systems with our expert VAPT services.",
+      image: serviceImages.automation.crmErp,
+      sections: [
+        {
+          title: "What is VAPT?",
+          content:
+            "Vulnerability Assessment and Penetration Testing (VAPT) is a process to identify, analyze, and mitigate security vulnerabilities in your IT infrastructure.",
+        },
+        {
+          title: "Why Choose VAPT?",
+          content:
+            "VAPT helps protect your business from cyber threats by identifying weaknesses before attackers can exploit them.",
+        },
+      ],
+      benefits: [
+        "Comprehensive vulnerability identification.",
+        "Improved security posture.",
+        "Compliance with industry standards.",
+        "Reduced risk of cyberattacks.",
+      ],
+      features: [
+        {
+          title: "Detailed Reporting",
+          description: "Get actionable insights with in-depth vulnerability reports.",
+        },
+        {
+          title: "Manual & Automated Testing",
+          description: "Combine automated tools with expert manual testing for thorough analysis.",
+        },
+        {
+          title: "Remediation Support",
+          description: "Guidance on fixing identified vulnerabilities effectively.",
+        },
+      ],
+      faqs: [
+        {
+          question: "How often should VAPT be conducted?",
+          answer:
+            "It is recommended to perform VAPT at least once a year or after significant changes to your IT infrastructure.",
+        },
+        {
+          question: "What standards do you follow for VAPT?",
+          answer:
+            "We follow industry standards like OWASP, NIST, and ISO 27001 for our VAPT services.",
+        },
+      ],
+    },
+    {
+      id: "soc",
+      title: "Security Operation Center (SOC)",
+      description:
+        "Monitor, detect, and respond to security threats in real-time with our SOC services.",
+      image: serviceImages.automation.crmErp,
+      sections: [
+        {
+          title: "What is a Security Operation Center (SOC)?",
+          content:
+            "A SOC is a centralized unit that monitors and manages security incidents in real-time to protect your organization's IT infrastructure.",
+        },
+        {
+          title: "Why Choose SOC Services?",
+          content:
+            "SOC services provide 24/7 monitoring, threat detection, and incident response to ensure your business stays secure.",
+        },
+      ],
+      benefits: [
+        "24/7 threat monitoring and response.",
+        "Improved incident detection and resolution.",
+        "Reduced downtime and business impact.",
+        "Compliance with regulatory requirements.",
+      ],
+      features: [
+        {
+          title: "Real-Time Monitoring",
+          description: "Continuous monitoring of your IT environment for threats.",
+        },
+        {
+          title: "Threat Intelligence",
+          description: "Leverage global threat intelligence to stay ahead of attackers.",
+        },
+        {
+          title: "Incident Response",
+          description: "Quickly respond to and mitigate security incidents.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Do you provide 24/7 SOC services?",
+          answer: "Yes, our SOC operates 24/7 to monitor and respond to threats in real-time.",
+        },
+        {
+          question: "Can SOC services be customized for my business?",
+          answer: "Yes, we tailor our SOC services to meet your specific security needs.",
+        },
+      ],
+    },
+    {
+      id: "cloud-security",
+      title: "Cloud Security Services",
+      description:
+        "Secure your cloud infrastructure with advanced security measures and compliance solutions.",
+      image: serviceImages.automation.crmErp,
+      sections: [
+        {
+          title: "What is Cloud Security?",
+          content:
+            "Cloud security involves protecting cloud-based systems, data, and applications from cyber threats.",
+        },
+        {
+          title: "Why Choose Cloud Security Services?",
+          content:
+            "Cloud security ensures the safety of your data and applications hosted in the cloud, providing peace of mind and compliance with regulations.",
+        },
+      ],
+      benefits: [
+        "Enhanced data protection in the cloud.",
+        "Compliance with cloud security standards.",
+        "Improved visibility and control over cloud resources.",
+        "Reduced risk of data breaches.",
+      ],
+      features: [
+        {
+          title: "Data Encryption",
+          description: "Secure your data with robust encryption techniques.",
+        },
+        {
+          title: "Access Control",
+          description: "Implement role-based access control for better security.",
+        },
+        {
+          title: "Cloud Monitoring",
+          description: "Monitor cloud activity to detect and respond to threats.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Which cloud platforms do you support?",
+          answer: "We support AWS, Azure, Google Cloud, and other major cloud platforms.",
+        },
+        {
+          question: "Can you help with cloud compliance?",
+          answer: "Yes, we provide solutions to ensure compliance with cloud security standards.",
+        },
+      ],
+    },
+    {
+      id: "governance",
+      title: "Governance, Risk, and Compliance (GRC)",
+      description:
+        "Streamline your governance, risk, and compliance processes with our expert solutions.",
+      image: serviceImages.automation.crmErp,
+      sections: [
+        {
+          title: "What is GRC?",
+          content:
+            "Governance, Risk, and Compliance (GRC) is a framework for managing an organization's overall governance, risk management, and compliance with regulations.",
+        },
+        {
+          title: "Why Choose GRC Services?",
+          content:
+            "GRC services help organizations align their IT and business strategies while ensuring compliance with regulatory requirements.",
+        },
+      ],
+      benefits: [
+        "Improved risk management.",
+        "Streamlined compliance processes.",
+        "Enhanced decision-making with actionable insights.",
+        "Reduced operational risks.",
+      ],
+      features: [
+        {
+          title: "Policy Management",
+          description: "Create and manage policies to ensure compliance.",
+        },
+        {
+          title: "Risk Assessment",
+          description: "Identify and mitigate risks effectively.",
+        },
+        {
+          title: "Audit Support",
+          description: "Prepare for audits with comprehensive documentation.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Can GRC services be customized for my industry?",
+          answer: "Yes, we tailor our GRC services to meet the specific needs of your industry.",
+        },
+        {
+          question: "Do you provide tools for risk management?",
+          answer: "Yes, we offer tools and frameworks for effective risk management.",
+        },
+      ],
+    },
+    {
+      id: "security-architecture",
+      title: "Security Architecture Design",
+      description:
+        "Design and implement robust security architectures to protect your IT infrastructure.",
+      image: serviceImages.automation.crmErp,
+      sections: [
+        {
+          title: "What is Security Architecture?",
+          content:
+            "Security architecture involves designing and implementing security controls to protect an organization's IT infrastructure.",
+        },
+        {
+          title: "Why Choose Security Architecture Services?",
+          content:
+            "Security architecture services ensure your IT systems are secure, scalable, and aligned with your business goals.",
+        },
+      ],
+      benefits: [
+        "Comprehensive security design.",
+        "Improved protection against cyber threats.",
+        "Scalable and flexible security solutions.",
+        "Alignment with business objectives.",
+      ],
+      features: [
+        {
+          title: "Network Security Design",
+          description: "Secure your network with advanced security controls.",
+        },
+        {
+          title: "Application Security",
+          description: "Protect your applications from vulnerabilities.",
+        },
+        {
+          title: "Compliance Alignment",
+          description: "Ensure your architecture meets regulatory requirements.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Can you design security architectures for hybrid environments?",
+          answer: "Yes, we design architectures for on-premise, cloud, and hybrid environments.",
+        },
+        {
+          question: "Do you provide ongoing support for security architectures?",
+          answer: "Yes, we offer support and maintenance for implemented architectures.",
+        },
+      ],
+    },
+  ],
+},
 
 };
 
