@@ -42,7 +42,7 @@ const AdminBlogs = () => {
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Manage Blogs</h1>
         <button
-          onClick={() => navigate('/admin/dashboard/blogs/add')}
+          onClick={() => navigate('/dashboard/blogs/add')}
           className="flex items-center px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
         >
           <FaPlus className="mr-2" />
@@ -58,7 +58,7 @@ const AdminBlogs = () => {
             <p className="text-gray-600 mt-1">{blog.summary}</p>
             <div className="flex justify-end mt-4 space-x-2">
               <button
-                onClick={() => navigate(`/admin/dashboard/blogs/edit/${blog.id}`)}
+                onClick={() => navigate(`/dashboard/blogs/edit/${blog.id}`)}
                 className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
               >
                 <FaEdit size={16} />

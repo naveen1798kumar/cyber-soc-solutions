@@ -8,7 +8,7 @@ const ServiceList = ({ services, onDelete }) => {
         <div key={service.id} className="flex items-center justify-between bg-gray-100 p-4 rounded-lg">
           <h3>{service.title}</h3>
           <div className="space-x-2">
-          <Link to={`/admin/dashboard/services/edit/${service.id}`} className="text-blue-500">Edit</Link>
+          <Link to={`/dashboard/services/edit/${service.id}`} className="text-blue-500">Edit</Link>
             <button onClick={() => onDelete(service.id)} className="text-red-500">Delete</button>
           </div>
         </div>
