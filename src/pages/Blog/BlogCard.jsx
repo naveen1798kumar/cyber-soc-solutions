@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-function BlogCard() {
+function BlogCard({ blog }) {
   return (
-    <div>BlogCard</div>
-  )
+    <div>
+      <img src={blog.image} alt={blog.title} />
+      <h3>{blog.title}</h3>
+      {/* ...other fields */}
+    </div>
+  );
 }
 
-export default BlogCard
+export default BlogCard;

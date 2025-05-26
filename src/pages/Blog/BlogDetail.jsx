@@ -2,20 +2,33 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import blogPosts from "../../data/blogPosts";
+import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const BlogDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const [blog, setBlog] = useState(null);
+  const [allBlogs, setAllBlogs] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
-
-  const blog = blogPosts.find((post) => post.slug === slug);
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Fetch all blogs for sidebar/recent posts
+    axios.get("http://localhost:5000/api/blogs")
+      .then(res => setAllBlogs(res.data))
+      .catch(err => console.error("Failed to fetch blogs", err));
+
+    // Fetch the blog by slug
+    axios.get(`http://localhost:5000/api/blogs?slug=${slug}`)
+      .then(res => {
+        if (res.data && res.data.length > 0) setBlog(res.data[0]);
+        else setBlog(null);
+      })
+      .catch(() => setBlog(null));
   }, [slug]);
 
   if (!blog) {
@@ -32,12 +45,12 @@ const BlogDetail = () => {
     );
   }
 
-  const categories = ["All", ...new Set(blogPosts.map((post) => post.category))];
+  const categories = ["All", ...new Set(allBlogs.map((post) => post.category))];
 
   const filteredBlogs =
     selectedCategory && selectedCategory !== "All"
-      ? blogPosts.filter((post) => post.category === selectedCategory && post.slug !== blog.slug)
-      : blogPosts.filter((post) => post.slug !== blog.slug).slice(0, 3);
+      ? allBlogs.filter((post) => post.category === selectedCategory && post.slug !== blog.slug)
+      : allBlogs.filter((post) => post.slug !== blog.slug).slice(0, 3);
 
   return (
     <div className="container mx-auto px-4 md:px-10 lg:px-16 py-10 md:py-20 text-gray-800">

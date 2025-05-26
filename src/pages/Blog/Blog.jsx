@@ -8,13 +8,19 @@ import blogBanner from "../../assets/banners/blog-banner.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import blogPosts from "../../data/blogPosts";
+import axios from "axios"; // <-- Add this
 
 function Blog() {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [blogPosts, setBlogPosts] = useState([]);
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
+    // Fetch blogs from your backend API
+    axios.get("http://localhost:5000/api/blogs")
+      .then(res => setBlogPosts(res.data))
+      .catch(err => console.error("Failed to fetch blogs", err));
   }, []);
 
   const handleClick = (slug) => {
