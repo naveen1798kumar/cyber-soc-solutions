@@ -10,6 +10,12 @@ import justdialLogo from "../assets/icons/justdial-vector.png";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    // setIsServicesOpen(false); // Close the services dropdown
+    // setIsProductsOpen(false); // Close the products dropdown
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -32,7 +38,7 @@ const Header = () => {
       <Link
         to="/"
         className="text-2xl flex items-center font-extrabold text-blue-500 tracking-wide group space-x-2"
-        omClick={()=> { window.scrollTo(0, 0);}}
+        onClick={()=> { handleClick() }}
       >
         <span className="relative">
           <img

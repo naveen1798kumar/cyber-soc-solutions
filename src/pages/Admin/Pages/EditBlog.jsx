@@ -1,6 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import blogPostsData from '../../../data/blogPosts';
+
+const quillModules = {
+  toolbar: [
+    [{ 'header': [1, 2, 3, false] }],
+    ['bold', 'italic', 'underline', 'strike'],
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    ['blockquote', 'code-block'],
+    ['link', 'image'],
+    ['clean']
+  ]
+};
+const quillFormats = [
+  'header', 'bold', 'italic', 'underline', 'strike', 'list', 'bullet',
+  'blockquote', 'code-block', 'link', 'image'
+];
 
 const EditBlog = () => {
   const { id } = useParams();
@@ -26,10 +43,17 @@ const EditBlog = () => {
     }));
   };
 
+  const handleContentChange = (value) => {
+    setBlog((prev) => ({
+      ...prev,
+      content: value,
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Updated blog:', blog);
-    // Here you can connect this to your backend update logic
+    // Connect this to your backend update logic
     navigate('/admin/blogs');
   };
 
@@ -69,6 +93,16 @@ const EditBlog = () => {
           onChange={handleChange}
           className="w-full border px-4 py-2 rounded"
           placeholder="Category"
+        />
+        <label className="block font-semibold">Article Content</label>
+        <ReactQuill
+          theme="snow"
+          value={blog.content || ''}
+          onChange={handleContentChange}
+          modules={quillModules}
+          formats={quillFormats}
+          className="bg-white"
+          style={{ minHeight: 300 }}
         />
         <div className="flex justify-end gap-2">
           <button

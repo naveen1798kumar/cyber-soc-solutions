@@ -23,11 +23,8 @@ const BlogDetail = () => {
       .catch(err => console.error("Failed to fetch blogs", err));
 
     // Fetch the blog by slug
-    axios.get(`http://localhost:5000/api/blogs?slug=${slug}`)
-      .then(res => {
-        if (res.data && res.data.length > 0) setBlog(res.data[0]);
-        else setBlog(null);
-      })
+    axios.get(`http://localhost:5000/api/blogs/slug/${slug}`)
+      .then(res => setBlog(res.data))
       .catch(() => setBlog(null));
   }, [slug]);
 
@@ -82,11 +79,10 @@ const BlogDetail = () => {
       {/* Main Content */}
       <section className="flex flex-col lg:flex-row gap-12">
         <article className="flex-1 bg-white p-8 rounded-xl shadow-lg leading-relaxed" data-aos="fade-right">
-          <div className="prose prose-lg max-w-none prose-p:my-4 prose-h2:mt-8 prose-h2:mb-3 prose-img:rounded-md">
-            <p className="whitespace-pre-line">{blog.content}</p>
-          </div>
+          <div className="prose prose-lg max-w-none prose-p:my-4 prose-h2:mt-8 prose-h2:mb-3 prose-img:rounded-md"
+     dangerouslySetInnerHTML={{ __html: blog.content }} />
 
-          {blog.lists && (
+          {/* {blog.lists && (
             <div className="prose prose-lg max-w-none mt-10">
               {Object.entries(blog.lists).map(([key, value]) => (
                 <div key={key} className="mb-6">
@@ -99,7 +95,7 @@ const BlogDetail = () => {
                 </div>
               ))}
             </div>
-          )}
+          )} */}
 
           <blockquote className="my-10 border-l-4 border-blue-600 bg-blue-50 p-5 text-lg italic text-gray-700 rounded-r-md shadow-inner">
             “A well-structured blog engages the reader and adds value to the industry.”

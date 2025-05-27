@@ -80,7 +80,9 @@ function Blog() {
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 py-6 my-12">
   {filteredBlogs.map((post) => (
-    <div className="group max-w-3xl mx-auto bg-gray-100 shadow-md rounded-md overflow-hidden flex flex-col sm:flex-row min-h-[450px] sm:min-h-[450px] h-auto">
+    <div
+    key={post._id || post.slug}
+     className="group max-w-3xl mx-auto bg-gray-100 shadow-md rounded-md overflow-hidden flex flex-col sm:flex-row min-h-[450px] sm:min-h-[450px] h-auto">
       {/* Media (Background Image) */}
       <div
         className="sm:w-1/2 md:group-hover:w-[75%] min-h-[250px] w-full bg-cover bg-center group-hover:scale-105 transition-all duration-300"
