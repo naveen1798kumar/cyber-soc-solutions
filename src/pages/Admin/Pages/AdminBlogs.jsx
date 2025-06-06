@@ -1,12 +1,13 @@
 // src/pages/Admin/Pages/AdminBlogs.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import blogPostsData from '../../../data/blogPosts';
+// import blogPostsData from '../../../data/blogPosts';
 import { FaEdit, FaTrash, FaPlus  } from 'react-icons/fa';
+import axios from 'axios';
 
 
 const AdminBlogs = () => {
-  const [blogs, setBlogs] = useState(blogPostsData);
+  const [blogs, setBlogs] = useState([]);
   const [editingBlog, setEditingBlog] = useState(null);
 
   const navigate = useNavigate();
@@ -36,6 +37,19 @@ const AdminBlogs = () => {
     );
     setEditingBlog(null);
   };
+
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const { data } = await axios.get('/blogs/all'); // or your correct endpoint
+        setBlogs(data.blogs || []);
+      } catch (error) {
+        console.error('Failed to fetch blogs:', error);
+      }
+    };
+    fetchBlogs();
+  }, []);
 
   return (
 <div>
