@@ -42,7 +42,7 @@ function App() {
   if (loading) return <Loading />;
 
   return (
-    <Router>
+    <>
       <Routes>
         {/* Public Layout */}
         <Route path="/" element={<Layout />}>
@@ -70,7 +70,7 @@ function App() {
           <Route path="settings" element={<AdminSettings />} />
         </Route>
       </Routes>
-    </Router>
+    </>
   );
 }
 

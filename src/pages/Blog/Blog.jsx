@@ -7,19 +7,29 @@ import { Link } from 'react-router-dom';
 import blogBanner from "../../assets/banners/blog-banner.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import blogPosts from "../../data/blogPosts";
+// import blogPosts from "../../data/blogPosts";
 import axios from "axios"; // <-- Add this
+import { useAppContext } from '../../context/AppContext';
 
 function Blog() {
   const navigate = useNavigate();
+  const { axios : api } = useAppContext();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [blogPosts, setBlogPosts] = useState([]);
 
+  const categories = ['Automation', 'Networking', 'Business', 'Information', 'Education']
+  
   useEffect(() => {
     AOS.init({ duration: 1000 });
     // Fetch blogs from your backend API
-    axios.get("http://localhost:5000/api/blogs")
-      .then(res => setBlogPosts(res.data))
+    axios.get("/blogs/all")
+      .then(res => {
+        if (res.data.success) {
+          setBlogPosts(res.data.blogs);
+        } else {
+          console.error("Blog load failed:", res.data.message);
+        }
+      })
       .catch(err => console.error("Failed to fetch blogs", err));
   }, []);
 
@@ -27,7 +37,7 @@ function Blog() {
     navigate(`/blogs/${slug}`);
   };
 
-  const categories = ["All", ...new Set(blogPosts.map((post) => post.category))];
+
   const filteredBlogs =
     selectedCategory !== "All"
       ? blogPosts.filter((post) => post.category === selectedCategory)
@@ -77,30 +87,47 @@ function Blog() {
         data-aos="fade-left">
           Our Blogs
         </h2>
+
+      {/* Category Filters */}
+        {/* <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-4 py-2 rounded-full border text-sm font-medium transition duration-300 ${
+                selectedCategory === category
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white text-gray-800 border-gray-300 hover:bg-blue-50'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div> */}
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 py-6 my-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center gap-10 py-6 my-12 ">
   {filteredBlogs.map((post) => (
     <div
-    key={post._id || post.slug}
-     className="group max-w-3xl mx-auto bg-gray-100 shadow-md rounded-md overflow-hidden flex flex-col sm:flex-row min-h-[450px] sm:min-h-[450px] h-auto">
-      {/* Media (Background Image) */}
+      key={post._id || post.slug}
+      className="group min-w-[400px] bg-gray-100 shadow-md rounded-xl overflow-hidden flex flex-col md:flex-row min-h-[450px] transition-all duration-300"
+    >
+      {/* Image */}
       <div
-        className="sm:w-1/2 md:group-hover:w-[75%] min-h-[250px] w-full bg-cover bg-center group-hover:scale-105 transition-all duration-300"
-        style={{
-          backgroundImage: `url(${post.image})`,
-        }}
+        className="w-full md:w-1/2 min-h-[250px] bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
+        style={{ backgroundImage: `url(${post.image})` }}
       ></div>
 
       {/* Content */}
-      <div className="sm:w-1/2 h-full w-full p-6 relative flex flex-col justify-between transition-all duration-300">
+      <div className="w-full md:w-1/2 p-8 flex flex-col justify-between relative">
         <div>
-          <p className="text-[10px] text-gray-800 font-bold bg-red-400 w-max p-2 rounded-full uppercase tracking-wide text-center mb-2">
+          <p className="text-[10px] text-gray-800 font-bold bg-red-400 w-max p-2 rounded-full uppercase tracking-wide mb-2">
             {post.category || "Featured"}
           </p>
-          <h3 className="text-2xl font-playfair text-center text-gray-800 leading-tight">
+          <h3 className="text-3xl font-playfair text-gray-800 text-center md:text-left">
             {post.title}
           </h3>
-          <div className="h-[2px] w-10 bg-gray-400 mx-auto my-4" />
+          <div className="h-[2px] w-10 bg-gray-400 mx-auto md:mx-0 my-4" />
           <p className="text-gray-600 text-sm text-justify font-light">
             {post.summary}
           </p>
@@ -108,15 +135,16 @@ function Blog() {
 
         <Link
           to={`/blogs/${post.slug}`}
-          className="absolute group-hover:bg-gray-300 p-[1px] py-2 rounded-full flex justify-center items-center  bottom-6 left-1/2 transform -translate-x-1/2 text-gray-500 hover:text-gray-800 transition-colors duration-300"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 text-gray-500 hover:text-gray-800 hover:bg-gray-300 p-2 rounded-full transition duration-300 flex items-center gap-1"
           title="Read More"
-        > Read More
-          <FaChevronRight size={18} />
+        >
+          Read More <FaChevronRight size={18} />
         </Link>
       </div>
     </div>
   ))}
 </div>
+        </div>
       </div>
     </div>
   );

@@ -1,14 +1,13 @@
-// src/pages/BlogDetail.jsx
-
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import { useAppContext } from "../../context/AppContext"; // Use shared axios instance
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const BlogDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const { axios } = useAppContext(); // Reuse configured axios
   const [blog, setBlog] = useState(null);
   const [allBlogs, setAllBlogs] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -17,14 +16,26 @@ const BlogDetail = () => {
     AOS.init({ duration: 1000 });
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // Fetch all blogs for sidebar/recent posts
-    axios.get("http://localhost:5000/api/blogs")
-      .then(res => setAllBlogs(res.data))
+    // Fetch all blogs
+    axios.get("/blogs/all")
+      .then((res) => {
+        if (res.data.success) {
+          setAllBlogs(res.data.blogs);
+        } else {
+          console.error("Failed to fetch all blogs:", res.data.message);
+        }
+      })
       .catch(err => console.error("Failed to fetch blogs", err));
 
-    // Fetch the blog by slug
-    axios.get(`http://localhost:5000/api/blogs/slug/${slug}`)
-      .then(res => setBlog(res.data))
+    // Fetch blog by slug
+    axios.get(`/blogs/slug/${slug}`)
+      .then((res) => {
+        if (res.data.success) {
+          setBlog(res.data.blog);
+        } else {
+          setBlog(null);
+        }
+      })
       .catch(() => setBlog(null));
   }, [slug]);
 
@@ -42,7 +53,7 @@ const BlogDetail = () => {
     );
   }
 
-  const categories = ["All", ...new Set(allBlogs.map((post) => post.category))];
+  const categories = ['Automation', 'Networking', 'Business', 'Information', 'Education'];
 
   const filteredBlogs =
     selectedCategory && selectedCategory !== "All"
@@ -52,15 +63,8 @@ const BlogDetail = () => {
   return (
     <div className="container mx-auto px-4 md:px-10 lg:px-16 py-10 md:py-20 text-gray-800">
       {/* Banner */}
-      <section
-        className="relative h-[400px] md:h-[500px] mb-20 rounded-2xl overflow-hidden shadow-xl"
-        data-aos="fade-up"
-      >
-        <img
-          src={blog.image}
-          alt={blog.title}
-          className="absolute inset-0 w-full h-full object-cover scale-105"
-        />
+      <section className="relative h-[400px] md:h-[500px] mb-20 rounded-2xl overflow-hidden shadow-xl" data-aos="fade-up">
+        <img src={blog.image} alt={blog.title} className="absolute inset-0 w-full h-full object-cover scale-105" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
         <div className="relative z-10 h-full flex flex-col justify-end items-start px-6 md:px-16 text-white pb-12">
           <span className="mb-3 px-4 py-1 rounded-full bg-blue-600 text-xs font-semibold tracking-wider uppercase shadow">
@@ -79,24 +83,10 @@ const BlogDetail = () => {
       {/* Main Content */}
       <section className="flex flex-col lg:flex-row gap-12">
         <article className="flex-1 bg-white p-8 rounded-xl shadow-lg leading-relaxed" data-aos="fade-right">
-          <div className="prose prose-lg max-w-none prose-p:my-4 prose-h2:mt-8 prose-h2:mb-3 prose-img:rounded-md"
-     dangerouslySetInnerHTML={{ __html: blog.content }} />
-
-          {/* {blog.lists && (
-            <div className="prose prose-lg max-w-none mt-10">
-              {Object.entries(blog.lists).map(([key, value]) => (
-                <div key={key} className="mb-6">
-                  <h3 className="text-xl text-blue-700 font-semibold mb-2">{key}</h3>
-                  <ul className="list-disc list-inside space-y-2">
-                    {value.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          )} */}
-
+          <div
+            className="prose prose-lg max-w-none prose-p:my-4 prose-h2:mt-8 prose-h2:mb-3 prose-img:rounded-md"
+            dangerouslySetInnerHTML={{ __html: blog.description }}
+          />
           <blockquote className="my-10 border-l-4 border-blue-600 bg-blue-50 p-5 text-lg italic text-gray-700 rounded-r-md shadow-inner">
             “A well-structured blog engages the reader and adds value to the industry.”
           </blockquote>
@@ -112,10 +102,7 @@ const BlogDetail = () => {
                 <li key={recent.slug} className="flex items-start gap-4">
                   <img src={recent.image} alt={recent.title} className="w-16 h-16 object-cover rounded-md shadow-sm" />
                   <div>
-                    <Link
-                      to={`/blogs/${recent.slug}`}
-                      className="text-blue-600 hover:text-blue-800 font-semibold"
-                    >
+                    <Link to={`/blogs/${recent.slug}`} className="text-blue-600 hover:text-blue-800 font-semibold">
                       {recent.title}
                     </Link>
                     <p className="text-gray-500 text-xs mt-1">{recent.date}</p>
