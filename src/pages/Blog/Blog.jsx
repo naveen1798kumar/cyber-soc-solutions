@@ -17,14 +17,15 @@ function Blog() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [blogPosts, setBlogPosts] = useState([]);
 
-  const categories = ['Automation', 'Networking', 'Business', 'Information', 'Education']
+  const categories = ['All', 'Automation', 'Networking', 'Business', 'Information', 'Education']
   
   useEffect(() => {
     AOS.init({ duration: 1000 });
     // Fetch blogs from your backend API
-    axios.get("/blogs/all")
+    api.get("/blogs/published")
       .then(res => {
         if (res.data.success) {
+          // const publishedBlogs = res.data.blogs.filter(blog => blog.isPublished);
           setBlogPosts(res.data.blogs);
         } else {
           console.error("Blog load failed:", res.data.message);
@@ -36,7 +37,6 @@ function Blog() {
   const handleClick = (slug) => {
     navigate(`/blogs/${slug}`);
   };
-
 
   const filteredBlogs =
     selectedCategory !== "All"
@@ -89,7 +89,7 @@ function Blog() {
         </h2>
 
       {/* Category Filters */}
-        {/* <div className="flex flex-wrap justify-center gap-3 mb-10">
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
           {categories.map((category) => (
             <button
               key={category}
@@ -103,7 +103,7 @@ function Blog() {
               {category}
             </button>
           ))}
-        </div> */}
+        </div>
         
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center gap-10 py-6 my-12 ">
