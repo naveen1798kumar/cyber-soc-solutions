@@ -21,8 +21,8 @@ const Navbar = () => {
   };
 
   const linkClass =
-    "px-2 lg:px-4 py-2 text-md font-medium transition-all duration-300 text-gray-800 hover:text-[#008080] relative";
-  const activeClass = "text-blue-500 border-b-2 border-[#008080]";
+    "px-2 lg:px-4 py-2 text-md font-medium transition-all duration-300 text-[#081120] hover:text-[var(--color-primary)] relative";
+  const activeClass = "text-gray-500 border-b-2 border-[var(--color-primary)]";
 
   return (
     <nav className="hidden md:flex items-center lg:space-x-6 relative">
@@ -47,7 +47,9 @@ const Navbar = () => {
 
         <div ref={servicesRef}
         onMouseEnter={() => setIsServicesOpen(true)} 
-        onMouseLeave={() => setIsServicesOpen(false)}>
+        onMouseLeave={() => setIsServicesOpen(false)}
+        // className=" px-4 py-2 bg-gray-500"
+        >
           <Link
             to="/services"
             onClick={() => {
@@ -55,9 +57,9 @@ const Navbar = () => {
           window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top when clicking the Services link
             }}
             onMouseOver={() => setIsServicesOpen(true)}
-            className="group px-4 py-2 text-md font-medium flex items-center justify-center gap-2 text-gray-800 hover:text-blue-400 cursor-pointer"
+            className="group text-md font-medium flex items-center justify-center gap-1 text-gray-800 hover:text-[var(--color-primary)] cursor-pointer"
           >
-            Services <FaChevronDown className={`text-gray-800 group-hover:text-blue-400 cursor-pointer ${isServicesOpen ? 'rotate-180' : ''}`} />
+            Services <FaChevronDown className={`text-gray-800 text-xs group-hover:text-[var(--color-primary)] cursor-pointer transition-all duration-500 ${isServicesOpen ? 'rotate-180' : ''}`} />
           </Link>
 
           <AnimatePresence>
@@ -70,24 +72,26 @@ const Navbar = () => {
             className={`absolute left-1/2 top-full mt-0 transform -translate-x-1/2 min-w-[90vw] max-h-[70vh] z-50 overflow-hidden overflow-y-auto scrollbar-hide 
               ${isServicesOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-5 invisible'}`}
           >
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 bg-gradient-to-r from-[#c3cfe2] to-[#f5f7fa] shadow-xl hover:shadow-2xl rounded-xl border border-gray-200 transition-all duration-300">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 bg-[#ffffff]  shadow-xl hover:shadow-2xl  border border-gray-200 transition-all duration-300">
               {Object.keys(servicesData).map((categoryKey) => (
                 <div
                   key={categoryKey}
-                  className="border border-gray-100 rounded-lg bg-white hover:shadow-md transition-shadow duration-300"
+                  className="border border-gray-100 rounded-lg bg-white hover:shadow-lg transition-shadow duration-300 overflow-hidden"
                 >
-                  <h3 className="px-5 py-4 text-[17px] font-semibold tracking-wide text-[#027070] bg-gray-50 border-b border-gray-200 uppercase rounded-t-lg">
+                  <h3 className="px-5 py-4 text-[20px] font-bold font-secondary tracking-wide text-[#081120] bg-gray-50 border-b-2 border-gray-200 uppercase rounded-t-lg">
                     {servicesData[categoryKey].title}
                   </h3>
                   {servicesData[categoryKey].services.map((service) => (
-                    <NavLink
-                      key={service.id}
-                      to={`/services/${categoryKey}/${service.id}`}
-                      onClick={handleServiceClick}
-                      className="block px-5 py-2 text-[15px] text-gray-700 font-medium hover:text-blue-700 hover:pl-7 transition-all duration-300 ease-in-out rounded-md"
-                    >
-                      {service.title}
-                    </NavLink>
+              <NavLink
+                key={service.id}
+                to={`/services/${categoryKey}/${service.id}`}
+                onClick={handleServiceClick}
+                className="group relative block px-5 py-2 hover:pl-7 text-[15px] text-gray-700 font-medium transition-all duration-300 ease-in-out rounded-md hover:text-blue-700"
+              >
+                <span className="absolute left-0 top-0 h-full w-[3px] bg-blue-700 opacity-0 group-hover:opacity-100 group-hover:translate-x-[-50%] transition-all duration-300"></span>
+                {service.title}
+              </NavLink>
+
                   ))}
                 </div>
               ))}
@@ -100,7 +104,7 @@ const Navbar = () => {
         </div>
 
         {/* Products Dropdown */}
-        <div 
+        {/* <div 
   ref={productsRef}
   onMouseEnter={() => setIsProductsOpen(true)}
   onMouseLeave={() => setIsProductsOpen(false)}
@@ -117,7 +121,7 @@ const Navbar = () => {
   >
     Products
   </Link>
-</div>
+</div> */}
 
       <NavLink
         to="/blogs"
@@ -137,6 +141,16 @@ const Navbar = () => {
         onClick={handleClick}
       >
         Events
+      </NavLink>
+
+      <NavLink
+        to="/career"
+        className={({ isActive }) =>
+          isActive ? `${linkClass} ${activeClass}` : linkClass
+        }
+        onClick={handleClick}
+      >
+        Career
       </NavLink>
 
       <NavLink

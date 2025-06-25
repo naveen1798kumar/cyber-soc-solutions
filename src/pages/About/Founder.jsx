@@ -1,114 +1,112 @@
-import React from "react";
-import bgImage from "../../assets/Hero-Slider/Home-Automation.jpg";
+import React, { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import bgImage from "../../assets/About-us/15628.jpg";
+import { motion } from "framer-motion";
+
+const CountdownCard = ({ label, targetNumber, delay = 0 }) => {
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.5 });
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (inView) {
+      let start = 0;
+      const duration = 1500;
+      const increment = targetNumber / (duration / 30);
+
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= targetNumber) {
+          start = targetNumber;
+          clearInterval(timer);
+        }
+        setCount(Math.floor(start));
+      }, 30);
+
+      return () => clearInterval(timer);
+    }
+  }, [inView, targetNumber]);
+
+  return (
+    <div
+      ref={ref}
+      className="bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-xl text-center min-w-[140px]"
+      data-aos="fade-up"
+      data-aos-delay={delay}
+    >
+      <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+        {count}+
+      </h2>
+      <p className="text-base font-medium text-gray-700">{label}</p>
+    </div>
+  );
+};
 
 function Founder() {
   return (
-    <div>
-      {/* Hero Section */}
-      <div className="w-full bg-gray-50 py-12 md:py-20">
-        <section className="container mx-auto flex flex-col-reverse lg:grid lg:grid-cols-2 items-center gap-12 px-6 md:px-12 lg:px-20">
-          {/* Text Content */}
-          <div className="lg:text-left" data-aos="fade-up">
-             {/* Title */}
-  <h2
-    className="relative text-4xl font-extrabold text-gray-900 tracking-wide leading-tight 
-               before:absolute before:content-[''] before:w-20 before:h-1 before:bg-blue-500 
-               before:bottom-0 before:left-1/2 before:-translate-x-1/2 
-               after:absolute after:content-[''] after:w-10 after:h-1 after:bg-blue-300 
-               after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 mb-6 md:mb-2"
-    data-aos="fade-left"
-  >
-    Welcome to <span className="text-blue-600">CyberSoc</span>.
-  </h2>
+    <div className="w-full bg-gray-50 py-12 md:py-20">
+      <section className="container mx-auto flex flex-col-reverse lg:grid lg:grid-cols-2 items-center gap-12 px-6 md:px-12 lg:px-20">
+        {/* Text Content */}
+        <div className="lg:text-left space-y-6" data-aos="fade-up">
+          <p className="text-sm bg-indigo-300/40 rounded-lg px-4 py-1 inline-block uppercase font-medium tracking-wide" data-aos="fade-left">
+            About us
+          </p>
 
-  <p className="my-2 text-lg text-gray-800 font-medium">
-  For your <span className="text-blue-500">Innovative</span> and <span className="text-blue-500">Modern</span> digital solutions.
-</p>
-<p className="text-gray-700 text-lg md:text-xl leading-relaxed">
-  CyberSoc is a leading company specializing in <strong>Cyber Security</strong>, <strong>Automation</strong>, and <strong>Web Application Development</strong>. With over <strong>10 years of experience</strong>, we have been empowering businesses and individuals with cutting-edge solutions to enhance security, efficiency, and connectivity.
-</p>
-<p className="mt-6 text-gray-700 text-lg leading-relaxed">
-{/* Headquartered in <strong>Coimbatore</strong>, w */}
-  We also have strategic branches in <strong>Poland</strong>, <strong>Australia</strong>, and <strong>Hungary</strong>, allowing us to serve a global clientele with localized expertise and international reach.
-</p>
-<p className="mt-6 text-gray-700 text-lg leading-relaxed">
-  Our expertise spans across <strong>Networking Solutions</strong>, <strong>Software Development</strong>, and <strong>Automation Systems</strong>. We are committed to delivering smart, scalable, and future-proof solutions that drive digital transformation and optimize workflows for our clients.
-</p>
-<p className="mt-6 text-gray-700 text-lg leading-relaxed">
-  At CyberSoc, we believe in innovation, reliability, and excellence. Join us on our journey to create a secure and automated future.
-</p>
-{/* <p className="mt-6 text-gray-700 text-lg leading-relaxed"> </p> */}
-          </div>
-
-          {/* Image Section */}
-          <div
-            className="w-full h-[300px] md:h-[400px] lg:h-[500px]"
+          <h2
+            className="relative text-5xl font-extrabold text-gray-900 tracking-wide leading-tight 
+                       before:absolute before:content-[''] before:w-20 before:h-1 before:bg-blue-500 
+                       before:bottom-0 before:left-1/2 before:-translate-x-1/2 
+                       after:absolute after:content-[''] after:w-10 after:h-1 after:bg-blue-300 
+                       after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 mb-4"
             data-aos="fade-left"
           >
-            <img
-              src={bgImage}
-              alt="CyberSoc - Cyber Security and Automation"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
-          </div>
-        </section>
-      </div>
+            Welcome to <span className="text-blue-600">CyberSoc</span>.
+          </h2>
 
-{/*  */}
-<div className="my- w-24 h-1 mx-auto bg-gray-500 rounded-full"></div>
+          <p className="text-lg text-gray-800 font-medium">
+            For your <span className="text-blue-500">Innovative</span> and <span className="text-blue-500">Modern</span> digital solutions.
+          </p>
 
-      <div className="w-full bg-gradient-to-b from-[#f5f7fa] to-[#c3cfe2] py-16 md:py-24">
-  <section className="container mx-auto px-6 md:px-12 lg:px-20">
-    <h2
-      className="text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-600 tracking-tight mb-16"
-      data-aos="fade-up"
-    >
-      Why Choose <span className="underline decoration-blue-500">CyberSoc</span>?
-    </h2>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            CyberSoc is a leading company specializing in <strong>Cyber Security</strong>, <strong>Automation</strong>, and <strong>Web Application Development</strong>. With over <strong>10 years of experience</strong>, we empower businesses with smart, secure, and scalable solutions. <br />
+            We operate globally from our headquarters in <strong>Coimbatore</strong>, with strategic branches in <strong>Poland</strong>, <strong>Australia</strong>, and <strong>Hungary</strong>, delivering both local insight and international expertise.
+          </p>
 
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-10 lg:gap-16">
-      {[
-        {
-          title: "10+ Years of Experience",
-          desc: "A decade of expertise in Cyber Security, Automation, and Software Development.",
-        },
-        {
-          title: "Tailored Solutions",
-          desc: "Customized services to meet the unique needs of businesses and individuals.",
-        },
-        {
-          title: "Cutting-Edge Technology",
-          desc: "Leveraging the latest technologies to deliver innovative and secure solutions.",
-        },
-        {
-          title: "Expert Team",
-          desc: "A team of skilled professionals dedicated to delivering excellence.",
-        },
-        {
-          title: "Client-Centric Approach",
-          desc: "Focused on building long-term relationships with our clients.",
-        },
-        {
-          title: "Proven Track Record",
-          desc: "Successfully delivered projects for clients across various industries.",
-        },
-      ].map((card, i) => (
-        <div
-          key={i}
-          className="p-4 md:p-6 bg-white/60 backdrop-blur-md border border-white/30 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out"
-          data-aos="fade-up"
-          data-aos-delay={i * 100}
-        >
-          <h3 className="text-xl font-semibold text-blue-800 mb-3">
-            {card.title}
-          </h3>
-          <p className="text-gray-800 tracking-wide">{card.desc}</p>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            Our services include <strong>Networking Solutions</strong>, <strong>Custom Software Development</strong>, and advanced <strong>Automation Systems</strong> tailored to modern needs.
+          </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            At CyberSoc, we value <strong>innovation</strong>, <strong>reliability</strong>, and <strong>excellence</strong>. Join us in building a smarter, more secure future.
+          </p>
         </div>
-      ))}
-    </div>
-  </section>
-</div>
 
+        {/* Image Section */}
+        <div
+          className="relative group w-full h-[300px] md:h-[400px] lg:h-[600px]"
+          data-aos="fade-left"
+        >
+          <img
+            src={bgImage}
+            alt="CyberSoc - Cyber Security and Automation"
+            className="w-full h-full object-cover rounded-lg shadow-lg"
+          />
+
+          {/* Hover Slide Strip */}
+          <div
+            className="absolute bottom-0 top-0 left-1/4 
+                       h-full w-3/4 bg-gradient-to-r from-white/10 to-white backdrop-blur-md 
+                       rounded-sm opacity-0 
+                       group-hover:opacity-100 group-hover:left-full 
+                       transition-all duration-500 ease-in-out pointer-events-none"
+          />
+
+          {/* Countdown Stats */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 flex justify-evenly bg-gradient-to-t from-gray-900/80 to-transparent rounded-b-lg">
+            <CountdownCard label="Years of Experience" targetNumber={10} delay={0} />
+            <CountdownCard label="Successful Clients" targetNumber={100} delay={200} />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

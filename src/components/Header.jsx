@@ -30,10 +30,14 @@ const Header = () => {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full  flex items-center justify-between px-12 md:px-10 transition-all duration-300 z-[9999] 
-      ${isScrolled ? "py-2 bg-white/80 shadow-md backdrop-blur-lg border-b border-gray-200" : "py-4 bg-gradient-to-r from-[#f5f7fa] to-[#c3cfe2] backdrop-blur-lg border border-white/20"}`}
-    >
+   <header
+  className={`fixed top-0 left-0 w-full flex items-center justify-between px-6 md:px-20 transition-all duration-300 z-[9999] 
+    ${
+      isScrolled
+        ? "py-2 bg-white/90 shadow-lg backdrop-blur-md border-b border-gray-300"
+        : "py-4 bg-gradient-to-r from-[#e0ecf8] to-[#c3dafe] backdrop-blur-md border border-white/20"
+    }`}
+>
       {/* Logo */}
       <Link
         to="/"

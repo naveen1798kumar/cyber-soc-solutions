@@ -6,6 +6,7 @@ import Loading from './components/Loading';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Blog from './pages/Blog/Blog';
+import Career from './pages/Career/Career';
 import BlogDetail from './pages/Blog/BlogDetail';
 import NotFound from './pages/404/NotFound';
 import Services from './pages/Services/Services';
@@ -52,6 +53,7 @@ function App() {
           <Route path="services/:category/:serviceId" element={<ServiceDetails />} />
           <Route path="services/:category" element={<CategoryServices />} />
           <Route path="blogs" element={<Blog />} />
+          <Route path="career" element={<Career />} />
           <Route path="blogs/:slug" element={<BlogDetail />} />
           <Route path="products" element={<Products />} />
           <Route path="contact" element={<Contact />} />

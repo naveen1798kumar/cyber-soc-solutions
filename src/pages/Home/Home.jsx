@@ -88,9 +88,9 @@ function Home() {
       </div>
 
       {/* Partners Carousel */}
-      <div className="bg-white">
+      {/* <div className="bg-white">
         <PartnersSlide />
-      </div>
+      </div> */}
 
 {/* Mission and Vision Section */}
 <div
