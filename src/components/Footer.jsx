@@ -153,8 +153,7 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-10 py-6 border-t border-[#02707088] text-center text-base sm:text-lg text-[#CCCCD5] font-secondary px-4"
-          data-aos="fade-right" data-aos-duration="800" data-aos-delay="400">
+        <div className="mt-10 py-6 border-t border-[#02707088] text-center text-base sm:text-lg text-[#CCCCD5] font-secondary px-4">
           <p>
             Copyright{" "}
             <FaRegCopyright className="inline mx-1 text-[#008080]" /> {new Date().getFullYear()}

@@ -3,12 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, NavLink } from "react-router-dom";
 import  servicesData  from "../../data/servicesData";
 import { FaChevronDown } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
+
 
 const Navbar = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false); // State for "Services" dropdown
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const servicesRef = useRef(null);
   const productsRef = useRef(null);
+
+const location = useLocation();
+const isServicesActive = location.pathname.startsWith("/services");
+
 
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -21,8 +27,8 @@ const Navbar = () => {
   };
 
   const linkClass =
-    "px-2 lg:px-4 py-2 text-md font-medium transition-all duration-300 text-[#081120] hover:text-[var(--color-primary)] relative";
-  const activeClass = "text-gray-500 border-b-2 border-[var(--color-primary)]";
+    "px-2 lg:px-4 py-2 text-md font-medium transition-all duration-300 hover:text-gray-500 relative";
+  const activeClass = "text-[#027070] border-b-2 border-[#027070]";
 
   return (
     <nav className="hidden md:flex items-center lg:space-x-6 relative">
@@ -57,9 +63,14 @@ const Navbar = () => {
           window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top when clicking the Services link
             }}
             onMouseOver={() => setIsServicesOpen(true)}
-            className="group text-md font-medium flex items-center justify-center gap-1 text-gray-800 hover:text-[var(--color-primary)] cursor-pointer"
+            className={`group text-md font-medium flex items-center justify-center gap-1 cursor-pointer 
+            ${isServicesActive ? 'text-[#027070]' : "text-gray-800 hover:text-gray-500 "}`}
           >
-            Services <FaChevronDown className={`text-gray-800 text-xs group-hover:text-[var(--color-primary)] cursor-pointer transition-all duration-500 ${isServicesOpen ? 'rotate-180' : ''}`} />
+            Services <FaChevronDown className={` text-xs cursor-pointer transition-all duration-500 ${
+            isServicesActive
+              ? 'text-[#027070]'
+              : 'text-gray-800 group-hover:text-gray-500'
+          } ${isServicesOpen ? 'rotate-180' : ''}`} />
           </Link>
 
           <AnimatePresence>

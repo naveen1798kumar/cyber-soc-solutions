@@ -18,49 +18,21 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (formData.name && formData.email && formData.message) {
-      try {
-        // Send form data to Toastify API
-        const response = await fetch("https://api.toastify.io/v1/send", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer YOUR_API_KEY", // Replace with your Toastify API Key
-          },
-          body: JSON.stringify({
-            to: "info@cybersocsolutions.com", // Replace with your email
-            subject: `New Contact Form Submission from ${formData.name}`,
-            message: `
-              <p><strong>Name:</strong> ${formData.name}</p>
-              <p><strong>Email:</strong> ${formData.email}</p>
-              <p><strong>Message:</strong> ${formData.message}</p>
-            `,
-          }),
-        });
+  if (formData.name && formData.email && formData.message) {
+    try {
+      const response = await fetch("http://localhost:5000/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-        if (response.ok) {
-          // Show success toast
-          toast.success("Your message has been sent successfully!", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-
-          // Reset form fields
-          setFormData({ name: "", email: "", message: "" });
-        } else {
-          throw new Error("Failed to send message");
-        }
-      } catch (error) {
-        // Show error toast
-        toast.error("Failed to send your message. Please try again.", {
+      if (response.ok) {
+        toast.success("Your message has been sent successfully!", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -69,10 +41,13 @@ const Contact = () => {
           draggable: true,
           progress: undefined,
         });
+
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        throw new Error("Failed to send message");
       }
-    } else {
-      // Show error toast for empty fields
-      toast.error("Please fill out all fields before submitting.", {
+    } catch (error) {
+      toast.error("Failed to send your message. Please try again.", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -82,7 +57,19 @@ const Contact = () => {
         progress: undefined,
       });
     }
-  };
+  } else {
+    toast.error("Please fill out all fields before submitting.", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+};
+
 
   return (
     <div className="relative overflow-hidden">

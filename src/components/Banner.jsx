@@ -3,42 +3,41 @@ import { MdHome } from "react-icons/md";
 import { FaChevronRight } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Link } from "react-router-dom"; // Ensure React Router is being used
+import { Link, useLocation } from "react-router-dom";
 
-const handleClick = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
+const handleClick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
+// Breadcrumb Subcomponent
 const Breadcrumb = () => {
-  const pathnames = window.location.pathname.split("/").filter((x) => x);
+  const { pathname } = useLocation();
+  const pathnames = pathname.split("/").filter(Boolean);
 
   return (
     <nav
-      className="absolute bottom-5 right-8 text-white text-sm md:text-base font-semibold z-20"
-      data-aos="fade-right"
+      className="absolute bottom-6 right-6 md:right-10 text-white text-sm md:text-base font-medium z-30"
+      data-aos="fade-up"
     >
-      <ul className="flex items-center space-x-2 bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm shadow-md">
+      <ul className="flex items-center flex-wrap gap-2 bg-black/40 px-4 py-2 rounded-full backdrop-blur-md shadow-md">
         <li>
           <Link
             to="/"
-            className="flex items-center text-gray-100 hover:text-blue-400 transition"
+            className="flex items-center gap-1 text-white hover:text-[#6de2e2] transition"
           >
-            <MdHome className="mr-1 text-lg" /> Home
+            <MdHome /> Home
           </Link>
         </li>
         {pathnames.map((name, index) => {
           const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
-
           return (
-            <li key={routeTo} className="flex items-center">
-              <FaChevronRight className="text-gray-300 mx-2 text-xs" />
+            <li key={routeTo} className="flex items-center gap-2">
+              <FaChevronRight className="text-white/60 text-xs" />
               {isLast ? (
-                <span className="text-blue-400 capitalize">{name}</span>
+                <span className="capitalize text-[#6de2e2]">{name}</span>
               ) : (
                 <Link
                   to={routeTo}
-                  className="capitalize text-gray-200 hover:text-blue-400 transition"
+                  className="capitalize text-white/90 hover:text-[#6de2e2] transition"
                 >
                   {name}
                 </Link>
@@ -51,40 +50,36 @@ const Breadcrumb = () => {
   );
 };
 
+// Main Banner Component
 const Banner = ({ backgroundImage, title, description }) => {
   useEffect(() => {
     AOS.init({ duration: 1200, once: true });
-    AOS.refresh(); // Ensures animations work on page transitions
+    AOS.refresh();
   }, []);
 
   return (
     <div
-      className="relative min-h-[60vh] h-auto flex items-center justify-center overflow-hidden"
-      data-aos="fade-down"
+      className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden"
+      data-aos="fade-in"
     >
-      {/* Parallax Background */}
+      {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center transform scale-110 transition-all duration-[3000ms] grayscale-75 ease-out"
+        className="absolute inset-0 bg-cover bg-center scale-110 grayscale hover:grayscale-0 transition-all duration-[3000ms]"
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundAttachment: "fixed",
         }}
-        data-aos="zoom-out"
-      ></div>
+        data-aos="zoom-in"
+      />
 
-      {/* Multiple Layered Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/30 to-indigo-700/50 animate-pulse-fast"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-black/40 to-transparent"></div>
+      {/* Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#000000cc] via-[#02707099] to-[#00000088] z-10" />
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm z-10" />
 
-      {/* <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/40 to-whitw/20 z-10"></div>
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-sm z-10"></div> */}
-<div className="absolute inset-0 grayscale hover:grayscale-0 z-10 transition-all duration-300"></div>
-
-
-      {/* Floating Animated Particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 left-1/4 w-12 h-12 bg-blue-400/40 rounded-full blur-xl animate-float" />
-        <div className="absolute bottom-10 right-1/4 w-16 h-16 bg-indigo-500/50 rounded-full blur-lg animate-float delay-1000" />
+      {/* Particles */}
+      <div className="absolute inset-0 z-20 pointer-events-none">
+        <div className="absolute top-10 left-1/4 w-10 h-10 bg-[#6de2e2]/40 rounded-full blur-xl animate-float" />
+        <div className="absolute bottom-12 right-1/4 w-14 h-14 bg-[#027070]/50 rounded-full blur-lg animate-float delay-1000" />
         <div className="absolute top-1/3 right-1/5 w-8 h-8 bg-cyan-400/40 rounded-full blur-md animate-float delay-500" />
       </div>
 
@@ -93,16 +88,14 @@ const Banner = ({ backgroundImage, title, description }) => {
 
       {/* Content */}
       <div
-        className="absolute inset-0 z-10 flex flex-col justify-center  text-white px-6 py-8 md:px-16 md:py-12 max-w-3xl lg:max-w-4xl"
-        data-aos="fade-left"
+        className="relative z-30 px-6 py-12 md:px-16 lg:px-24 max-w-4xl text-white text-left"
+        data-aos="fade-up"
       >
-        <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight drop-shadow-2xl leading-tight">
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight drop-shadow-md">
           {title}
-          {/* linear-gradient(90deg,  0%, #c3cfe2 100%) */}
-        </h2>
-
+        </h1>
         {description && (
-          <p className="mt-6 text-lg md:text-2xl text-white/90 font-light max-w-3xl tracking-wide leading-snug drop-shadow-md">
+          <p className="mt-6 text-lg md:text-2xl text-white/90 leading-snug font-light drop-shadow">
             {description}
           </p>
         )}

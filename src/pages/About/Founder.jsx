@@ -47,8 +47,8 @@ function Founder() {
       <section className="container mx-auto flex flex-col-reverse lg:grid lg:grid-cols-2 items-center gap-12 px-6 md:px-12 lg:px-20">
         {/* Text Content */}
         <div className="lg:text-left space-y-6" data-aos="fade-up">
-          <p className="text-sm bg-indigo-300/40 rounded-lg px-4 py-1 inline-block uppercase font-medium tracking-wide" data-aos="fade-left">
-            About us
+          <p className="text-sm bg-gray-300/90 rounded-lg px-4 py-1 tracking-wide text-center  w-max font-semibold uppercase text-indigo-600 mb-2">
+              About Us
           </p>
 
           <h2

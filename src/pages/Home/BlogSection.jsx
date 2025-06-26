@@ -7,13 +7,19 @@ import "aos/dist/aos.css";
 const BlogSection = () => {
   return (
     <section className="container mx-auto px-6 py-20">
+      <p
+    className="text-sm bg-gray-300/90 rounded-lg px-4 py-1 tracking-wide text-center mx-auto w-max font-semibold uppercase text-indigo-600 mb-2"
+    data-aos="fade-left"
+  >
+    Blogs
+  </p>
       {/* Heading */}
       <h2
         className="relative text-center text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight mb-12"
         data-aos="fade-left"
       >
         Latest Blog Posts
-        <span className="block mt-2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></span>
+        <span className="block mt-2 w-24 h-1 bg-gradient-to-r from-[#008080] to-[#008080] mx-auto rounded-full"></span>
       </h2>
 
       {/* Blog Grid */}
@@ -67,9 +73,9 @@ const BlogSection = () => {
       <div className="text-center mt-16">
         <Link
           to="/blogs"
-          className="relative inline-flex items-center gap-2 px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-gray-600 to-gray-600 rounded-full overflow-hidden group shadow-lg transition-transform duration-300 hover:-translate-y-1"
+          className="relative inline-flex items-center gap-2 px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-[#027070] to-[#008080] rounded-full overflow-hidden group shadow-lg transition-transform duration-300 hover:-translate-y-1"
         >
-          <span className="absolute inset-0 bg-gradient-to-r from-[#027070] to-[#008080] scale-0 group-hover:scale-100 transition-transform duration-500 origin-center"></span>
+          <span className="absolute inset-0 bg-gradient-to-r from-gray-600 to-gray-600 scale-0 group-hover:scale-100 transition-transform duration-500 origin-center"></span>
           <span className="relative z-10 flex items-center gap-2">
             View All Blogs
             <svg

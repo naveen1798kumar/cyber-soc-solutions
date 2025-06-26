@@ -91,58 +91,6 @@ const Services = () => {
           <ServiceCategory category={openCategory} onClose={() => setOpenCategory(null)} />
         )}
 
-        {/* ✅ Sidebar for quick navigation */}
-<aside className="fixed top-1/2  right-0 -translate-y-1/2 bg-black/50 text-white p-3 rounded-md shadow-lg scale-55 md:scale-75 hover:scale-100 transition-transform duration-300 ease-in-out">
-  <ul className="space-y-4">
-    {/* Web Development */}
-    <li>
-      <div className="relative group flex items-center">
-        <button onClick={() => { scrollToSection("websites-and-softwares"), setOpenCategory(null); }} className="hover:text-blue-400">
-          <img src={icons.webDevelopment} alt="Web Dev" className={iconStyle} />
-        </button>
-        <span className="absolute right-12 bg-black text-white text-sm px-3 py-1 rounded-md opacity-0 transform translate-x-full transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
-          Web Development
-        </span>
-      </div>
-    </li>
-
-    {/* Digital Marketing */}
-    <li>
-      <div className="relative group flex items-center">
-        <button onClick={() => { scrollToSection("digital-marketing"), setOpenCategory(null); }} className="hover:text-blue-400">
-          <img src={icons.digitalMarketing} alt="Digital Marketing" className={iconStyle} />
-        </button>
-        <span className="absolute right-12 bg-black text-white text-sm px-3 py-1 rounded-md opacity-0 transform translate-x-full transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
-          Digital Marketing
-        </span>
-      </div>
-    </li>
-
-    {/* Networking */}
-    <li>
-      <div className="relative group flex items-center">
-        <button onClick={() => { scrollToSection("networking"), setOpenCategory(null); }} className="hover:text-blue-400">
-          <img src={icons.networking} alt="Networking" className={iconStyle} />
-        </button>
-        <span className="absolute right-12 bg-black text-white text-sm px-3 py-1 rounded-md opacity-0 transform translate-x-full transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
-          Networking
-        </span>
-      </div>
-    </li>
-
-    {/* Automation */}
-    <li>
-      <div className="relative group flex items-center">
-        <button onClick={() => { scrollToSection("automation"), setOpenCategory(null); }} className="hover:text-blue-400">
-          <img src={icons.automation} alt="Automation" className={iconStyle} />
-        </button>
-        <span className="absolute right-12 bg-black text-white text-sm px-3 py-1 rounded-md opacity-0 transform translate-x-full transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
-          Automation
-        </span>
-      </div>
-    </li>
-  </ul>
-</aside>
       <PartnersCarousel />
       </div>
 
@@ -165,3 +113,4 @@ export default Services;
   <i className={`${icon} text-white text-2xl group-hover:scale-115`} />
   </div> 
   */}
+  

@@ -52,7 +52,7 @@ const slides = [
 const CustomArrow = ({ direction, onClick }) => (
   <button
     onClick={onClick}
-    className={`absolute group top-1/2 z-30 transform -translate-y-1/2 bg-white/80 text-black hover:text-white hover:font-bold  p-3 rounded-xl cursor-pointer hover:bg-blue-500 shadow-lg transition-all ${
+    className={`absolute group top-1/2 z-30 transform -translate-y-1/2 bg-white/80 text-black hover:text-white hover:font-bold  p-3 rounded-xl cursor-pointer hover:bg-[#027070] shadow-lg transition-all ${
       direction === "left" ? "left-4" : "right-4"
     }`}
   >
@@ -91,8 +91,8 @@ const HeroSection = () => {
     autoplaySpeed: SLIDE_DURATION,
     slidesToShow: 1,
     slidesToScroll: 1,
-    fade: true,
     arrows: false,
+    cssEase: "ease-in-out",
     beforeChange: (_, next) => setActiveSlide(next),
   };
 
@@ -107,19 +107,24 @@ const HeroSection = () => {
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className="relative w-full min-h-[85vh] flex items-center justify-center"
+            className="relative w-[100vw] min-h-[85vh] flex items-center justify-center"
           >
             {/* Background */}
             <div
-              className="absolute inset-0 bg-cover bg-center scale-105 transition-all duration-1000"
-              style={{ backgroundImage: `url(${slide.bgImage})` }}
-            />
-
+            className="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-1000"
+            style={{
+    backgroundImage: `url(${slide.bgImage})`,
+    filter: 'blur(2px)', // 👈 Apply slight blur
+ // Optional: slight zoom to avoid visible edges
+  }}
+          />
             {/* Overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/70 z-0" />
 
             {/* Content */}
-            <div className="relative z-10 max-w-6xl mx-auto px-6 w-full flex flex-col justify-center items-start min-h-[75vh] text-white">
+            <div className="relative z-10 max-w-[80%] mx-auto px-6 w-full flex flex-col justify-end items-start min-h-[75vh] text-white">
+          <p className="text-sm bg-gray-300/90 rounded-lg px-4 py-1 tracking-wide w-max font-semibold uppercase text-indigo-600 mb-2"
+          data-aos="fade-left" >Empowering Your Business with End-to-End IT Solutions</p>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight max-w-4xl drop-shadow-lg">
                 {slide.title}
               </h2>
@@ -130,7 +135,7 @@ const HeroSection = () => {
               <div className="flex flex-wrap gap-4">
                 <Link
                   to={slide.link}
-                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium text-lg rounded-md shadow-lg transition duration-300"
+                  className="px-6 py-3 bg-[#027070] hover:bg-[#025050] text-white font-medium text-lg rounded-md shadow-lg transition duration-300"
                 >
                   {slide.buttonText}
                 </Link>
@@ -154,8 +159,9 @@ const HeroSection = () => {
             className="relative w-20 h-2 bg-white/30 rounded-full overflow-hidden"
           >
             <div
-              className="h-full bg-blue-600 transition-all duration-100"
+              className="h-full transition-all duration-100"
               style={{
+                backgroundColor: "#025050",
                 width:
                   i === activeSlide ? `${progress}%` : i < activeSlide ? "100%" : "0%",
               }}

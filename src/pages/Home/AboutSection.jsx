@@ -15,7 +15,7 @@ function AboutUs() {
   }
 
   return (
-    <div className="w-full bg-gray-100 py-12 md:py-20 lg:my-20">
+    <div className="w-full bg-gray-100 py-8 md:py-20 ">
       <section className="container mx-auto flex flex-col-reverse lg:grid lg:grid-cols-2 items-center gap-12 px-6 md:px-12 lg:px-20">
 {/* Text Content */}
 <div className="lg:text-left" data-aos="fade-up">
@@ -28,8 +28,8 @@ function AboutUs() {
     About <span className=" text-[#008080]">CyberSoc</span>
   </h2>
 
-  <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
-    <strong>CyberSoc Solutions</strong> is a forward-thinking technology company delivering cutting-edge solutions in 
+  <p className="text-gray-700 text-lg md:text-xl leading-relaxed ">
+    <strong className="ml-8">CyberSoc Solutions</strong> is a forward-thinking technology company delivering cutting-edge solutions in 
     <strong> Cyber Security</strong>, <strong> Automation</strong>, and <strong> Web Application Development</strong>. 
     We focus on helping businesses navigate the digital landscape securely and efficiently through scalable and smart IT systems.
   </p>
@@ -50,7 +50,7 @@ function AboutUs() {
   <Link
     to="/about"
     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-    className="inline-block mt-6 px-8 py-3 border-2 border-blue-600 text-blue-600 text-lg font-semibold rounded-lg shadow-md bg-transparent hover:bg-blue-600 hover:text-white transition-all duration-300 hover:scale-105"
+    className="inline-block mt-6 px-8 py-3 border-2 border-[#027070] text-[#027070] text-lg font-semibold rounded-lg shadow-md bg-transparent hover:bg-[#027070] hover:text-white transition-all duration-300 hover:scale-105"
   >
     Learn More About Us
   </Link>
