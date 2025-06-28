@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
    <header
-  className={`fixed top-0 left-0 w-full flex items-center justify-between px-6 md:px-20 transition-all duration-300 z-[9999] 
+  className={`fixed top-0 left-0 w-full flex items-center justify-between px-6 lg:px-20 transition-all duration-300 z-[9999] 
     ${
       isScrolled
         ? "py-2 bg-white/90 shadow-lg backdrop-blur-md border-b border-gray-300"
@@ -66,12 +66,12 @@ const Header = () => {
       <Navbar />
 
       {/* Social Icons */}
-      <div className="hidden md:flex md:space-x-2 lg:space-x-6">
+      <div className="hidden md:flex md:space-x-2 lg:space-x-4">
         <a
           href="https://www.facebook.com/profile.php?id=61560890600177"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-700 text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-blue-600"
+          className="text-gray-700 lg:text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-blue-600"
         >
           <FaFacebookF />
         </a>
@@ -79,7 +79,7 @@ const Header = () => {
           href="https://www.instagram.com/cybersocsolutions/?hl=en"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-700 text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-pink-500"
+          className="text-gray-700 lg:text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-pink-500"
         >
           <FaInstagram />
         </a>
@@ -87,7 +87,7 @@ const Header = () => {
           href=""
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-700 text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-blue-400"
+          className="text-gray-700 lg:text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-blue-400"
         >
           <FaLinkedinIn />
         </a>
@@ -95,9 +95,9 @@ const Header = () => {
           href="https://jsdl.in/DT-21RLGAJT5KH"
           target="_blank"
           rel="noopener noreferrer"
-          className=" text-gray-700 text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-blue-400 flex justify-center items-center"
+          className=" text-gray-700 lg:text-2xl transition-transform duration-300 transform hover:scale-110 hover:text-blue-400 flex justify-center items-center"
         >
-          <img src={justdialLogo} alt="" className="w-[65px] "/>
+          <img src={justdialLogo} alt="" className="w-[55px] lg:w-[65px]"/>
         </a>
       </div>
       {/* Mobile Sidebar */}

@@ -93,45 +93,62 @@ const BlogDetail = () => {
         </article>
 
         {/* Sidebar */}
-        <aside className="w-full lg:w-[30%] space-y-8">
-          {/* Recent Posts */}
-          <div className="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-left">
-            <h3 className="text-xl font-bold mb-4 pb-2 border-b">Recent Posts</h3>
-            <ul className="space-y-4 text-sm">
-              {filteredBlogs.map((recent) => (
-                <li key={recent.slug} className="flex items-start gap-4">
-                  <img src={recent.image} alt={recent.title} className="w-16 h-16 object-cover rounded-md shadow-sm" />
-                  <div>
-                    <Link to={`/blogs/${recent.slug}`} className="text-blue-600 hover:text-blue-800 font-semibold">
-                      {recent.title}
-                    </Link>
-                    <p className="text-gray-500 text-xs mt-1">{recent.date}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+{/* Sidebar */}
+<aside className="w-full lg:w-[30%] space-y-10">
+  {/* Recent Posts */}
+{/* Recent Posts */}
+<div className="bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-lg" data-aos="fade-left">
+  <h3 className="text-xl font-bold mb-4 pb-2 border-b border-gray-300 text-gray-800">Recent Posts</h3>
+  <ul className="space-y-6">
+    {filteredBlogs.map((recent) => (
+      <li
+        key={recent.slug}
+        className="flex items-center gap-4 hover:bg-gray-50 rounded-lg p-2 transition"
+      >
+        <Link to={`/blogs/${recent.slug}`} className="flex items-center gap-4 w-full">
+          <img
+            src={recent.image}
+            alt={recent.title}
+            className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-xl shadow-sm shrink-0"
+          />
+          <div className="flex flex-col justify-between">
+            <h4 className="text-gray-900 font-semibold text-sm sm:text-base line-clamp-2">
+              {recent.title}
+            </h4>
+            <span className="text-xs text-gray-500 mt-1">{recent.date}</span>
           </div>
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
 
-          {/* Category Filter */}
-          <div className="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-left">
-            <h3 className="text-xl font-bold mb-4 pb-2 border-b">Categories</h3>
-            <div className="flex flex-wrap gap-3">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-1.5 text-sm rounded-full border font-medium transition-all ${
-                    selectedCategory === category
-                      ? "bg-blue-600 text-white"
-                      : "bg-gray-100 text-gray-800 hover:bg-blue-100"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-        </aside>
+
+  {/* Category Filter */}
+{/* Category Filter */}
+<div className="bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-lg" data-aos="fade-left">
+  <h3 className="text-xl font-bold mb-4 pb-2 border-b border-gray-300 text-gray-800">Filter by Category</h3>
+  <div className="flex flex-wrap gap-2">
+    {["All", ...categories].map((category) => (
+      <button
+        key={category}
+        onClick={() =>
+          setSelectedCategory((prev) => (prev === category ? null : category))
+        }
+        className={`px-4 py-1.5 text-sm rounded-full border transition-all font-medium ${
+          selectedCategory === category
+            ? "bg-blue-600 text-white border-blue-600 shadow"
+            : "bg-gray-100 text-gray-800 hover:bg-blue-100"
+        }`}
+      >
+        {category}
+      </button>
+    ))}
+  </div>
+</div>
+
+</aside>
+
       </section>
     </div>
   );

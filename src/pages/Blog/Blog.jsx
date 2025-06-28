@@ -18,11 +18,14 @@ function Blog() {
   const [blogPosts, setBlogPosts] = useState([]);
 
   const categories = ['All', 'Automation', 'Networking', 'Business', 'Information', 'Education']
-  
+  // const filteredBlogs = ['All', 'Automation', 'Networking', 'Business', 'Information', 'Education']
+      console.log("Fetching blogs from API");
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
     // Fetch blogs from your backend API
-    api.get("/blogs/published")
+    api.get("/api/blogs/published")
+    
       .then(res => {
         if (res.data.success) {
           // const publishedBlogs = res.data.blogs.filter(blog => blog.isPublished);
@@ -40,8 +43,10 @@ function Blog() {
 
   const filteredBlogs =
     selectedCategory !== "All"
-      ? blogPosts.filter((post) => post.category === selectedCategory)
+      ? blogPosts.filter((post) => post.category?.toLowerCase().trim() === selectedCategory.toLowerCase())
       : blogPosts;
+  console.log("Filtered Blogs:", filteredBlogs);
+  
 
   return (
     <div>
@@ -105,46 +110,47 @@ function Blog() {
           ))}
         </div>
         
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center gap-10 py-6 my-12 ">
-  {filteredBlogs.map((post) => (
-    <div
-      key={post._id || post.slug}
-      className="group min-w-[400px] bg-gray-100 shadow-md rounded-xl overflow-hidden flex flex-col md:flex-row min-h-[450px] transition-all duration-300"
-    >
-      {/* Image */}
+<div className="max-w-7xl mx-auto px-4">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center gap-10 py-6 my-12">
+    {filteredBlogs.map((post) => (
       <div
-        className="w-full md:w-1/2 min-h-[250px] bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
-        style={{ backgroundImage: `url(${post.image})` }}
-      ></div>
+        key={post._id || post.slug}
+        className="group w-full sm:max-w-[420px] bg-white/80 backdrop-blur-md shadow-md hover:shadow-xl border border-gray-200 rounded-2xl overflow-hidden flex flex-col md:flex-row min-h-[480px] transition-all duration-300"
+      >
+        {/* Image */}
+        <div
+          className="w-full md:w-1/2 min-h-[220px] sm:min-h-[250px] bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
+          style={{ backgroundImage: `url(${post.image})` }}
+        ></div>
 
-      {/* Content */}
-      <div className="w-full md:w-1/2 p-8 flex flex-col justify-between relative">
-        <div>
-          <p className="text-[10px] text-gray-800 font-bold bg-red-400 w-max p-2 rounded-full uppercase tracking-wide mb-2">
-            {post.category || "Featured"}
-          </p>
-          <h3 className="text-3xl font-playfair text-gray-800 text-center md:text-left">
-            {post.title}
-          </h3>
-          <div className="h-[2px] w-10 bg-gray-400 mx-auto md:mx-0 my-4" />
-          <p className="text-gray-600 text-sm text-justify font-light">
-            {post.summary}
-          </p>
+        {/* Content */}
+        <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-between relative">
+          <div>
+            <p className="text-[10px] sm:text-xs text-white font-semibold bg-gradient-to-r from-pink-500 to-red-500 w-max px-3 py-1 rounded-full uppercase tracking-wide mb-3 shadow-sm">
+              {post.category || "Featured"}
+            </p>
+            <h3 className="text-xl sm:text-2xl font-playfair text-gray-900 text-center md:text-left leading-snug">
+              {post.title}
+            </h3>
+            <div className="h-[2px] w-10 bg-gray-300 mx-auto md:mx-0 my-4" />
+            <p className="text-gray-600 text-sm sm:text-[15px] text-justify font-light line-clamp-3">
+              {post.summary}
+            </p>
+          </div>
+
+          <Link
+            to={`/blogs/${post.slug}`}
+            className="absolute bottom-5 left-1/2 -translate-x-1/2 md:left-6 md:translate-x-0 text-blue-600 hover:text-blue-800 hover:bg-blue-100 px-3 py-1 rounded-full transition duration-300 flex items-center gap-1 text-sm font-medium"
+            title="Read More"
+          >
+            Read More <FaChevronRight size={16} />
+          </Link>
         </div>
-
-        <Link
-          to={`/blogs/${post.slug}`}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 text-gray-500 hover:text-gray-800 hover:bg-gray-300 p-2 rounded-full transition duration-300 flex items-center gap-1"
-          title="Read More"
-        >
-          Read More <FaChevronRight size={18} />
-        </Link>
       </div>
-    </div>
-  ))}
+    ))}
+  </div>
 </div>
-        </div>
+
       </div>
     </div>
   );

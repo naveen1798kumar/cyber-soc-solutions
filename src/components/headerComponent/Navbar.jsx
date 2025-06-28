@@ -31,7 +31,7 @@ const isServicesActive = location.pathname.startsWith("/services");
   const activeClass = "text-[#027070] border-b-2 border-[#027070]";
 
   return (
-    <nav className="hidden md:flex items-center lg:space-x-6 relative">
+    <nav className="hidden md:flex items-center lg:space-x-4 relative">
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -144,7 +144,7 @@ const isServicesActive = location.pathname.startsWith("/services");
         Blogs
       </NavLink>
 
-      <NavLink
+      {/* <NavLink
         to="/events"
         className={({ isActive }) =>
           isActive ? `${linkClass} ${activeClass}` : linkClass
@@ -152,7 +152,7 @@ const isServicesActive = location.pathname.startsWith("/services");
         onClick={handleClick}
       >
         Events
-      </NavLink>
+      </NavLink> */}
 
       <NavLink
         to="/career"

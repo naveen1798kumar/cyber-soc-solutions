@@ -12,6 +12,7 @@ const Contact = () => {
     name: "",
     email: "",
     message: "",
+    service: ""
   });
 
   const handleChange = (e) => {
@@ -121,8 +122,8 @@ const handleSubmit = async (e) => {
       data-aos="fade-left"
       data-aos-duration="300"
     >
-      Contact <span className="text-indigo-600">CyberSoc</span>
-      <span className="block w-20 h-1 bg-indigo-600 mx-auto mt-4 rounded-full"></span>
+      Contact <span className="text-[#027070]">CyberSoc</span>
+      <span className="block w-20 h-1 bg-[#027070] mx-auto mt-4 rounded-full"></span>
     </h2>
     <p
       className="text-lg text-center text-gray-600 max-w-2xl mx-auto leading-relaxed"
@@ -173,6 +174,27 @@ const handleSubmit = async (e) => {
             />
           </div>
           <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Service Required
+          </label>
+          <select
+            name="service"
+            value={formData.service}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"
+            required
+          >
+            <option value="" disabled  >-- Select a service --</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Cyber Security">Cyber Security</option>
+            <option value="Automation">Automation</option>
+            <option value="Networking & LAN">Networking & LAN</option>
+            <option value="CCTV Installation">CCTV Installation</option>
+            <option value="Digital Marketing">Digital Marketing</option>
+            <option value="Others">Others</option>
+          </select>
+          </div>
+          <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
             <textarea
               name="message"
@@ -185,7 +207,7 @@ const handleSubmit = async (e) => {
           </div>
           <button
             type="submit"
-            className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 px-6 rounded-lg font-semibold transition duration-300"
+            className="w-full bg-[#027070] hover:bg-[#025f60] text-white py-3 px-6 rounded-lg font-semibold transition duration-300"
           >
             Send Message
           </button>
@@ -220,20 +242,20 @@ const handleSubmit = async (e) => {
           <p className="text-sm text-gray-500 mt-2">Reach out anytime via:</p>
           <div className="mt-6 space-y-4">
             <div className="flex items-start gap-3 text-gray-700">
-              <FaMapMarkerAlt className="text-indigo-600 text-lg mt-1" />
+              <FaMapMarkerAlt className="text-[#027070] text-lg mt-1" />
               <span>KVP, Complex, 1st Floor, Vannan Kovil Rd, Coimbatore</span>
             </div>
             <div className="flex items-start gap-3 text-gray-700">
-              <FaPhoneAlt className="text-indigo-600 text-lg mt-1" />
+              <FaPhoneAlt className="text-[#027070] text-lg mt-1" />
               <a to="tel:+919384812940" className="hover:text-indigo-600 transition">
                 +91 93848 12940
               </a>
             </div>
             <div className="flex items-start gap-3 text-gray-700">
-              <FaEnvelope className="text-indigo-600 text-lg mt-1" />
+              <FaEnvelope className="text-[#027070] text-lg mt-1" />
               <a
                 to="mailto:info@cybersocsolutions.com"
-                className="hover:text-indigo-600 transition"
+                className="hover:text-indigo-600 transition cursor-pointer"
               >
                 info@cybersocsolutions.com
               </a>
@@ -256,4 +278,3 @@ const handleSubmit = async (e) => {
 };
 
 export default Contact;
-

@@ -101,7 +101,7 @@ const OtherBranches = () => {
         <div className='absolute inset-0 backdrop-blur-lg bg-gray-800/10'></div>
     <div className="container mx-auto mt-20 px-4 sm:px-6 lg:px-16 ">
       <h3 className="relative text-4xl text-center md:text-5xl font-extrabold text-gray-900 tracking-wide leading-tight 
-          after:absolute after:content-[''] after:w-30 after:h-1 after:bg-blue-600 
+          after:absolute after:content-[''] after:w-30 after:h-1 after:bg-indigo-600 
           after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 mb-6 md:mb-8"
         data-aos="fade-left">
         Our Office Locations
