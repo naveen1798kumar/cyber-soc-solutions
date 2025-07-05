@@ -1,35 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import ServiceCard from "./ServiceCard";
-import servicesData from "../../data/servicesData";
 
 const ServiceCategory = ({ category, onClose }) => {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    if (category && category._id) {
+      axios
+        .get(`/api/services?category=${category._id}`)
+        .then((res) => setServices(res.data))
+        .catch((err) => console.error("Failed to load services:", err));
+    }
+  }, [category]);
+
   return (
-    <div
-      className="p-8 mt-8 bg-white rounded-lg transition-all duration-500 ease-in-out overflow-hidden"
-      data-aos="fade-up"
-      id="service-id"
-    >
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-        <h2 className="text-3xl text-gray-900 font-extrabold mb-4 md:mb-0">
-          {servicesData[category].title}
-        </h2>
-        <div className="text-end md:text-center w-full md:w-auto md:pb-0">
-          <button
-            onClick={onClose}
-            className="cursor-pointer min-w-[150px] p-3 lg:px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-medium rounded-full shadow-lg hover:from-amber-600 hover:to-orange-700 transition-all duration-500 hover:scale-110 hover:-translate-x-2"
-          >
-            Back to Services
-          </button>
-        </div>
+    <div className="relative p-6 md:p-8 min-h-screen bg-white/90 rounded-xl shadow-xl">
+      {/* Close Button */}
+      <button
+        className="absolute top-4 right-4 text-red-500 hover:text-black text-3xl font-bold"
+        onClick={onClose}
+      >
+        &times;
+      </button>
+
+      {/* Header */}
+      <div className="mb-4 mt-2">
+        <h2 className="text-3xl font-extrabold text-gray-900">{category.title}</h2>
+        <p className="text-gray-700 text-lg mt-2">{category.description}</p>
       </div>
 
-      <p className="text-gray-700 mt-4 text-lg leading-relaxed">
-        {servicesData[category].description}
-      </p>
-
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-        {servicesData[category].services.map((service) => (
-          <ServiceCard key={service.id} service={service} category={category} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        {services.map((service) => (
+          <ServiceCard key={service._id} category={category.id} service={service} />
         ))}
       </div>
     </div>

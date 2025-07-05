@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Banner from "../../components/Banner";
-import PartnersCarousel from "../../components/PartnersCarousel";
 import ServiceList from "../../pages/Services/ServiceList";
 import ServiceCategory from "../../pages/Services/ServiceCategory";
 
@@ -11,48 +10,31 @@ import digitalMarketingIcon from "../../assets/icons/digital-marketing.png";
 import networkingIcon from "../../assets/icons/networking-security.png";
 import automationIcon from "../../assets/icons/home-automation.png";
 
-const Services = () => {
-  const [openCategory, setOpenCategory] = useState(null);
+function Service() {
 
-  const handleCategorySelect = (selectedCategory) => {
-    setOpenCategory(selectedCategory);
-  };
+      const [openCategory, setOpenCategory] = useState(null);
+    
+      const handleCategorySelect = (selectedCategory) => {
+        setOpenCategory(selectedCategory);
+      };
+    
+    const closeModal = () => {
+        document.body.style.overflow = "auto";
+        setOpenCategory(null);
+    };
+      
+    const icons = {
+        webDevelopment: webIcon,
+        digitalMarketing: digitalMarketingIcon,
+        networking: networkingIcon,
+        automation: automationIcon,
+      };
+    
+      const iconStyle = "h-10 w-10 transition-transform duration-300 hover:scale-115"; 
 
-  // ✅ Move this function **above** return
-  // const scrollToSection = (sectionId) => {
-  //   const element = document.getElementById(sectionId);
-  //   if (element) {
-  //     element.scrollIntoView({ behavior: "smooth", block: "start" });
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (openCategory) {
-  //     setTimeout(() => {
-  //       const element = document.getElementById("service-id");
-  //       if (element) {
-  //         element.scrollIntoView({ behavior: "smooth", block: "start" });
-  //       }
-  //     }, 100);
-  //   }
-  // }, [openCategory]);
-
-  const closeModal = () => {
-    setOpenCategory(null);
-  };
-
-  const icons = {
-    webDevelopment: webIcon,
-    digitalMarketing: digitalMarketingIcon,
-    networking: networkingIcon,
-    automation: automationIcon,
-  };
-
-  const iconStyle = "h-10 w-10 transition-transform duration-300 hover:scale-115"; 
-
+      
   return (
-    <div className=" bg-gradient-to-r from-[#d9e5fe] via-[#f5f6f8] to-[#d9e5fe] ">
-      {/*  */}
+    <div  className=" bg-gradient-to-r from-[#d9e5fe] via-[#f5f6f8] to-[#d9e5fe] ">
       <Helmet>
         <title>Our Services | Cyber Security, Automation & Web Development</title>
         <meta
@@ -82,22 +64,30 @@ const Services = () => {
         </script>
       </Helmet>
 
-      <Banner
+    <Banner
         backgroundImage={servicesBanner}
         title="Services We Offer"
         description="We provide cutting-edge cybersecurity and automation solutions to protect businesses from modern threats and enhance operational efficiency."
-      />
+    />
 
-      <div className="relative px-4 py-6 sm:px-6 sm:py-8 md:px-12 md:py-10 lg:px-16 lg:py-12  overflow-x-hidden">
-        {!openCategory ? (
-          <ServiceList onCategorySelect={handleCategorySelect} />
-        ) : (
-          <ServiceCategory category={openCategory} onClose={() => setOpenCategory(null)} />
+    <div className="relative px-4 py-6 sm:px-6 sm:py-8 md:px-12 md:py-10 lg:px-16 lg:py-12 overflow-x-hidden">
+
+        <ServiceList onCategorySelect={handleCategorySelect} />
+
+        {openCategory && (
+        <>
+        <style>{`body { overflow: hidden; }`}</style>
+
+        <div className="fixed inset-0 z-[999] flex items-start justify-center bg-black/60 backdrop-blur-sm">
+        <div className="relative bg-white w-full h-full overflow-y-auto scrollbar-hide p-6 pt-20 rounded-none">
+            <ServiceCategory category={openCategory} onClose={closeModal} />
+        </div>
+        </div>
+        </>
         )}
       </div>
-
     </div>
-  );
-};
+  )
+}
 
-export default Services;
+export default Service

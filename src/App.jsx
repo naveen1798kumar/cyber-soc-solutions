@@ -9,11 +9,16 @@ import Blog from './pages/Blog/Blog';
 import Career from './pages/Career/Career';
 import BlogDetail from './pages/Blog/BlogDetail';
 import NotFound from './pages/404/NotFound';
+import Products from './pages/Products/Products';
+import Contact from './pages/Contact/Contact';
+
+// Services Pages
 import Services from './pages/Services/Services';
 import CategoryServices from './pages/Services/CategoryServices';
 import ServiceDetails from './pages/Services/ServiceDetails';
-import Products from './pages/Products/Products';
-import Contact from './pages/Contact/Contact';
+
+// New Service
+import Service from './pages/ServiceNew/Service';
 
 // Admin Pages
 import AdminLogin from './pages/Admin/AdminLogin';
@@ -25,12 +30,13 @@ import AdminProducts from './pages/Admin/Pages/AdminProducts';
 import AdminSettings from './pages/Admin/Pages/AdminSettings';
 import EditBlog from './pages/Admin/Pages/EditBlog';
 import EditServicePage from './pages/Admin/Pages/EditServicePage';
-
+import CareerDetails from './pages/Career/CareerDetails';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -49,11 +55,18 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="services" element={<Services />} />
-          <Route path="services/:category/:serviceId" element={<ServiceDetails />} />
+
+          {/* Services */}
+          {/* <Route path="services" element={<Services />} /> */}
+
+          {/* New Service */}
+          <Route path="services" element={<Service />} />
           <Route path="services/:category" element={<CategoryServices />} />
+          <Route path="services/:category/:serviceId" element={<ServiceDetails />} />
+
           <Route path="blogs" element={<Blog />} />
           <Route path="career" element={<Career />} />
+          <Route path="career/:id" element={<CareerDetails />} />
           <Route path="blogs/:slug" element={<BlogDetail />} />
           <Route path="products" element={<Products />} />
           <Route path="contact" element={<Contact />} />
