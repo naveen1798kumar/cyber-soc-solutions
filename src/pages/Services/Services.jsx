@@ -65,7 +65,7 @@ const Services = () => {
         />
         <meta name="author" content="CyberSoc" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.cybersoc.com/services" />
+        <link rel="canonical" href="https://www.cybersocsolutions.com/services" />
 
          {/* Structured Data for Services Page */}
          <script type="application/ld+json">

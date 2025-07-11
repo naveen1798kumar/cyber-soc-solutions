@@ -52,13 +52,18 @@ const slides = [
 const CustomArrow = ({ direction, onClick }) => (
   <button
     onClick={onClick}
-    className={`absolute group top-1/2 z-30 transform -translate-y-1/2 bg-white/80 text-black hover:text-white hover:font-bold  p-3 rounded-xl cursor-pointer hover:bg-[#027070] shadow-lg transition-all ${
-      direction === "left" ? "left-4" : "right-4"
+    className={`absolute group top-1/2 z-30 transform -translate-y-1/2 bg-white/80 text-black hover:text-white hover:font-bold p-2 sm:p-3 rounded-lg sm:rounded-xl cursor-pointer hover:bg-[#027070] border-2 border-[#027070] hover:border-white shadow-lg transition-all ${
+      direction === "left" ? "left-2 sm:left-4" : "right-2 sm:right-4"
     }`}
   >
-    {direction === "left" ? <IoIosArrowBack /> : <IoIosArrowForward />}
+    {direction === "left" ? (
+      <IoIosArrowBack className="text-base sm:text-xl" />
+    ) : (
+      <IoIosArrowForward className="text-base sm:text-xl" />
+    )}
   </button>
 );
+
 
 const HeroSection = () => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -122,9 +127,14 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/70 z-0" />
 
             {/* Content */}
-            <div className="relative z-10 max-w-[80%] mx-auto px-6 w-full flex flex-col justify-end items-start min-h-[75vh] text-white">
-          <p className="text-sm bg-gray-300/90 rounded-lg px-4 py-1 tracking-wide w-max font-semibold uppercase text-indigo-600 mb-2"
-          data-aos="fade-left" >Empowering Your Business with End-to-End IT Solutions</p>
+            <div className="relative z-10 max-w-[90%] sm:max-w-[80%] mx-auto px-4 sm:px-6 w-full flex flex-col justify-end items-start min-h-[75vh] text-white">
+<p
+  className="hidden md:block text-xs sm:text-sm md:text-base bg-gray-300/90 rounded-lg px-3 sm:px-4 py-1 tracking-wide w-max font-semibold uppercase text-indigo-600 mb-2 mx-auto sm:mx-0"
+  data-aos="fade-left"
+>
+  Empowering Your Business with End-to-End IT Solutions
+</p>
+
               <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight max-w-4xl drop-shadow-lg">
                 {slide.title}
               </h2>

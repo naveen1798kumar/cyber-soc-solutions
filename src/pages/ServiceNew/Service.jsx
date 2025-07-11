@@ -67,6 +67,7 @@ function Service() {
     <Banner
         backgroundImage={servicesBanner}
         title="Services We Offer"
+        subTitle="Comprehensive Solutions for Modern Businesses"
         description="We provide cutting-edge cybersecurity and automation solutions to protect businesses from modern threats and enhance operational efficiency."
     />
 

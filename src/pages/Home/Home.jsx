@@ -14,7 +14,9 @@ import MisionBanner from "../../assets/banners/mision-and-vision.jpg";
 import { FaRegCopyright } from "react-icons/fa6";
 import { IoCallOutline } from "react-icons/io5";
 import { CiMail } from "react-icons/ci";
-import { FaArrowRight } from "react-icons/fa";
+// import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaAward, FaCertificate, FaMedal } from "react-icons/fa";
+
 
 function Home() {
   const scrolltotop = () => {
@@ -172,15 +174,16 @@ function Home() {
           </p>
   
           {/* Logos */}
-          <div className="flex flex-wrap justify-center items-center gap-6 mb-10">
-            <img src="http://GPTW-logo" alt="Great Place To Work" className="h-12 object-contain" />
-            <img src="http://GPTW-logo" alt="Great Place To Work" className="h-12 object-contain" />
-            <img src="http://Best%20workplaces%20in%20Health%20&%20Wellness" alt="Best Workplace" className="h-12 object-contain" />
-          </div>
+<div className="flex flex-wrap justify-center items-center gap-6 mb-10 text-[#027070]">
+          <FaAward className="text-4xl sm:text-5xl hover:scale-110 transition-all duration-300" title="Great Place To Work" />
+          <FaCertificate className="text-4xl sm:text-5xl hover:scale-110 transition-all duration-300" title="Certified Excellence" />
+          <FaMedal className="text-4xl sm:text-5xl hover:scale-110 transition-all duration-300" title="Best Workplace in Wellness" />
+        </div>
   
           {/* CTA Button */}
           <Link
-            to="/careers"
+          onClick={scrolltotop}
+            to="/career"
             className="inline-flex items-center gap-3 px-8 py-4 bg-[#027070] text-white text-lg font-medium rounded-full shadow-md hover:bg-[#025050] transition-colors duration-300"
           >
             Find Your Role <FaArrowRight className="text-sm" />

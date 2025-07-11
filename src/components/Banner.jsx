@@ -7,21 +7,22 @@ import { Link, useLocation } from "react-router-dom";
 
 const handleClick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-// Breadcrumb Subcomponent
+// Breadcrumb Component
 const Breadcrumb = () => {
   const { pathname } = useLocation();
   const pathnames = pathname.split("/").filter(Boolean);
 
   return (
     <nav
-      className="absolute bottom-6 right-6 md:right-10 text-white text-sm md:text-base font-medium z-30"
-      data-aos="fade-up"
+      className="absolute bottom-6 right-6 w-max md:right-10 text-white text-sm md:text-base font-medium z-30"
+      data-aos="fade-down"
     >
       <ul className="flex items-center flex-wrap gap-2 bg-black/40 px-4 py-2 rounded-full backdrop-blur-md shadow-md">
         <li>
           <Link
             to="/"
             className="flex items-center gap-1 text-white hover:text-[#6de2e2] transition"
+            onClick={handleClick}
           >
             <MdHome /> Home
           </Link>
@@ -38,6 +39,7 @@ const Breadcrumb = () => {
                 <Link
                   to={routeTo}
                   className="capitalize text-white/90 hover:text-[#6de2e2] transition"
+                  onClick={handleClick}
                 >
                   {name}
                 </Link>
@@ -50,8 +52,8 @@ const Breadcrumb = () => {
   );
 };
 
-// Main Banner Component
-const Banner = ({ backgroundImage, title, description }) => {
+// Banner Component
+const Banner = ({ backgroundImage, title, subTitle, description }) => {
   useEffect(() => {
     AOS.init({ duration: 1200, once: true });
     AOS.refresh();
@@ -59,7 +61,7 @@ const Banner = ({ backgroundImage, title, description }) => {
 
   return (
     <div
-      className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-[70vh] flex items-center justify-center overflow-hidden"
       data-aos="fade-in"
     >
       {/* Background Image */}
@@ -69,14 +71,13 @@ const Banner = ({ backgroundImage, title, description }) => {
           backgroundImage: `url(${backgroundImage})`,
           backgroundAttachment: "fixed",
         }}
-        data-aos="zoom-in"
       />
 
       {/* Overlays */}
       <div className="absolute inset-0 bg-gradient-to-tr from-[#000000cc] via-[#02707099] to-[#00000088] z-10" />
       <div className="absolute inset-0 bg-black/30 backdrop-blur-sm z-10" />
 
-      {/* Particles */}
+      {/* Floating Elements */}
       <div className="absolute inset-0 z-20 pointer-events-none">
         <div className="absolute top-10 left-1/4 w-10 h-10 bg-[#6de2e2]/40 rounded-full blur-xl animate-float" />
         <div className="absolute bottom-12 right-1/4 w-14 h-14 bg-[#027070]/50 rounded-full blur-lg animate-float delay-1000" />
@@ -86,19 +87,36 @@ const Banner = ({ backgroundImage, title, description }) => {
       {/* Breadcrumb */}
       <Breadcrumb />
 
-      {/* Content */}
+      {/* Content Section */}
       <div
-        className="relative z-30 px-6 py-12 md:px-16 lg:px-24 max-w-4xl text-white text-left"
+        className="relative z-30 px-6 py-16 md:px-16 lg:px-24 max-w-5xl text-white text-left"
         data-aos="fade-up"
       >
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight drop-shadow-md">
+        <h2
+          className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight drop-shadow-md"
+        >
           {title}
-        </h1>
+        </h2>
+
+        {subTitle && (
+          <h3 className="mt-4 text-xl md:text-2xl font-semibold text-white/80">
+            {subTitle}
+          </h3>
+        )}
+
         {description && (
-          <p className="mt-6 text-lg md:text-2xl text-white/90 leading-snug font-light drop-shadow">
+          <p className="mt-6 text-[clamp(1.1rem,3vw,22px)] text-white/90 leading-snug font-light max-w-3xl">
             {description}
           </p>
         )}
+
+        <Link
+          to="/contact"
+          onClick={handleClick}
+          className="inline-block mt-8 px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-white text-sm md:text-base font-semibold rounded-full shadow-lg transition-all duration-300"
+        >
+          Contact Us
+        </Link>
       </div>
     </div>
   );
