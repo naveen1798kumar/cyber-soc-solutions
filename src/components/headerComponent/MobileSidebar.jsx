@@ -26,9 +26,14 @@ const MobileSidebar = () => {
         {isOpen ? <FiAlignRight /> : <FiMenu />}
       </button>
 
-      {/* Main Sidebar */}
-      {isOpen && !isServicesOpen && (
-        <div className="absolute inset-0 w-full h-screen bg-gray-900 rounded-xl bg-opacity-90 flex flex-col items-center justify-center space-y-6 p-10">
+      {/* Main Sidebar with Slide Animation */}
+      <div
+        className={`
+          fixed inset-0 z-[9999] transition-transform duration-300
+          ${isOpen && !isServicesOpen ? "translate-x-0" : "-translate-x-full"}
+        `}
+      >
+        <div className="w-full h-screen bg-gray-900 rounded-xl bg-opacity-90 flex flex-col items-center justify-center space-y-6 p-10">
           {/* Close Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -40,18 +45,15 @@ const MobileSidebar = () => {
           {/* Main Links */}
           <Link to="/" className={linkStyle} onClick={() => { setIsOpen(!isOpen); handleClick(); }}>Home</Link>
           <Link to="/about" className={linkStyle} onClick={() => { setIsOpen(!isOpen); handleClick(); }}>About</Link>
-
-          {/*  */}
           <div className='flex justify-center items-center space-x-3'>
-          <Link to="/services" className={linkStyle} onClick={() => { setIsOpen(!isOpen); handleClick(); }}>Services</Link>
-          <button
-            className={`${linkStyle} text-center w-full`}
-            onClick={() => setIsServicesOpen(true)} // Open Services Menu
-          >
-            <IoIosArrowForward />
-          </button>
+            <Link to="/services" className={linkStyle} onClick={() => { setIsOpen(!isOpen); handleClick(); }}>Services</Link>
+            <button
+              className={`${linkStyle} text-center w-full`}
+              onClick={() => setIsServicesOpen(true)}
+            >
+              <IoIosArrowForward />
+            </button>
           </div>
-
           <Link to="/products" className={linkStyle} onClick={() => { setIsOpen(!isOpen); handleClick(); }}>Products</Link>
           <Link to="/blogs" className={linkStyle} onClick={() => { setIsOpen(!isOpen); handleClick(); }}>Blogs</Link>
           <Link to="/contact" className={linkStyle} onClick={() => { setIsOpen(!isOpen); handleClick(); }}>Contact</Link>
@@ -84,7 +86,7 @@ const MobileSidebar = () => {
             </a>
           </div>
         </div>
-      )}
+      </div>
 
       {/* Services Menu */}
       {isOpen && isServicesOpen && (

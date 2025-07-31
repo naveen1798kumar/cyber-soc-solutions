@@ -23,6 +23,7 @@ const ServiceCategory = ({ category, onClose }) => {
         min-h-[80vh] max-h-[90vh] overflow-y-auto
         flex flex-col
         animate-fadeIn
+        scrollbar-hide
       "
       style={{
         boxShadow: "0 8px 40px 0 rgba(0,0,0,0.18)",
@@ -31,7 +32,7 @@ const ServiceCategory = ({ category, onClose }) => {
     >
       {/* Close Button */}
       <button
-        className="absolute top-6 right-8 text-gray-400 hover:text-red-500 text-4xl font-bold transition-colors z-10"
+        className="absolute top-6 right-8 text-gray-400 hover:text-red-500 text-4xl font-bold transition-colors z-10 "
         onClick={onClose}
         aria-label="Close"
         style={{

@@ -1,37 +1,43 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, NavLink } from "react-router-dom";
-import  servicesData  from "../../data/servicesData";
-import { FaChevronDown } from "react-icons/fa";
+import servicesData from "../../data/servicesData";
+import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 
-
-const Navbar = () => {
-  const [isServicesOpen, setIsServicesOpen] = useState(false); // State for "Services" dropdown
-  const [isProductsOpen, setIsProductsOpen] = useState(false);
+const Navbar = ({ isScrolled }) => {
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [hoveredCategory, setHoveredCategory] = useState(null);
   const servicesRef = useRef(null);
-  const productsRef = useRef(null);
 
-const location = useLocation();
-const isServicesActive = location.pathname.startsWith("/services");
-
+  const location = useLocation();
+  const isServicesActive = location.pathname.startsWith("/services");
 
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    setIsServicesOpen(false); // Close the services dropdown
-    setIsProductsOpen(false); // Close the products dropdown
+    setIsServicesOpen(false);
+    setHoveredCategory(null);
   };
 
   const handleServiceClick = () => {
-    setIsServicesOpen(false); // Close the services dropdown when a link is clicked
+    setIsServicesOpen(false);
+    setHoveredCategory(null);
   };
 
-  const linkClass =
-    "px-2 lg:px-4 py-2 text-md font-medium transition-all duration-300 hover:text-gray-500 relative";
+  const linkClass = `px-2 lg:px-4 py-2 transition-all duration-300 font-medium relative ${
+    isScrolled ? "text-sm lg:text-base py-1" : "text-md lg:text-lg"
+  } hover:text-gray-500`;
   const activeClass = "text-[#027070] border-b-2 border-[#027070]";
 
+  // Dropdown animation variants
+  const dropdownVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -10 }
+  };
+
   return (
-    <nav className="hidden md:flex items-center lg:space-x-4 relative">
+    <nav className={`hidden md:flex items-center lg:space-x-4 relative transition-all duration-300 ${isScrolled ? "gap-1" : ""}`}>
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -51,88 +57,90 @@ const isServicesActive = location.pathname.startsWith("/services");
         About
       </NavLink>
 
-        <div ref={servicesRef}
-        onMouseEnter={() => setIsServicesOpen(true)} 
-        onMouseLeave={() => setIsServicesOpen(false)}
-        // className=" px-4 py-2 bg-gray-500"
+      {/* Modern Services Dropdown */}
+      <div
+        ref={servicesRef}
+        className="relative"
+        onMouseEnter={() => setIsServicesOpen(true)}
+        onMouseLeave={() => {
+          setIsServicesOpen(false);
+          setHoveredCategory(null);
+        }}
+      >
+        <Link
+          // type="button"
+          to="/services"
+          onClick={() => (setIsServicesOpen((prev) => !prev), handleClick())}
+          className={`group flex items-center justify-center gap-1 cursor-pointer transition-all duration-300 
+            ${isServicesActive ? 'text-[#027070]' : "text-gray-800 hover:text-gray-500 "} 
+            ${isScrolled ? "text-sm lg:text-base py-1" : "text-md lg:text-lg"}`}
+          aria-haspopup="true"
+          aria-expanded={isServicesOpen}
         >
-          <Link
-            to="/services"
-            onClick={() => {
-          setIsServicesOpen(!isServicesOpen);
-          window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top when clicking the Services link
-            }}
-            onMouseOver={() => setIsServicesOpen(true)}
-            className={`group text-md font-medium flex items-center justify-center gap-1 cursor-pointer 
-            ${isServicesActive ? 'text-[#027070]' : "text-gray-800 hover:text-gray-500 "}`}
-          >
-            Services <FaChevronDown className={` text-xs cursor-pointer transition-all duration-500 ${
-            isServicesActive
-              ? 'text-[#027070]'
-              : 'text-gray-800 group-hover:text-gray-500'
-          } ${isServicesOpen ? 'rotate-180' : ''}`} />
-          </Link>
+          Services
+          <FaChevronDown className={`ml-1 transition-transform duration-300 ${isServicesOpen ? "rotate-180" : ""} ${isScrolled ? "text-xs" : "text-sm"}`} />
+        </Link>
 
-          <AnimatePresence>
+        <AnimatePresence>
           {isServicesOpen && (
             <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className={`absolute left-1/2 top-full mt-0 transform -translate-x-1/2 min-w-[90vw] max-h-[70vh] z-50 overflow-hidden overflow-y-auto scrollbar-hide 
-              ${isServicesOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-5 invisible'}`}
-          >
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 bg-[#ffffff]  shadow-xl hover:shadow-2xl  border border-gray-200 transition-all duration-300">
-              {Object.keys(servicesData).map((categoryKey) => (
-                <div
-                  key={categoryKey}
-                  className="border border-gray-100 rounded-lg bg-white hover:shadow-lg transition-shadow duration-300 overflow-hidden"
-                >
-                  <h3 className="px-5 py-4 text-[20px] font-bold font-secondary tracking-wide text-[#081120] bg-gray-50 border-b-2 border-gray-200 uppercase rounded-t-lg">
-                    {servicesData[categoryKey].title}
-                  </h3>
-                  {servicesData[categoryKey].services.map((service) => (
-              <NavLink
-                key={service.id}
-                to={`/services/${categoryKey}/${service.id}`}
-                onClick={handleServiceClick}
-                className="group relative block px-5 py-2 hover:pl-7 text-[15px] text-gray-700 font-medium transition-all duration-300 ease-in-out rounded-md hover:text-blue-700"
-              >
-                <span className="absolute left-0 top-0 h-full w-[3px] bg-blue-700 opacity-0 group-hover:opacity-100 group-hover:translate-x-[-50%] transition-all duration-300"></span>
-                {service.title}
-              </NavLink>
-
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={dropdownVariants}
+              transition={{ duration: 0.22, ease: "easeInOut" }}
+              className="absolute left-1/2 top-full mt-2 transform -translate-x-1/2 w-[65vw] max-w-[1100px] z-50 bg-white/95 shadow-2xl rounded-2xl border border-gray-200 overflow-hidden backdrop-blur-xl"
+            >
+              <div className="flex flex-col md:flex-row">
+                {/* Category List */}
+                <div className="flex flex-col min-w-[200px] bg-gray-50 border-r border-gray-200">
+                  {Object.keys(servicesData).map((categoryKey) => (
+                    <button
+                      key={categoryKey}
+                      onMouseEnter={() => setHoveredCategory(categoryKey)}
+                      onFocus={() => setHoveredCategory(categoryKey)}
+                      onClick={() => setHoveredCategory(categoryKey)}
+                      className={`flex items-center justify-between px-6 py-4 text-left font-semibold font-secondary tracking-wide uppercase transition-all duration-200 border-b border-gray-100
+                        ${
+                          hoveredCategory === categoryKey
+                            ? "bg-white text-blue-700"
+                            : "bg-gray-50 text-gray-700 hover:bg-white/80"
+                        }
+                        ${isScrolled ? "text-base" : "text-lg"}`}
+                      tabIndex={0}
+                    >
+                      {servicesData[categoryKey].title}
+                      <FaChevronRight className="ml-2 text-base opacity-60" />
+                    </button>
                   ))}
                 </div>
-              ))}
-            </div>
-          </motion.div>
-          
+                {/* Services List */}
+                <div className="flex-1 min-w-[220px] bg-white">
+                  {hoveredCategory ? (
+                    <div className="flex flex-col p-6">
+                      {servicesData[hoveredCategory].services.map((service) => (
+                        <NavLink
+                          key={service.id}
+                          to={`/services/${hoveredCategory}/${service.id}`}
+                          onClick={handleServiceClick}
+                          className={`block px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-blue-50 hover:text-blue-700 text-gray-800
+                            ${isScrolled ? "text-base" : "text-lg"}`}
+                        >
+                          {service.title}
+                        </NavLink>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center h-full p-8 text-gray-400 text-base">
+                      <span>Select a category</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </motion.div>
           )}
-          </AnimatePresence>
-
-        </div>
-
-        {/* Products Dropdown */}
-        {/* <div 
-  ref={productsRef}
-  onMouseEnter={() => setIsProductsOpen(true)}
-  onMouseLeave={() => setIsProductsOpen(false)}
-  // className="relative"
->
-  <Link
-    to="/products"
-    onClick={() => {
-      setIsProductsOpen(!isProductsOpen);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }}
-    onMouseOver={() => setIsProductsOpen(true)}
-    className="px-4 py-2 text-md font-medium flex items-center gap-1 text-gray-800 hover:text-blue-400 cursor-pointer"
-  >
-    Products
-  </Link>
-</div> */}
+        </AnimatePresence>
+      </div>
 
       <NavLink
         to="/blogs"
@@ -143,16 +151,6 @@ const isServicesActive = location.pathname.startsWith("/services");
       >
         Blogs
       </NavLink>
-
-      {/* <NavLink
-        to="/events"
-        className={({ isActive }) =>
-          isActive ? `${linkClass} ${activeClass}` : linkClass
-        }
-        onClick={handleClick}
-      >
-        Events
-      </NavLink> */}
 
       <NavLink
         to="/career"
@@ -173,10 +171,8 @@ const isServicesActive = location.pathname.startsWith("/services");
       >
         Contact
       </NavLink>
-
     </nav>
   );
 };
 
 export default Navbar;
-

@@ -1,62 +1,69 @@
-import React from "react";
-import {Link} from "react-router-dom";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import servicesData from "../data/servicesData";
 import backgroundImage from "../assets/our-sevices-banner.jpg";
-import "aos/dist/aos.css"; // Import AOS styles
-import AOS from "aos"; // Import AOS library
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 const ServiceBanner = ({ title, description }) => {
   const { category, serviceId } = useParams();
   const categoryData = servicesData[category];
-
   const service = categoryData?.services.find((s) => s.id === serviceId);
 
-  // Initialize AOS
-  React.useEffect(() => {
+  useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
+  // Prefer service image, fallback to default
+  const bannerImage = service?.image || backgroundImage;
+
   return (
-    <div
-      className="relative min-h-[50vh] h-auto w-full bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: `url(${service?.image || backgroundImage})` }}
+    <section
+      className="relative min-h-[75vh] w-full flex items-center justify-center bg-gradient-to-br from-blue-900/80 via-indigo-900/70 to-blue-700/60"
+      style={{
+        backgroundImage: `linear-gradient(120deg,rgba(30,41,59,0.7),rgba(67,56,202,0.5)),url(${bannerImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent" />
 
       {/* Content */}
       <div
-  className="relative z-10 flex flex-col items-center justify-center text-center text-gray-800 px-4 sm:px-6 lg:px-8 py-12 space-y-6"
-  data-aos="fade-up"
->
-  <h1
-    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-wide leading-tight px-4 max-w-4xl"
-    style={{
-      textShadow: `
-        2px 2px 6px rgba(255, 255, 255, 0.3),
-        -2px -2px 6px rgba(255, 255, 255, 0.3),
-        1px -1px 3px rgba(255, 255, 255, 0.4),
-        -1px 1px 3px rgba(255, 255, 255, 0.4)
-      `
-    }}
-    data-aos="fade-up"
-  >
-    {service?.title || title}
-  </h1>
-
-  <Link
-    to="/services"
-    className="inline-block mt-4 px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-lg font-semibold rounded-full shadow-lg hover:from-blue-600 hover:to-indigo-700 transition-transform duration-300 hover:scale-105"
-    data-aos="fade-up"
-    data-aos-delay="300"
-  >
-    Explore More
-  </Link>
-</div>
-
-    </div>
+        className="relative z-10 flex flex-col items-center justify-center text-center text-white px-4 sm:px-8 py-16 space-y-8"
+        data-aos="fade-up"
+      >
+        <h1
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl drop-shadow-lg"
+          style={{
+            textShadow: `
+              0 4px 24px rgba(0,0,0,0.25),
+              0 1px 2px rgba(0,0,0,0.15)
+            `,
+            letterSpacing: "0.01em",
+          }}
+          data-aos="fade-up"
+        >
+          {service?.title || title}
+        </h1>
+        {/* <p
+          className="max-w-2xl mx-auto text-lg sm:text-xl md:text-2xl font-medium text-white/90"
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
+          {service?.description || description}
+        </p> */}
+        <Link
+          to="/services"
+          className="inline-block mt-4 px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-lg font-semibold rounded-full shadow-xl hover:from-blue-700 hover:to-indigo-800 transition-transform duration-300 hover:scale-105 border-2 border-white/10"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          Explore More Services
+        </Link>
+      </div>
+    </section>
   );
 };
 
