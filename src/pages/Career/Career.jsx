@@ -51,7 +51,7 @@ const Career = () => {
   formData.append("fileName", file.name);
 formData.append("folder", "/resumes");
 
-  const res = await fetch("http://localhost:5000/api/upload/resume", {
+  const res = await fetch("https://cybersoc-backend.onrender.com/api/blogs/published", {
     method: "POST",
     body: formData,
   });

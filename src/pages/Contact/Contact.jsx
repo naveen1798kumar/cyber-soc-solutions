@@ -24,7 +24,7 @@ const handleSubmit = async (e) => {
 
   if (formData.name && formData.email && formData.message) {
     try {
-      const response = await fetch("http://localhost:5000/api/send-email", {
+      const response = await fetch("https://cybersoc-backend.onrender.com/api/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
