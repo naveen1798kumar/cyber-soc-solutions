@@ -1,32 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const iconMap = {
-  "Web Development": "/icons/web-development.png",
-  "Digital Marketing": "/icons/digital-marketing.png",
-  "Networking & Security": "/icons/networking-security.png",
-  "Home Automation": "/icons/home-automation.png",
-};
-
-const ServiceList = ({ onCategorySelect }) => {
+const ServiceList = () => {
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("/api/categories")
-      .then(res => setCategories(res.data))
-      .catch(err => console.error("Error loading categories:", err));
+    axios
+      .get("/api/categories")
+      .then((res) => setCategories(res.data))
+      .catch((err) => console.error("Error loading categories:", err));
   }, []);
+
+  const handleNavigate = (cat) => {
+    const slug = cat.slug || cat.title.toLowerCase().replace(/\s+/g, "-");
+    navigate(`/services/${slug}`);
+  };
 
   return (
     <div className="relative container mx-auto my-6">
-      <h2 className="text-3xl md:text-5xl font-extrabold text-center text-gray-900 mb-6">
-        Transform Your Business with Our Expertise
-      </h2>
-      <p className="text-lg text-center text-gray-700 max-w-3xl mx-auto mb-12">
-        Explore our comprehensive IT solutions designed to enhance security, optimize operations, and drive innovation.
-      </p>
-
       <div className="mt-10 space-y-24">
         {categories.map((cat, index) => (
           <div
@@ -48,7 +42,7 @@ const ServiceList = ({ onCategorySelect }) => {
               </h3>
               <p className="text-lg text-gray-700 mt-4">{cat.description}</p>
               <button
-                onClick={() => onCategorySelect(cat)}
+                onClick={() => handleNavigate(cat)}
                 className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-lg shadow-lg hover:from-blue-600 hover:to-indigo-700 transition-all duration-500"
               >
                 Learn More <IoIosArrowForward className="inline ml-2" />
