@@ -55,15 +55,19 @@ function Service() {
         description="We provide cutting-edge cybersecurity and automation solutions to protect businesses from modern threats and enhance operational efficiency."
       />
 
+    {/* Title Section */}
       <section className="max-w-7xl mx-auto px-4 py-10 overflow-hidden">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">
-          Our Core Service Categories
+        <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
+          Transform Your Business with Our Expertise
         </h2>
-        <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-          Discover how CyberSoc Solutions can empower your business with secure,
-          scalable, and innovative technology services.
+        <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          Discover how CyberSoc Solutions empowers businesses with secure,
+          scalable, and innovative IT solutions to optimize operations, enhance
+          security, and drive growth.
         </p>
-        <ServiceList onCategorySelect={handleCategorySelect} />
+      </div>
+        <ServiceList  />
       </section>
 
       {openCategory && (
