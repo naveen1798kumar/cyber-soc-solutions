@@ -47,13 +47,13 @@ const ServiceBanner = ({ title, description }) => {
         >
           {service?.title || title}
         </h1>
-        {/* <p
+        <p
           className="max-w-2xl mx-auto text-lg sm:text-xl md:text-2xl font-medium text-white/90"
           data-aos="fade-up"
           data-aos-delay="150"
         >
           {service?.description || description}
-        </p> */}
+        </p>
         <Link
           to="/services"
           className="inline-block mt-4 px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-lg font-semibold rounded-full shadow-xl hover:from-blue-700 hover:to-indigo-800 transition-transform duration-300 hover:scale-105 border-2 border-white/10"

@@ -4,7 +4,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Navbar from "./headerComponent/Navbar";
 import MobileSidebar from "./headerComponent/MobileSidebar";
-import cybersoclogo from "../assets/cybersoc-logo.png";
+import cybersoclogo from "../assets/cybersoc-logo-full.png";
 import justdialLogo from "../assets/icons/justdial-vector.png";
 
 const Header = () => {
@@ -32,7 +32,7 @@ const Header = () => {
   className={`fixed top-0 left-0 w-full flex items-center justify-between px-6 lg:px-20 transition-all duration-300 z-[9999] 
     ${
       isScrolled
-        ? "py-1 bg-gray-400/90 shadow-lg backdrop-blur-md border-b border-gray-300"
+        ? "py-1 bg-gray-400 shadow-lg backdrop-blur-md border-b border-gray-300"
         : "py-4 bg-gradient-to-r from-[#e0ecf8] to-[#c3dafe] backdrop-blur-md border border-white/20"
     }`}
 >
@@ -52,12 +52,7 @@ const Header = () => {
           />
         </span>
 
-        <span className={`flex flex-col font-primary transition-all duration-300 ${isScrolled ? "text-base text-[#027070] md:text-lg" : "text-xl md:text-2xl"}`}>
-          Cybersoc
-          <span className={`text-xs md:text-sm text-center text-gray-800/90 transition-all duration-300 ${isScrolled ? "text-[10px] md:text-xs" : ""}`}>
-            <span className="relative transition-all duration-300 ease-in-out group-hover:[text-shadow:1px_1px_10px_rgba(102,166,255,0.8),0px_0px_5px_rgba(137,247,254,0.8)]">Solutions</span>
-          </span>
-        </span>
+        {/* <spanc:\Users\navee\Downloads\WhatsApp_Image_2025-08-01_at_1.17.20_PM-removebg-preview.png */}
       </Link>
 
       {/* Desktop Navbar */}

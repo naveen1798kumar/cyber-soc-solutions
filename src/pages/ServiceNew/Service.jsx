@@ -57,7 +57,7 @@ function Service() {
 
     {/* Title Section */}
       <section className="max-w-7xl mx-auto px-4 py-10 overflow-hidden">
-        <div className="text-center mb-12">
+        <div className="text-center my-8">
         <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
           Transform Your Business with Our Expertise
         </h2>

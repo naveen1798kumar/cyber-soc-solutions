@@ -60,37 +60,36 @@ const ServiceDetails = () => {
   if (!service) return null;
 
   return (
-    <div className="flex flex-col overflow-hidden scrollbar-hide bg-gradient-to-br from-[#f8fafc] via-[#e0ecf8] to-[#f8fafc] min-h-screen">
-<ServiceBanner
-  image={service.bannerImage || service.image}
-  title={service.title}
-  description={service.description}
-/>
+    <div className="flex flex-col overflow-hidden bg-gradient-to-br from-[#f8fafc] via-[#e0ecf8] to-[#f8fafc] min-h-screen">
+      <ServiceBanner
+        image={service.bannerImage || service.image}
+        title={service.title}
+        description={service.description}
+      />
 
       <div className="flex w-full">
         {/* Sidebar */}
         <aside
-          className="hidden md:block w-80 bg-white/80 backdrop-blur-xl mt-24 border-r border-gray-200 shadow-xl p-6 rounded-tr-3xl rounded-br-3xl"
-          style={{ position: "sticky", top: 0, minHeight: "100vh" }}
+          className="hidden md:block w-80 bg-white/90 backdrop-blur-lg mt-24 border-r border-gray-200 shadow-xl p-6 rounded-tr-3xl rounded-br-3xl sticky top-0 min-h-screen"
         >
           {categories.map((cat) => (
             <div key={cat._id} className="mb-6">
               <button
                 onClick={() => toggleCategory(cat._id)}
-                className="flex items-center justify-between w-full px-4 py-2 bg-gradient-to-r from-blue-50 via-white to-indigo-50 text-gray-800 font-semibold rounded-lg hover:bg-indigo-100 transition"
+                className="flex items-center justify-between w-full px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 text-gray-800 font-semibold rounded-xl hover:shadow-md transition"
               >
                 <span>{cat.title}</span>
                 {openCategory === cat._id ? <FaChevronUp /> : <FaChevronDown />}
               </button>
               {openCategory === cat._id && (
-                <ul className="mt-2 space-y-2 pl-4">
+                <ul className="mt-3 space-y-2 pl-4">
                   {sidebarServices
                     .filter((svc) => (svc.category?._id || svc.category) === cat._id)
                     .map((svc) => (
                       <li key={svc._id}>
                         <Link
                           to={`/services/${cat._id}/${svc._id}`}
-                          className={`block px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition ${
+                          className={`block px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition duration-200 ${
                             category === cat._id && serviceId === svc._id
                               ? "font-bold text-blue-600 bg-blue-50"
                               : ""
@@ -107,21 +106,21 @@ const ServiceDetails = () => {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 overflow-y-auto p-6 space-y-16">
+        <main className="flex-1 overflow-y-auto p-6 md:p-10 space-y-20">
           {/* Sections */}
           {service.sections?.length > 0 && (
-            <section className="space-y-12">
+            <section className="space-y-16">
               {service.sections.map((sec, i) => (
-                <div key={i} className="grid md:grid-cols-2 gap-10 items-center">
+                <div key={i} className="grid md:grid-cols-2 gap-12 items-center">
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-blue-800">{sec.title}</h3>
+                    <h3 className="text-2xl md:text-3xl font-bold text-blue-800">{sec.title}</h3>
                     <p className="text-gray-700 text-lg leading-relaxed">{sec.content}</p>
                   </div>
                   {sec.image && (
                     <img
                       src={sec.image}
                       alt={sec.title}
-                      className="rounded-xl shadow-lg border border-blue-100 w-full h-auto"
+                      className="rounded-2xl shadow-md border border-blue-100 w-full h-auto"
                     />
                   )}
                 </div>
@@ -130,16 +129,16 @@ const ServiceDetails = () => {
           )}
 
           {/* Key Benefits + Image */}
-          <section className="flex flex-col md:flex-row-reverse gap-10 items-center">
+          <section className="flex flex-col md:flex-row-reverse gap-12 items-center">
             {service.serviceImage && (
               <img
                 src={service.serviceImage}
                 alt={service.title}
-                className="w-full md:w-1/2 rounded-2xl shadow-xl border-4 border-blue-100 object-cover"
+                className="w-full md:w-1/2 rounded-3xl shadow-xl border-4 border-blue-100 object-cover"
               />
             )}
             <div className="w-full md:w-1/2 space-y-6">
-              <h3 className="text-2xl font-bold border-l-4 border-blue-600 pl-4 text-gray-800">
+              <h3 className="text-2xl md:text-3xl font-bold border-l-4 border-blue-600 pl-4 text-gray-800">
                 Key Benefits
               </h3>
               <ul className="space-y-4">
@@ -162,12 +161,12 @@ const ServiceDetails = () => {
               {service.features?.map((feature, idx) => (
                 <div
                   key={idx}
-                  className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition border border-gray-100"
+                  className="p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition border border-gray-100"
                 >
                   <h4 className="text-xl font-semibold text-blue-700 mb-2">
                     {feature.title}
                   </h4>
-                  <p className="text-gray-600">{feature.description}</p>
+                  <p className="text-gray-600 text-base leading-relaxed">{feature.description}</p>
                 </div>
               ))}
             </div>
